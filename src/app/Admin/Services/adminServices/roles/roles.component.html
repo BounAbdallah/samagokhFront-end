@@ -1,0 +1,41 @@
+
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header d-flex ">
+                        <h4 style="color: #FFF;">Rôles
+                          <!-- <a href="" class="btn btn-success">
+                            Ajouter/Modifier un rôle ou une permission
+                        </a> -->
+                        </h4>
+                        <input type="text" class="input form-control " id="id" placeholder="Ajouter un rôle" [(ngModel)]="newRoleName">
+                        <a href="" class="add-role btn btn-success " (click)="addRole()">Ajouter</a>
+
+                    </div>
+
+                    <div class="card-body"  *ngIf="roles && roles.length > 0">
+
+
+        <div class="table-container">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let role of roles">
+                <tr>
+                    <td>{{ role.id }}</td>
+                    <td>{{ role.name }}</td>
+                    <td class="d-flex">
+                      <button class="btn-edit btn btn-success">Modifier</button>
+                      <button class="btn-delete btn btn-outline-danger ml-5" (click)="deleteRole(role.id)">Supprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+ </div>
+
+   

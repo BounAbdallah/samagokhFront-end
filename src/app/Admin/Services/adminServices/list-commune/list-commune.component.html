@@ -1,0 +1,335 @@
+<style>
+    .side-bar{
+        width: 260px;
+        height: 950px;
+        flex-shrink: 0;
+        border-radius: 0px 12px 12px 0px;
+        background: #6D9773;
+    }
+    .logo{
+        width: 176px;
+        height: 150px;
+        flex-shrink: 0;
+        border-radius: 12px;
+        background: url("images/image 3.png") #6D9773 50% / cover no-repeat;
+        margin: auto;
+        /* margin-top: 75px; */
+    }
+    ul li{
+        color: #FFF;
+        font-family: Montserrat;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 40px;
+        display: flex;
+        width: 225px;
+        padding: 10px;
+        align-items: center;
+        gap: 10px;
+    }
+    ul li:hover{
+        display: flex;
+        width: 225px;
+        padding: 10px;
+        align-items: center;
+        gap: 10px;
+        border-radius: 4px;
+        background: #FFF;
+        color: #000;
+        margin: auto;
+    }
+    
+    #search-input {
+    width: 700px;
+    height: 50px;
+    margin-left: 100px;
+    margin-top: 10px;
+    padding: 0 15px;
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  #search-input:focus {
+    border-color: #6D9773;
+    box-shadow: 0 0 0 3px rgba(109, 151, 115, 0.25);
+  }
+ 
+  .profil i{
+    width: 53px;
+    height: 53px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-left: 100px;
+  }
+  .profil img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #FFF;
+  }
+  body{
+    background-color: #D8D8D8;
+  }
+  .statistique{
+    width: 371px;
+    height: 133px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FFF;
+    margin-left: 90px;
+    justify-content: space-between;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  .icone{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: -30px;
+    padding: 5px;
+    background-color: #3C95EE;
+  }
+  hr{
+    width: 330px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+  }
+  .hr_nom p{
+    color: #000;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+  }
+  .ville{
+    width: 1163px;
+    height: 572px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #D9D9D9;
+  }
+  .icone_card{
+    width: 100%;
+    height: 287px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: -30px;
+    background-color: #3C95EE;
+  }
+
+.statistique_card{
+    width: 371px;
+    height: 411px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.btn_detail_commune{
+    display: flex;
+width: 131px;
+height: 41px;
+justify-content: center;
+align-items: center;
+flex-shrink: 0;
+border-radius: 5px;
+border-color: #FEB906;
+color: #FEB906;
+}
+.head_table{
+    width: 100%;
+    height: 67px;
+    flex-shrink: 0;
+    border-radius:15px;
+    background: #4a7c59;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.table{
+    background-color: #FFF;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+
+    .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4a7c59;
+            color: white;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background: linear-gradient(to bottom, #4a7c59, #a1c4a8);      
+          }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .btn_detail_commune{
+                display: flex;
+            width: 131px;
+            height: 41px;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            border-radius: 5px;
+            border-color: #FEB906;
+            color: #FEB906;
+            }
+
+            .action-cell {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Espace entre le bouton et l'interrupteur */
+            }
+            .table-container {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    width: 100%; /* Assure que le conteneur occupe toute la largeur disponible */
+}
+  </style>
+
+        <!-- <div class="table-container"> -->
+        <table class="">
+            <thead>
+                <tr>
+                    <th>Commune</th>
+                    <th>Maire</th>
+                    <th>Ville</th>
+                    <th>
+                        <span style="margin-right: 180px;">Action</span>
+                        <i class="fa-solid fa-ellipsis" style="color: #FFF;"></i>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dakar dddddddddd</td>
+                    <td>Barthélémy Dias ddddd</td>
+                    <td>Dakar ggggg</td>
+                    <td class="action-cell">
+                            <button  class="btn_detail_commune">Détail</button>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <i class="fa-solid fa-ellipsis" style="color: #000;"></i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Dakar dddddddddd</td>
+                    <td>Barthélémy Dias ddddd</td>
+                    <td>Dakar ggggg</td>
+                    <td class="action-cell">
+                            <button  class="btn_detail_commune">Détail</button>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <i class="fa-solid fa-ellipsis" style="color: #000;"></i>
+                    </td>
+                </tr>
+                <!-- Ajoutez d'autres lignes similaires pour les autres communes -->
+            </tbody>
+        </table>
+
+        <div *ngIf="ville">
+            <h2>Détails de la ville: {{ ville.titre }}</h2>
+            <p><strong>Population:</strong> {{ ville.population }}</p>
+            <p><strong>Description:</strong> {{ ville.description }}</p>
+            <button routerLink="/communes">Retour à la liste des communes</button>
+          </div>
+    <!-- </div> -->
+
+
+   
+      

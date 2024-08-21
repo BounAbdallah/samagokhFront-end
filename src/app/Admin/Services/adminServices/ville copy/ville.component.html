@@ -1,0 +1,92 @@
+
+
+  <!-- Ajoutez le menu burger au début du body -->
+<div class="burger-menu" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header d-flex justify-content-between align-center">
+                        <h4 style="color: #FFF;">Villes </h4>
+                     
+                        <a href="" class="add-role btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">Ajouter</a>
+                    </div>
+
+
+                    <!-- formulaire modal pour l'ajout  -->
+                     <!-- The Modal -->
+<div class="card-modal modal fade justify-content-center ml-5 mt-sm" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title text-center">
+            <strong>{{ isEditMode ? 'Modifier la ville' : 'Ajouter une ville' }}</strong>
+          </h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form  [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="libelle" class="form-label">Libelle</label>
+                <input type="text" class="form-control" id="libelle" placeholder="Nom du ville" formControlName="libelle">
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Description" formControlName="description"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" [disabled]="myForm.invalid" class="btn btn-success w-100 " data-bs-dismiss="modal">
+                    {{ isEditMode ? 'Modifier la ville' : 'Ajouter la ville' }}                </button>
+              </div>
+          </form>
+        </div>
+  
+        <!-- Modal footer -->
+        
+  
+      </div>
+    </div>
+  </div>
+                    <!-- formulaire modal  fin pour l'ajout  -->
+                    <div class="card-body">
+
+        <div class="table-container">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let ville of villes">
+                <tr>
+                    <td>{{ ville.id }}</td>
+                    <td>{{ ville.libelle }}</td>
+                    <td>{{ ville.description }}</td>
+                    <td class="d-flex">
+                      <button class="btn-edit btn btn-success"  (click)="editVille(ville)" data-bs-toggle="modal" data-bs-target="#myModal">Modifier</button>
+                      <button class="btn-delete btn btn-outline-danger ml-5" (click)="deleteVille(ville.id)">Supprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+ </div>
+
+ <script>
+  function toggleMenu() {
+      document.querySelector('.side-bar').classList.toggle('active');
+      document.querySelector('.burger-menu').classList.toggle('active');
+  }
+</script>
