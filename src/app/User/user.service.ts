@@ -12,13 +12,11 @@ export class UserService {
 
 
   //Login
-
   login(identifienrts:any){
     return this.http.post(`${apiUrl}/login`,identifienrts)
   }
 
   //deconnexion
-
   logout(){
     return this.http.get(`${apiUrl}/login`)
   }

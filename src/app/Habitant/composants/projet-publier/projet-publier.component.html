@@ -1,1 +1,29 @@
-<p>projet-publier works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="projet-publier.component.css">
+</head>
+<body>
+
+    @for (projet of projets; track $index){
+        <img src="projet.image" class="project-image">
+        <div class="project-info">
+          <h2>{{ projet.titre }}</h2>
+          <p>{{ projet.description }}</p>
+          <div class="stats">
+            <h3>Vote <span>3500</span></h3>
+            <h3>Commentaires <span>3500</span></h3>
+          </div>
+        </div>
+        <div class="project-status">
+            <button>publie le <span>{{ projet.created_at | date: 'short' }}</span></button> 
+        </div>
+      
+
+    }
+    
+</body>
+</html>

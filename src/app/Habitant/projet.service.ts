@@ -9,6 +9,7 @@ export class ProjetService {
 
   private http = inject(HttpClient);
   
+  
 
   // methode pour creer un projet
   createProjet(projet:any){
@@ -16,8 +17,29 @@ export class ProjetService {
 
   }
 
+  // recuperation des projets soumis
+  getprojetSoumis(projet:any){
+    return this.http.get(`${apiUrl}/projets/publies`,projet)
+  }
+
+  // publier un projet
+
+  publierProjet(id: number, statut: boolean) {
+    return this.http.patch(`${apiUrl}/projets/${id}/statut`, { statut });
+  }
+
+  // afiicher les projets pas statut
+  getProjetBySttut(statut:any){
+    return this.http.get(`${apiUrl}/projets`, statut);
+
+    
+  }
+
+
+
+
   // methode pour la recuperatio des Projets
-  getAllProjet(){
+  getAllProjets(){
       return this.http.get(`${apiUrl}/projets`);
   }
 }

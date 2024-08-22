@@ -1,1 +1,115 @@
-<p>ajout-projet works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ajout-projet.component.css">
+    <!-- <link rel="stylesheet" href="side-bar.component.css"> -->
+</head>
+<body>
+    <!-- creation-project.component.html -->
+<div class="container">
+  <!-- [ngClass]="{'collapsed': isCollapsed}" -->
+    <!-- <div class="sidebar" >
+      <div class="logo">
+      </div>
+      <div class="hamburger" (click)="toggleSidebar()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      [ngClass]="{'show': !isCollapsed}"
+      <nav class="nav" >   
+        <ul>
+          <li><a routerLink="/dashboard">Dashboard</a></li>
+          <li><a routerLink="/mes-projets">Mes Projets</a></li>
+          <li><a routerLink="/projets-soumis">Projets soumis</a></li>
+          <li><a routerLink="/nouveau-projet">Nouveau projet</a></li>
+          <li><a routerLink="/deconnexion">Déconnexion</a></li>
+        </ul>
+      </nav>
+    </div> -->
+
+    <div class="sidebar">
+      <div class="logo">
+        <img src="../../../assets/images/logo-side-bare.png" alt="Logo">
+      </div>
+      <nav class="menu">
+          <a href="dashboard-habitant" class="menu-item active">
+              <i class="icon-dashboard"></i>
+              Dashboard
+          </a>
+          <a href="liste-projet-habitant" class="menu-item">
+              <i class="icon-projects"></i>
+              Projets
+          </a>
+          <a href="projet-publier" class="menu-item">
+            <i class="icon-submitted-projects"></i>
+            Projets soumis
+        </a>
+          
+          <a href="ajouter-projet" class="menu-item">
+              <i class="icon-new-project"></i>
+              Nouveau projet
+          </a>
+          
+          <a href="#" class="menu-item">
+              <i class="icon-logout"></i>
+              Déconnexion
+          </a>
+      </nav>
+    </div>
+
+    <div class="form-container">
+        <h2>Soumettre un projet</h2>
+
+        <form (ngSubmit)="ajoutProject()" #projectForm="ngForm">
+            <label for="titre">Titre:</label>
+            <input type="text" id="titre" [(ngModel)]="project.titre" name="titre" required />
+          
+            <label for="commune_id">Commune ID:</label>
+            <input type="number" id="commune_id" [(ngModel)]="project.commune_id" name="commune_id" required />
+          
+            <label for="description">Description:</label>
+            <textarea id="description" [(ngModel)]="project.description" name="description" required></textarea>
+          
+            <label for="objectif">Objectif:</label>
+            <input type="text" id="objectif" [(ngModel)]="project.objectif" name="objectif" required />
+          
+            <label for="attente">Attente:</label>
+            <input type="text" id="attente" [(ngModel)]="project.attente" name="attente" required />
+          
+            <label for="cible">Cible:</label>
+            <input type="text" id="cible" [(ngModel)]="project.cible" name="cible" required />
+          
+            <label for="categorie">Catégorie:</label>
+            <select id="categorie" [(ngModel)]="project.categorie" name="categorie" required>
+              <option value="education">Education</option>
+              <option value="assainissement">Assainissement</option>
+              <option value="jeunesse">Jeunesse</option>
+              <option value="sport">Sport</option>
+              <option value="divertissement">Divertissement</option>
+            </select>
+          
+            <label for="statut">Statut:</label>
+            <input type="checkbox" id="statut" [(ngModel)]="project.statut" name="statut" />
+          
+            <label for="etat">État:</label>
+            <input type="checkbox" id="etat" [(ngModel)]="project.etat" name="etat" />
+          
+            <label for="budget">Budget:</label>
+            <input type="number" id="budget" [(ngModel)]="project.budget" name="budget" required />
+          
+            <label for="image">Image URL (optionnel):</label>
+            <input type="text" id="image" [(ngModel)]="project.image" name="image" />
+          
+            <button type="submit">Ajouter le Projet</button>
+          </form>
+          
+          
+    </div>
+  </div>
+  
+</body>
+</html>

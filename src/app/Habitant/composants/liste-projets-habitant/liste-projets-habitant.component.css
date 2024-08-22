@@ -431,8 +431,8 @@ line-height: normal;
 
 
     .project-image {
-        width: 60px;
-        height: 60px;
+        width: auto;
+        height: 20 rem;
         flex-shrink: 0;
         margin-left: 10px;
     }

@@ -12,5 +12,6 @@ export interface projetModel{
   statut?:string;
   etat?:string;
   budget?:string;
+  timestamps?:Date;
 }
 
