@@ -39,7 +39,14 @@ connexion(){
     )
   }
 
-}}
+}
+
+logout(): void {
+  this.userService.logout();
+}
+
+
+}
 
 
 

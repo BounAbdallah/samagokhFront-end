@@ -69,6 +69,7 @@ import { Component, inject } from '@angular/core';
 import { ProjetService } from '../../projet.service';
 import { projetModel } from '../../projet.model';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../../../User/user.service';
 
 @Component({
   selector: 'app-ajout-projet',
@@ -80,6 +81,8 @@ import { FormsModule } from '@angular/forms';
 export class AjoutProjetComponent {
 
   private projetService = inject(ProjetService);
+  private userService = inject(UserService);
+
 
   project: projetModel = {};
   isCollapsed = false;
@@ -133,6 +136,10 @@ export class AjoutProjetComponent {
       // this.project.etat !== undefined && 
       this.project.budget
     );
+  }
+
+  logout(): void {
+    this.userService.logout();
   }
 
   toggleSidebar() {

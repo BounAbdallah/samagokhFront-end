@@ -16,13 +16,16 @@ export class UserService {
     return this.http.post(`${apiUrl}/login`,identifienrts)
   }
 
-  //deconnexion
+  // deconnexion
   logout(){
-    return this.http.get(`${apiUrl}/login`)
+    return this.http.get(`${apiUrl}/logout`)
   }
 
-
-
-
+  
 }
+
+
+
+
+
 
