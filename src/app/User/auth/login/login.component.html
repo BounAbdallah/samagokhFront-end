@@ -66,24 +66,27 @@
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <img src="../../../../assets/img/truelogo.png" alt="Sama Gokh Logo" class="logo">
-    <h1 class="mb-4">Connexion</h1>
-    <p>Accédez à votre compte pour participer activement à la gestion de votre commune.</p>
-    <form action="/votre-action" method="POST">
-      <div class="form-group mb-3">
-        <label for="email">Email</label>
-        <input type="email" id="email" class="form-control" placeholder="Entrez votre email" required>
+  <body>
+    <div class="login-container">
+      <img src="../../../../assets/img/truelogo.png" alt="Sama Gokh Logo" class="logo">
+      <h1 class="mb-4">Connexion</h1>
+      <p>Accédez à votre compte pour participer activement à la gestion de votre commune.</p>
+      <form (ngSubmit)="connexion()">
+        <div class="form-group mb-3">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="Entrez votre email" [(ngModel)]="userObjet.email" name="email" required>
+        </div>
+        <div class="form-group mb-4">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" class="form-control" placeholder="Entrez votre mot de passe" [(ngModel)]="userObjet.password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Se connecter</button>
+      </form>
+      <div class="form-footer">
+        <a href="/register">Pas encore de compte ? Inscrivez-vous</a>
       </div>
-      <div class="form-group mb-4">
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" class="form-control" placeholder="Entrez votre mot de passe" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Se connecter</button>
-    </form>
-    <div class="form-footer">
-      <a href="/register">Pas encore de compte ? Inscrivez-vous</a>
     </div>
-  </div>
+  </body>
+  
 </body>
 </html>

@@ -31,8 +31,8 @@ connexion(){
         console.log(response.token);
         if(response.token){
           localStorage.setItem("token", JSON.stringify(response.token));
-          // verifie le role de l'utilisateur
-          this.router.navigateByUrl("liste-projet-habitant")
+            this.router.navigateByUrl("liste-projet-habitant")
+          // verifie le role de l'utilisateur{}
 
         }
       }
