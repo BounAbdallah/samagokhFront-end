@@ -2,11 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { projetModel } from '../projet.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjetService } from '../projet.service';
+import { CommonModule } from '@angular/common';
+import { UserService } from '../../User/user.service';
 
 @Component({
   selector: 'app-detail-projet',
   standalone: true,
-  imports: [], // Ajoutez ici les imports Angular nécessaires si besoin
+  imports: [CommonModule], // Ajoutez ici les imports Angular nécessaires si besoin
   templateUrl: './detail-projet.component.html',
   styleUrls: ['./detail-projet.component.css'] // Correction de styleUrl à styleUrls
 })
@@ -17,7 +19,8 @@ export class DetailProjetComponent implements OnInit {
   constructor(
     private projetService: ProjetService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private userService:UserService
   ) {}
 
   ngOnInit(): void {
@@ -37,7 +40,22 @@ export class DetailProjetComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/liste-projets-habitant']);  // Redirige vers la liste des projets
+    this.router.navigate(['/liste-projet-habitant']);  // Redirige vers la liste des projets
+  }
+
+   // deconnextion
+   logout(): void {
+    this.userService.logout().subscribe(
+      () => {
+        // Optionnel : Effacer les informations de l'utilisateur
+        localStorage.removeItem('token');
+        // Rediriger vers la page de connexion ou la page d'accueil
+        this.router.navigate(['/login']);
+      },
+      (error) => {
+        console.error('Erreur de déconnexion', error);
+      }
+    );
   }
 }
 

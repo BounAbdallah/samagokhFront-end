@@ -103,6 +103,9 @@ overflow-y: scroll;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    width: 870px;
+height: 1060px;
+flex-shrink: 0;
   }
   
   .modal-content {
@@ -122,6 +125,13 @@ overflow-y: scroll;
     font-size: 24px;
     cursor: pointer;
   }
+
+  img{
+    width: 750px;
+height: 294px;
+flex-shrink: 0;
+border-radius: 12px;
+}
   
   
 

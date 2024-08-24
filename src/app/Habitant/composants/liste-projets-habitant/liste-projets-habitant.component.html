@@ -269,38 +269,49 @@
         <section class="project-list">
             <div *ngFor="let projet of tabprojet; trackBy: trackByFn">
                 <!-- Projet non publié -->
-                <div *ngIf="!projet.statut" class="project-card">
-                    <img src="{{projet.image}}" class="project-image">
-                    <div class="project-info">
-                        <h2>{{ projet.titre }}</h2>
-                        <p>{{ projet.description }}</p>
-                        <div class="project-actions">
-                            <button class="btn btn-publish" (click)="publishProject(projet)">Publier</button>
-                            <button *ngIf="projet.id !== undefined" (click)="deleteProject(projet.id)">Supprimer</button>                            <button class="btn btn-details" (click)="openProjectDetail(projet)">Voir les détails</button>
+                <a class="btn btn-details" (click)="openProjectDetail(projet)">
+                    <div *ngIf="!projet.statut" class="project-card">
+                        <img src="{{projet.image}}" class="project-image">
+                        <div class="project-info">
+                            <h2>{{ projet.titre }}</h2>
+                            <p>{{ projet.description }}</p>
+                            <div class="project-actions">
+                                <button class="btn btn-publish" (click)="publishProject(projet)">Publier</button>
+                                <button *ngIf="projet.id !== undefined" (click)="deleteProject(projet.id)">Supprimer</button> 
+                                <!-- <button class="btn btn-details" (click)="openProjectDetail(projet)">Voir les détails</button> -->
+                            </div>
+                        </div>
+                        <div class="project-status">
+                            <button><span>En attente</span></button> 
                         </div>
                     </div>
-                    <div class="project-status">
-                        <button><span>En attente</span></button> 
-                    </div>
-                </div>
+                </a>
+
+                
 
                 <!-- Projet publié -->
-                <div *ngIf="projet.statut" class="project-card">
-                    <img src="{{projet.image}}" class="project-image">
-                    <div class="project-info">
-                        <h2>{{ projet.titre }}</h2>
-                        <p>{{ projet.description }}</p>
-                        <div class="stats">
-                            <h3>Vote <span>3500</span></h3>
-                            <h3>Commentaires <span>3500</span></h3>
-                        </div>
-                    </div>
-                    <div class="project-status">
-                        <button>publié le <span>{{ projet.created_at | date: 'short' }}</span></button> 
-                    </div>
-                    <button class="btn btn-details" (click)="openProjectDetail(projet)">Voir les détails</button>
 
-                </div>
+                <a class="btn btn-details" (click)="openProjectDetail(projet)">
+                    <div *ngIf="projet.statut" class="project-card">
+                        <img src="{{projet.image}}" class="project-image">
+                        <div class="project-info">
+                            <h2>{{ projet.titre }}</h2>
+                            <p>{{ projet.description }}</p>
+                            <div class="stats">
+                                <h3>Vote <span>3500</span></h3>
+                                <h3>Commentaires <span>3500</span></h3>
+                            </div>
+                        </div>
+                        <div class="project-status">
+                            <button>publié le <span>{{ projet.created_at | date: 'short' }}</span></button> 
+                        </div>
+                        <!-- <button class="btn btn-details" (click)="openProjectDetail(projet)">Voir les détails</button> -->
+    
+                    </div>
+
+                </a>
+
+                
             </div>
         </section>
         
@@ -308,12 +319,19 @@
         <div class="modal" *ngIf="showModal" (click)="closeModal($event)">
           <div class="modal-content" (click)="$event.stopPropagation()">
             <span class="close-button" (click)="closeModal($event)">&times;</span>
-            <h2>{{ selectedProjet?.titre }}</h2>
-            <p>{{ selectedProjet?.description }}</p>
-            <p>{{ selectedProjet?.budget }}</p>
-            <p>{{ selectedProjet?.objectif }}</p>
-            <p>{{ selectedProjet?.attente }}</p>
-            <p>{{ selectedProjet?.cible }}</p>
+           <img [src]="selectedProjet?.image" alt="{{ selectedProjet?.titre }}" class="project-detail-image">
+  <p>{{ selectedProjet?.categorie }}</p>
+    <h1>{{ selectedProjet?.titre }}</h1>
+    <h2>Description:</h2>
+    <p>{{ selectedProjet?.description }}</p>
+    <h2>Attente</h2>
+    <p>{{ selectedProjet?.attente}}</p>
+    <h2>Cible</h2>
+    <p>{{ selectedProjet?.cible}}</p>
+    <h2>Objectif</h2>
+    <p>{{ selectedProjet?.objectif }}</p>
+    <h2>Budget</h2>
+    <p>{{ selectedProjet?.budget}}</p>
             <div class="modal-footer">
               <button (click)="closeModal($event)">Fermer</button>
             </div>
