@@ -1,1 +1,128 @@
-<p>liste-projet works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des projets</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome pour les icônes -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="liste-projet.component.css">
+</head>
+<body>
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom" style="background-color: #0C3B2E;">
+        <a class="navbar-brand" href="#">
+            <img src="../../assets/images/Rectangle 3.png" alt="Logo" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Rechercher</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Première div : Carte de profil -->
+            <div class="col-lg-3 col-md-12 mb-4">
+                <div class="profile-card text-center p-3" id="profile-card">
+                    <img src="https://img.freepik.com/photos-gratuite/femme-musulmane-faible-angle-posant-exterieur_23-2150506623.jpg?uid=R154313631&ga=GA1.1.309790809.1709729690&semt=ais_hybrid" alt="Profile Image" class="img-fluid rounded-circle mb-2">
+                    <h5>Fatou Bintou Diop</h5>
+                    <p>Adjointe au maire</p>
+                    <p>Commune de Dakar</p>
+                    <p>Se déconnecter</p>
+                </div>
+            </div>
+
+            <!-- Deuxième div : Liste des projets -->
+            <div class="col-lg-6 col-md-12">
+                <!-- Répétition des cartes projets -->
+                <div class="project-card mb-4 p-3">
+                    <div class="d-flex align-items-center">
+                        <img src="../../assets/images/woman.jpg" alt="Profile Image" class="img-fluid " >
+                        <div class="ml-3">
+                            <h5>Sofia Gueye</h5>
+                            <p>Il y a 2 heures</p>
+                        </div>
+                    </div>
+                    <h4>Reboisement</h4>
+                    <p class="description">
+                        Le projet "Verdissons Notre Commune" vise à restaurer et enrichir 
+                        les espaces verts de notre communauté en lançant une vaste campagne de reboisement.
+                    </p>
+                    <img src="../../assets/images/background.png" alt="Project Image" class="project-image img-fluid mb-3">
+                    <!-- Ligne pour les commentaires et les votes -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <i class="fas fa-comment"></i> 10
+                            <i class="fas fa-thumbs-up ml-3"></i> 25
+                        </div>
+                    </div>
+                    <!-- Champ commentaire et bouton envoyer sur la même ligne -->
+                    <div class="d-flex">
+                        <input type="text" class="form-control mr-2" placeholder="Commenter">
+                        <button class="btn btn-outline-primary">Envoyer</button>
+                    </div>
+                </div>
+
+                <!-- Ajouter d'autres projets ici en copiant la structure ci-dessus -->
+                <div class="project-card mb-4 p-3">
+                    <div class="d-flex align-items-center">
+                        <img src="../../assets/images/blackman.jpg" alt="Profile Image" class="img-fluid " >
+                        <div class="ml-3">
+                            <h5>Amadou</h5>
+                            <p>30/08/2024</p>
+                        </div>
+                    </div>
+                    <h4>Refectionnement du terrain de foot</h4>
+                    <p class="description">
+                        Le terrain de foot de Médina, autrefois un lieu de rassemblement et de sport pour
+                         les jeunes et les habitants de la commune, est aujourd'hui en mauvais état. 
+                         Les buts sont endommagés, la surface du terrain est irrégulière, et il 
+                         manque des équipements de base comme des bancs et des filets de protection. 
+                         Ces dégradations limitent l'accès des jeunes à un espace sûr pour pratiquer 
+                         des activités sportives, ce qui a un impact négatif sur leur santé et leur 
+                         développement social.
+                    </p>
+                    <img src="https://img.freepik.com/photos-gratuite/vue-aerienne-du-terrain-gazon-pour-hockey_23-2149668570.jpg?uid=R154313631&ga=GA1.2.309790809.1709729690&semt=ais_hybrid" alt="Project Image" class="project-image img-fluid mb-3">
+                    <!-- Ligne pour les commentaires et les votes -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <i class="fas fa-comment"></i> 10
+                            <i class="fas fa-thumbs-up ml-3"></i> 25
+                        </div>
+                    </div>
+                    <!-- Champ commentaire et bouton envoyer sur la même ligne -->
+                    <div class="d-flex">
+                        <input type="text" class="form-control mr-2" placeholder="Commenter">
+                        <button class="btn btn-outline-primary">Envoyer</button>
+                    </div>
+                </div>
+               
+            </div>
+
+            <!-- Troisième div : Suggestions ou autres contenus -->
+            <div class="col-lg-3 col-md-12">
+                <div class="suggestions-card p-3">
+                    <h5>Suggestions pour vous</h5>
+                    <p>1. Projet de jardin communautaire</p>
+                    <p>2. Rénovation des trottoirs</p>
+                    <p>3. Événement de collecte de fonds</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS et jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
