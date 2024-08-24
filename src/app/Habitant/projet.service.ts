@@ -73,14 +73,6 @@ export class ProjetService {
     return this.http.delete(`${apiUrl}/delete/projets/${id}`);
   }
 
-  
-
-
-  
-
-
- 
-
 
 }
 
