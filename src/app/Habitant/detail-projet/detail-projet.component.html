@@ -1,0 +1,10 @@
+<!-- project-detail.component.html -->
+<div class="project-detail">
+    <h1>{{ projet?.titre }}</h1>
+    <p>{{ projet?.description }}</p>
+    <img [src]="projet?.image" alt="{{ projet?.titre }}" class="project-detail-image">
+    <div class="project-detail-footer">
+      <button (click)="goBack()">Retour</button>
+    </div>
+  </div>
+  

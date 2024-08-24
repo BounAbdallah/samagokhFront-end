@@ -54,9 +54,9 @@
               Nouveau projet
           </a>
           
-          <a href=""  (click)="logout()" class="menu-item">
-              <i class="icon-logout"></i>
-              Déconnexion
+          <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
+            <i class="icon-logout"></i>
+            Déconnexion
           </a>
       </nav>
     </div>
