@@ -1,1 +1,79 @@
-<p>projet-publier works!</p>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="projet-publier.component.css">
+</head>
+<body>
+  <div class="container">
+
+    <aside class="sidebar">
+            
+
+      <div class="sidebar">
+          <div class="logo">
+            <img src="../../../assets/images/logo-side-bare.png" alt="Logo">
+          </div>
+          <nav class="menu">
+              <a href="dashboard-habitant" class="menu-item active">
+                  <i class="icon-dashboard"></i>
+                  Dashboard
+              </a>
+              <a href="liste-projet-habitant" class="menu-item">
+                  <i class="icon-projects"></i>
+                  Projets
+              </a>
+  
+              <a href="projet-publier" class="menu-item">
+                  <i class="icon-submitted-projects"></i>
+                  Projets soumis
+              </a>
+             
+              <a href="ajouter-projet" class="menu-item">
+                  <i class="icon-new-project"></i>
+                  Nouveau projet
+              </a>
+             
+              <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
+                <i class="icon-logout"></i>
+                Déconnexion
+              </a>
+          </nav>
+        </div>
+        
+  </aside>
+  
+  <main class="content">
+    <section class="project-list">
+      <div *ngFor="let projet of tabprojet" class="project-card">
+        <img src="{{projet.image}}" class="project-image">
+        <div class="project-info">
+          <h2>{{ projet.titre }}</h2>
+          <p>{{ projet.description }}</p>
+          <div class="stats">
+            <h3>Vote <span>3500</span></h3>
+            <h3>Commentaires <span>3500</span></h3>
+          </div>
+        </div>
+        <div class="project-status">
+          <button>Publié le <span>{{ projet.created_at | date: 'short' }}</span></button>
+        </div>
+      </div>
+    </section>
+</main>
+  
+    
+    
+
+  </div>
+
+  
+  
+    
+</body>
+</html> 
+
+
+ 

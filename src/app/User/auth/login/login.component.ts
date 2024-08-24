@@ -32,14 +32,21 @@ connexion(){
         if(response.token){
           localStorage.setItem("token", JSON.stringify(response.token));
           // verifie le role de l'utilisateur
-          this.router.navigateByUrl("dashboard-admin")
+          this.router.navigateByUrl("liste-projet-habitant")
 
         }
       }
     )
   }
 
-}}
+}
+
+logout(): void {
+  this.userService.logout();
+}
+
+
+}
 
 
 
