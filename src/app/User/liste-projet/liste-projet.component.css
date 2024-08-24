@@ -1,0 +1,103 @@
+nav{
+    display:flex;
+   justify-content: space-between;
+   background-color: #0C3B2E;
+}
+.logo{
+    width: auto;
+    height:5rem;
+}
+.navbar-custom {
+    background-color: #0C3B2E; 
+}
+.navbar-custom .navbar-brand, 
+.navbar-custom .form-control {
+    color: #ffffff; 
+}
+.logo{
+    width: auto;
+    height: 5rem;
+}
+.woman{
+    width: auto;
+    height: 8rem;
+    border-radius: 10rem;
+}
+.profil{
+    border-style: solid;
+    border-width: thin;
+    width: 10%;
+    margin-left: 2rem;
+}
+#profile-card{
+    background-color: #FA983A;
+    color:white
+}
+.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.profile-card, .project-card, .suggestions-card {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+h4{
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    font-weight:400
+}
+h5{
+    margin-top: 1.4rem;
+}
+
+.profile-card img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+.project-card img{
+    border-radius: 80%;
+    width: auto;
+    height: 60px;
+    object-fit: cover;
+}
+.project-card img.project-image {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.project-card .description {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.profile-card, .project-card, .suggestions-card {
+    flex: 1;
+    margin: 10px;
+    max-width: 300px;
+}
+
+.project-card {
+    max-width: 600px;
+}
+
+.suggestions-card {
+    background-color: #e9ecef;
+}
+
+@media (max-width: 768px) {
+    .profile-card, .project-card, .suggestions-card {
+        max-width: 100%;
+    }
+}
