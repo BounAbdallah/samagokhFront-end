@@ -1,10 +1,10 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="projet-publier.component.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="detail-projet.component.css">
 </head>
 <body>
   <div class="container">
@@ -44,36 +44,33 @@
         </div>
         
   </aside>
-  
-  <main class="content">
-    <section class="project-list">
-      <div *ngFor="let projet of tabprojet" class="project-card">
-        <img src="{{projet.image}}" class="project-image">
-        <div class="project-info">
-          <h2>{{ projet.titre }}</h2>
-          <p>{{ projet.description }}</p>
-          <div class="stats">
-            <h3>Vote <span>3500</span></h3>
-            <h3>Commentaires <span>3500</span></h3>
-          </div>
-        </div>
-        <div class="project-status">
-          <button>Publié le <span>{{ projet.created_at | date: 'short' }}</span></button>
-        </div>
-      </div>
-    </section>
-</main>
-  
-    
-    
 
+    <!-- project-detail.component.html -->
+<div class="project-detail">
+  <img [src]="projet?.image" alt="{{ projet?.titre }}" class="project-detail-image">
+  <p class="categroie">{{ projet?.categorie }}</p>
+    <h1>{{ projet?.titre }}</h1>
+    <h2>Description:</h2>
+    <p>{{ projet?.description }}</p>
+    <h2>Attente</h2>
+    <p>{{ projet?.attente}}</p>
+    <h2>Cible</h2>
+    <p>{{ projet?.cible}}</p>
+    <h2>Objectif</h2>
+    <p>{{ projet?.objectif }}</p>
+    <h2>Budget</h2>
+    <p>{{ projet?.budget}}</p>
+<h2>Publie le :</h2>
+<p>{{ projet?.created_at | date:'dd/MM/yyyy' }}</p>
+    <div class="project-detail-footer">
+      <button (click)="goBack()">Retour</button>
+    </div>
+  </div>
   </div>
 
+
+
+
   
-  
-    
 </body>
-</html> 
-
-
-  
+</html>

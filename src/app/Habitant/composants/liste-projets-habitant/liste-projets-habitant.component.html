@@ -1,1 +1,344 @@
-<p>liste-projets-habitant works!</p>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="liste-projets-habitant.component.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+
+
+            <div class="sidebar">
+                <div class="logo">
+                  <img src="../../../assets/images/logo-side-bare.png" alt="Logo">
+                </div>
+                <nav class="menu">
+                    <a href="dashboard-habitant" class="menu-item active">
+                        <i class="icon-dashboard"></i>
+                        Dashboard
+                    </a>
+                    <a href="liste-projet-habitant" class="menu-item">
+                        <i class="icon-projects"></i>
+                        Projets
+                    </a>
+
+                    <a href="projet-publier" class="menu-item">
+                        <i class="icon-submitted-projects"></i>
+                        Projets soumis
+                    </a>
+
+                    <a href="ajouter-projet" class="menu-item">
+                        <i class="icon-new-project"></i>
+                        Nouveau projet
+                    </a>
+                   
+                    <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
+                      <i class="icon-logout"></i>
+                      Déconnexion
+                    </a>
+                </nav>
+              </div>
+
+        </aside>
+        <main class="content">
+
+            <h1>Liste de mes projets</h1>
+
+            <section class="project-list">
+                @for (projet of tabprojet; track $index){
+                <div *ngIf="!projet.statut" class="project-card">
+                    <img src="{{projet.image}}" class="project-image">
+                    <div class="project-info">
+                      <h2>{{ projet.titre }}</h2>
+                      <p>{{ projet.description }}</p>
+                      <div class="project-actions">
+                        <button class="btn btn-publish">Publier</button>
+                        <button class="btn btn-delete">Supprimer</button>
+                      </div>
+                    </div>
+                    <div class="project-status">
+                      <button><span>En attente</span></button>
+                    </div>
+                </div>
+
+
+      <div *ngIf="projet.statut" class="project-card">
+        <img src="{{projet.image}}" class="project-image">
+        <div class="project-info">
+          <h2>{{ projet.titre }}</h2>
+          <p>{{ projet.description }}</p>
+          <div class="stats">
+            <h3>Vote <span>3500</span></h3>
+            <h3>Commentaires <span>3500</span></h3>
+          </div>
+        </div>
+        <div class="project-status">
+            <button>publie le <span>{{ projet.created_at | date: 'short' }}</span></button>
+        </div>
+      </div>
+
+     
+ }
+</section>
+
+</main>
+</div>
+
+</body>
+</html> -->
+
+
+<!--  <button (click)="openProjectDetail(projet)" *ngFor="let projet of tabprojet">
+        Voir les détails
+      </button>
+
+      <div class="modal" *ngIf="selectedProjet">
+        <div class="modal-content">
+          <span class="close" (click)="closeModal()">&times;</span>
+          <h2>Détails du Projet</h2>
+          <p><strong>ID:</strong> {{ selectedProjet.id }}</p>
+          <p><strong>Statut:</strong> {{ selectedProjet.statut }}</p>
+          <p><strong>Nom:</strong> {{ selectedProjet.titre}}</p>
+         Ajoutez d'autres détails du projet ici 
+        </div>
+      </div> -->
+
+
+
+
+      <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="liste-projets-habitant.component.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="../../../assets/images/logo-side-bare.png" alt="Logo">
+        </div>
+        <nav class="menu">
+            <a href="dashboard-habitant" class="menu-item active">
+                <i class="icon-dashboard"></i>
+                Dashboard
+            </a>
+            <a href="liste-projet-habitant" class="menu-item">
+                <i class="icon-projects"></i>
+                Projets
+            </a>
+            <a href="projet-publier" class="menu-item">
+                <i class="icon-submitted-projects"></i>
+                Projets soumis
+            </a>
+            <a href="ajouter-projet" class="menu-item">
+                <i class="icon-new-project"></i>
+                Nouveau projet
+            </a>
+            <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
+                <i class="icon-logout"></i>
+                Déconnexion
+            </a>
+        </nav>
+    </aside>
+    <main class="content">
+        <h1>Liste de mes projets</h1>
+        <section class="project-list">
+            <div *ngFor="let projet of tabprojet; trackBy: trackByFn"> -->
+                <!-- Projet non publié -->
+                <!-- <div *ngIf="!projet.statut" class="project-card">
+                    <img src="{{projet.image}}" class="project-image">
+                    <div class="project-info">
+                        <h2>{{ projet.titre }}</h2>
+                        <p>{{ projet.description }}</p>
+                        <div class="project-actions">
+                            <button class="btn btn-publish">Publier</button>
+                            <button class="btn btn-delete">Supprimer</button>
+                            <button class="btn btn-details" (click)="openProjectDetail(projet)">Voir les détails</button>
+                        </div>
+                    </div>
+                    <div class="project-status">
+                        <button><span>En attente</span></button> 
+                    </div>
+                </div> -->
+
+                <!-- Projet publié -->
+                <!-- <div *ngIf="projet.statut" class="project-card">
+                    <img src="{{projet.image}}" class="project-image">
+                    <div class="project-info">
+                        <h2>{{ projet.titre }}</h2>
+                        <p>{{ projet.description }}</p>
+                        <div class="stats">
+                            <h3>Vote <span>3500</span></h3>
+                            <h3>Commentaires <span>3500</span></h3>
+                        </div>
+                    </div>
+                    <div class="project-status">
+                        <button>publie le <span>{{ projet.created_at | date: 'short' }}</span></button> 
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        
+        <!-- Modal -->
+        <!-- Modal -->
+<!-- <div class="modal" *ngIf="showModal" (click)="closeModal($event)">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close-button" (click)="closeModal($event)">&times;</span>
+    <h2>{{ selectedProjet?.titre }}</h2>
+    <p>{{ selectedProjet?.description }}</p>
+    <p>{{ selectedProjet?.budget }}</p>
+    <p>{{ selectedProjet?.objectif}}</p>
+    <p>{{ selectedProjet?.attente}}</p>
+    <p>{{ selectedProjet?.cible }}</p> -->
+
+
+
+
+    <!-- <img [src]="selectedProjet?.image" alt="{{ selectedProjet?.titre }}" class="modal-image"> -->
+    <!-- <div class="modal-footer">
+      <button (click)="closeModal($event)">Fermer</button>
+    </div>
+  </div>
+</div>
+
+    </main>
+</div> -->
+
+
+    <!-- <script src="path-to-your-angular-bundle.js"></script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="liste-projets-habitant.component.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="../../../assets/images/logo-side-bare.png" alt="Logo">
+        </div>
+        <nav class="menu">
+            <a href="dashboard-habitant" class="menu-item active">
+                <i class="icon-dashboard"></i>
+                Dashboard
+            </a>
+            <a href="liste-projet-habitant" class="menu-item">
+                <i class="icon-projects"></i>
+                Projets
+            </a>
+            <a href="projet-publier" class="menu-item">
+                <i class="icon-submitted-projects"></i>
+                Projets soumis
+            </a>
+            <a href="ajouter-projet" class="menu-item">
+                <i class="icon-new-project"></i>
+                Nouveau projet
+            </a>
+            <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
+                <i class="icon-logout"></i>
+                Déconnexion
+            </a>
+        </nav>
+    </aside>
+    <main class="content">
+        <h1>Liste de mes projets</h1>
+        <section class="project-list">
+            <div *ngFor="let projet of tabprojet; trackBy: trackByFn">
+                <!-- Projet non publié -->
+                <a class="btn btn-details" (click)="openProjectDetail(projet)">
+                    <div *ngIf="!projet.statut" class="project-card">
+                        <img src="{{projet.image}}" class="project-image">
+                        <div class="project-info">
+                            <h2>{{ projet.titre }}</h2>
+                            <p>{{ projet.description }}</p>
+                            <div class="project-actions">
+                                <button class="btn btn-publish" (click)="publishProject(projet)">Publier</button>
+                                <button *ngIf="projet.id !== undefined" (click)="deleteProject(projet.id)">Supprimer</button> 
+                                <!-- <button class="btn btn-details" (click)="openProjectDetail(projet)">Voir les détails</button> -->
+                            </div>
+                        </div>
+                        <div class="project-status">
+                            <button><span>En attente</span></button> 
+                        </div>
+                    </div>
+                </a>
+
+                
+
+                <!-- Projet publié -->
+
+                <a class="btn btn-details" (click)="openProjectDetail(projet)">
+                    <div *ngIf="projet.statut" class="project-card">
+                        <img src="{{projet.image}}" class="project-image">
+                        <div class="project-info">
+                            <h2>{{ projet.titre }}</h2>
+                            <p>{{ projet.description }}</p>
+                            <div class="stats">
+                                <h3>Vote <span>3500</span></h3>
+                                <h3>Commentaires <span>3500</span></h3>
+                            </div>
+                        </div>
+                        <div class="project-status">
+                            <button>publié le <span>{{ projet.created_at | date: 'short' }}</span></button> 
+                        </div>
+                        <!-- <button class="btn btn-details" (click)="openProjectDetail(projet)">Voir les détails</button> -->
+    
+                    </div>
+
+                </a>
+
+                
+            </div>
+        </section>
+        
+        <!-- Modal -->
+        <div class="modal" *ngIf="showModal" (click)="closeModal($event)">
+          <div class="modal-content" (click)="$event.stopPropagation()">
+            <span class="close-button" (click)="closeModal($event)">&times;</span>
+           <img [src]="selectedProjet?.image" alt="{{ selectedProjet?.titre }}" class="project-detail-image">
+  <p>{{ selectedProjet?.categorie }}</p>
+    <h1>{{ selectedProjet?.titre }}</h1>
+    <h2>Description:</h2>
+    <p>{{ selectedProjet?.description }}</p>
+    <h2>Attente</h2>
+    <p>{{ selectedProjet?.attente}}</p>
+    <h2>Cible</h2>
+    <p>{{ selectedProjet?.cible}}</p>
+    <h2>Objectif</h2>
+    <p>{{ selectedProjet?.objectif }}</p>
+    <h2>Budget</h2>
+    <p>{{ selectedProjet?.budget}}</p>
+            <div class="modal-footer">
+              <button (click)="closeModal($event)">Fermer</button>
+            </div>
+          </div>
+        </div>
+    </main>
+  </div>
+  <script src="path-to-your-angular-bundle.js"></script>
+</body>
+</html>

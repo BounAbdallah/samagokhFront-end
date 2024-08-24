@@ -1,1 +1,50 @@
-<p>creer-projet works!</p>
+<div class="form-container">
+  <h2>Soumettre un projet</h2>
+
+  <form (ngSubmit)="ajoutProject()" #projectForm="ngForm">
+    <label for="titre">Titre:</label>
+    <input type="text" id="titre" [(ngModel)]="project.titre" name="titre" class="form-control" required />
+
+    <label for="commune_id">Commune ID:</label>
+    <input type="number" id="commune_id" [(ngModel)]="project.commune_id" name="commune_id" class="form-control" required />
+
+    <label for="description">Description:</label>
+    <textarea id="description" [(ngModel)]="project.description" name="description" class="form-control" required></textarea>
+
+    <label for="objectif">Objectif:</label>
+    <input type="text" id="objectif" [(ngModel)]="project.objectif" name="objectif" class="form-control" required />
+
+    <label for="attente">Attente:</label>
+    <input type="text" id="attente" [(ngModel)]="project.attente" name="attente" class="form-control" required />
+
+    <label for="cible">Cible:</label>
+    <input type="text" id="cible" [(ngModel)]="project.cible" name="cible" class="form-control" required />
+
+    <label for="categorie">Catégorie:</label>
+    <select id="categorie" [(ngModel)]="project.categorie" name="categorie" class="form-control" required>
+      <option value="education">Education</option>
+      <option value="assainissement">Assainissement</option>
+      <option value="jeunesse">Jeunesse</option>
+      <option value="sport">Sport</option>
+      <option value="divertissement">Divertissement</option>
+    </select>
+
+    <label for="statut">
+      <input type="checkbox" id="statut" [(ngModel)]="project.statut" name="statut" />
+      Statut
+    </label>
+
+    <label for="etat">
+      <input type="checkbox" id="etat" [(ngModel)]="project.etat" name="etat" />
+      État
+    </label>
+
+    <label for="budget">Budget:</label>
+    <input type="number" id="budget" [(ngModel)]="project.budget" name="budget" class="form-control" required />
+
+    <label for="image">Image URL (optionnel):</label>
+    <input type="text" id="image" [(ngModel)]="project.image" name="image" class="form-control" />
+
+    <button type="submit" class="btn btn-outline-warning">Ajouter le Projet</button>
+  </form>
+</div>

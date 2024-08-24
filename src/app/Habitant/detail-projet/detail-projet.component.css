@@ -1,0 +1,130 @@
+/* css du sidebar */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.sidebar {
+  background-color: #618062; /* Background color */
+  color: #fff;
+  width: 250px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  border-radius: 0px 12px 12px 0px;
+  background: #6D9773;
+  overflow-y: hidden;
+  color: #FFF;
+font-family: Montserrat;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.logo img {
+  max-width: 100%;
+  margin-bottom: 20px;
+  border-radius: 50%; /* Making the logo circular if needed */
+}
+
+.menu {
+  width: 100%;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.menu-item.active, .menu-item:hover {
+  background-color: #ffffff; /* Highlight color for active/hovered menu items */
+  color: #000; /* Text color when active/hovered */
+}
+.menu-item svg:hover
+{
+  color: #000;
+}
+
+.menu-item i {
+  margin-right: 10px;
+  font-size: 1.2em; /* Icon size */
+}
+
+/* Placeholder for icons (use actual icons/fonts or images) */
+.icon-dashboard:before {
+  content: ''; /* Dashboard icon placeholder */
+}
+
+.icon-projects:before {
+  content: ''; /* Projects icon placeholder */
+}
+
+.icon-inhabitants:before {
+  content: ''; /* Inhabitants icon placeholder */
+}
+
+.icon-new-project:before {
+  content: ""; /* New project icon placeholder */
+}
+
+.icon-submitted-projects:before {
+  content: ''; /* Submitted projects icon placeholder */
+}
+
+.icon-logout:before {
+  content: ''; /* Logout icon placeholder */
+}
+
+.svg-container {
+  display: inline-block;
+}
+
+.svg-container:hover .svg-path {
+  fill: #000000; /* Change to black on hover */
+}
+
+.menu-item img {
+  transition: filter 0.3s ease;
+}
+
+.menu-item:hover img {
+  filter: grayscale(100%);
+}
+
+
+
+/* fin sidebar */
+
+
+img{
+    width: 750px;
+height: 294px;
+flex-shrink: 0;
+border-radius: 12px;
+}
+
+.container{
+    display: flex;
+}
+
+.categorie{
+    display: flex;
+width: 145px;
+height: 40px;
+padding: 10px;
+justify-content: center;
+align-items: flex-start;
+gap: 10px;
+flex-shrink: 0;
+border-radius: 12px;
+background: #CADBB7;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}

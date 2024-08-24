@@ -1,1 +1,166 @@
-<p>dashbaord-habitant works!</p>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashbaord-habitant.component.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            
+
+            <div class="sidebar">
+                <div class="logo">
+                  <img src="../../../assets/images/logo-side-bare.png" alt="Logo">
+                </div>
+                <nav class="menu">
+                    <a href="dashboard-habitant" class="menu-item active">
+                        <i class="icon-dashboard"></i>
+                        Dashboard
+                    </a>
+                    <a href="liste-projet-habitant" class="menu-item">
+                        <i class="icon-projects"></i>
+                        Projets
+                    </a>
+
+                    <a href="projet-publier" class="menu-item">
+                        <i class="icon-submitted-projects"></i>
+                        Projets soumis
+                    </a>
+                   
+                    <a href="ajouter-projet" class="menu-item">
+                        <i class="icon-new-project"></i>
+                        Nouveau projet
+                    </a>
+                   
+                    <!-- <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
+                      <i class="icon-logout"></i>
+                      Déconnexion
+                    </a> -->
+                </nav>
+              </div>
+              
+        </aside>
+
+        <header class="header">
+            <div class="burger" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- <div class="search-bar">
+                <input type="text" placeholder="Rechercher">
+            </div> -->
+            
+        </header>
+
+        <main class="main-content">
+            <section class="welcome-section">
+                <h1>Commune de Parcelles assainies</h1>
+                <p>Bonjour Abdallah Dramé, Bienvenue à bord</p>
+                <div class="user-info">
+                  <span class="user-name">Abdallah Dramé</span>
+                  <img src="user-avatar.png" alt="User Avatar">
+              </div>
+                <button>Créer un projet</button>
+            </section>
+
+            <section class="stats-section">
+                <div class="stat">
+                    <h3>{{ totalProjets }}</h3>
+                    <p>Projets Créés</p>
+                </div>
+                <div class="stat">
+                    <h3>7</h3>
+                    <p>Projets soumis</p>
+                </div>
+                <div class="stat">
+                    <h3>01</h3>
+                    <p>Projets Approuvés</p>
+                </div>
+            </section>
+          <div class="elements">
+            <section class="projects-section">
+              <h2>Mes derniers Projets soumis</h2>
+              <div class="project-card">
+                  <div class="project-info">
+                      <img src="../../assets/images/miss.png" alt="Project Image">
+                      <div class="project-details">
+                          <h4>Programme de soutien scolaire</h4>
+                          <p>Un projet pour aider les élèves en difficulté scolaire...</p>
+                          <span>Publier par Abdallah Dramé - 16/08/2024</span>
+                      </div>
+                  </div>
+                  <div class="project-actions">
+                      <button class="approve">Approuver</button>
+                      <button class="see-more">Voir Plus</button>
+                  </div>
+              </div>
+              <!-- 2 -->
+
+              <div class="project-card">
+                <div class="project-info">
+                    <img src="../../assets/images/miss.png" alt="Project Image">
+                    <div class="project-details">
+                        <h4>Programme de soutien scolaire</h4>
+                        <p>Un projet pour aider les élèves en difficulté scolaire...</p>
+                        <span>Publier par Abdallah Dramé - 16/08/2024</span>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    <button class="approve">Approuver</button>
+                    <button class="see-more">Voir Plus</button>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="project-card">
+              <div class="project-info">
+                  <img src="../../assets/images/miss.png" alt="Project Image">
+                  <div class="project-details">
+                      <h4>Programme de soutien scolaire</h4>
+                      <p>Un projet pour aider les élèves en difficulté scolaire...</p>
+                      <span>Publier par Abdallah Dramé - 16/08/2024</span>
+                  </div>
+              </div>
+              <div class="project-actions">
+                  <button class="approve">Approuver</button>
+                  <button class="see-more">Voir Plus</button>
+              </div>
+          </div>
+              
+              <!-- Repeat project-card as needed -->
+          </section>
+
+          <div class="message">
+            <div class="card card-custom shadow-lg p-3">
+              <div class="d-flex align-items-center mb-3">
+                  <img src="assets/images/bgStatistique.png" alt="Illustration" class="rounded-circle me-3">
+                  <div>
+                      <h2 class="h6 mb-0">Programme de soutien scolaire</h2>
+                      <p class="mb-0 text-muted-foreground">Un projet pour aider les élèves en difficulté scolaire ...</p>
+                      <div class="text-muted-foreground small">
+                        <p class="mb-0">Publié par Abdallah Dramé</p>
+                        <p class="mb-01">le 12/08/2024</p>
+                    </div>
+                  </div>
+              </div>
+      
+              <!-- 2 -->
+
+              
+          </div>
+      
+          </div>
+
+        </div>
+
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

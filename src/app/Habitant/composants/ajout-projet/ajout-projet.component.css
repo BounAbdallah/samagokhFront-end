@@ -1,0 +1,332 @@
+/* sidebar */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.sidebar {
+  background-color: #618062; /* Background color */
+  color: #fff;
+  width: 250px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  border-radius: 0px 12px 12px 0px;
+  background: #6D9773;
+  overflow-y: hidden;
+  color: #FFF;
+font-family: Montserrat;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.logo img {
+  max-width: 100%;
+  margin-bottom: 20px;
+  border-radius: 50%; /* Making the logo circular if needed */
+}
+
+.menu {
+  width: 100%;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.menu-item.active, .menu-item:hover {
+  background-color: #ffffff; /* Highlight color for active/hovered menu items */
+  color: #000; /* Text color when active/hovered */
+}
+.menu-item svg:hover
+{
+  color: #000;
+}
+
+.menu-item i {
+  margin-right: 10px;
+  font-size: 1.2em; /* Icon size */
+}
+
+/* Placeholder for icons (use actual icons/fonts or images) */
+.icon-dashboard:before {
+  content: ''; /* Dashboard icon placeholder */
+}
+
+.icon-projects:before {
+  content: ''; /* Projects icon placeholder */
+}
+
+.icon-inhabitants:before {
+  content: ''; /* Inhabitants icon placeholder */
+}
+
+.icon-new-project:before {
+  content: ""; /* New project icon placeholder */
+}
+
+.icon-submitted-projects:before {
+  content: ''; /* Submitted projects icon placeholder */
+}
+
+.icon-logout:before {
+  content: ''; /* Logout icon placeholder */
+}
+
+.svg-container {
+  display: inline-block;
+}
+
+.svg-container:hover .svg-path {
+  fill: #000000; /* Change to black on hover */
+}
+
+/* Structure générale */
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #f3f6eb;
+  }
+  h2{
+    color: #000;
+    font-family: Montserrat;
+    font-size: 31px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal; 
+    text-align: center;
+ }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 260px;
+    height: 1024px;
+    flex-shrink: 0;
+    border-radius: 0px 12px 12px 0px;
+background: #6D9773;
+  }
+  
+  .logo {
+    margin-bottom: 20px;
+  }
+  
+  .nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .nav ul li {
+    margin-bottom: 10px;
+    
+  }
+  
+  .nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    color: #000;
+font-family: Montserrat;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+padding-top: 60px;
+  }
+  
+  .sidebar.collapsed {
+    transform: translateX(-250px);
+  }
+  
+  .nav.show {
+    display: block;
+  }
+  
+  /* Hamburger menu */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+  }
+  
+  /* Formulaire */
+  .form-container {
+    width: 1021px;
+height: 651px;
+flex-shrink: 0;
+border-radius: 26px;
+background: rgba(202, 219, 183, 0.27);
+margin-left: 200px;
+margin-top: 150px;
+  }
+  
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-left: 40px;
+    
+  }
+  
+  form input, form textarea {
+    display: flex;
+width: 410px;
+height: 40px;
+padding: 10px;
+align-items: center;
+gap: 10px;
+flex-shrink: 0;
+border-radius: 7px;
+border: 1px solid #6D9773;
+background: rgba(221, 232, 208, 0.20);
+  }
+  
+  button[type="submit"] {
+    display: flex;
+    width: 190px;
+    height: 59px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 7px;
+border: 1px solid rgba(0, 0, 0, 0.35);
+background: #2DB741;
+  }
+  
+  /* Responsivité */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+  
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      transform: translateX(-250px);
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+  
+    .sidebar.collapsed {
+      transform: translateX(0);
+    }
+  
+    .nav {
+      display: none;
+    }
+  
+    .nav.show {
+      display: block;
+    }
+  
+    .form-container {
+      width: 381px;
+     height: 1051px;
+     margin-left: 10px;
+     margin-top: 30px;
+    }
+    h2{
+      font-size: 24px;
+    }
+  
+    form {
+      grid-template-columns: 1fr;
+    }
+
+    form input, form textarea {
+      display: flex;
+  width: 270px;
+  height: 30px;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  border: 1px solid #6D9773;
+  background: rgba(221, 232, 208, 0.20);
+    }
+
+    button[type="submit"] {
+      display: flex;
+      width: 290px;
+      height: 55px;
+      padding: 10px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      color: #FFF;
+      font-family: Montserrat;
+      font-size: 21px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      border-radius: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  background: #2DB741;
+    }
+
+    
+  
+    button[type="submit"] {
+      grid-column: span 1;
+    }
+  }
+  @media (max-width: 768px) {
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      transform: translateX(-250px);
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+  
+    .sidebar.collapsed {
+      transform: translateX(0);
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+  
+    /* .form-container {
+      width: auto;
+      height: auto;
+      margin-left: 0; /* Réduit la marge gauche */
+      /* padding: 10px;
+    }  */
+  
+    form {
+      grid-template-columns: 1fr;
+    }
+  }
