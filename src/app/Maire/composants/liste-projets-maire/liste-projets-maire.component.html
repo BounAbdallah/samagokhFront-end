@@ -1,1 +1,34 @@
-<p>liste-projets-maire works!</p>
+<div class="container">
+  <h2>Liste des Projets</h2>
+
+  <!-- Table des projets -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Catégorie</th>
+        <th>Statut</th>
+        <th>Budget</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Use safe navigation operator for checking the length -->
+      <tr *ngFor="let projet of tableProjet || []">
+        <td>{{ projet.titre }}</td>
+        <td>{{ projet.description }}</td>
+        <td>{{ projet.categorie }}</td>
+        <td>{{ projet.statut ? 'Publié' : 'Non Publié' }}</td>
+        <td>{{ projet.budget | currency:'EUR':'symbol':'1.2-2' }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="viewProjectDetails(projet.id)">Voir Détails</button>
+        </td>
+      </tr>
+      <!-- Use safe navigation operator for checking the length -->
+      <tr *ngIf="(tableProjet?.length || 0) === 0">
+        <td colspan="6" class="text-center">Aucun projet disponible</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
