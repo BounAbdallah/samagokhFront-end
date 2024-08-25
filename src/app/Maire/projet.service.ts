@@ -1,76 +1,36 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, tap, catchError, throwError } from 'rxjs';
-import { Injectable, inject } from '@angular/core';
-import { apiUrl } from '../apiUrl';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { projetModel } from './projet.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjetService {
+  private apiUrl = 'http://127.0.0.1:8000/api/projets';
 
-  private http = inject(HttpClient);
+  constructor(private http: HttpClient) {}
 
-  // Function to get headers
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('authToken'); // Replace with your actual token retrieval method
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}` // Include the token in the headers
-    });
+  getAllProjets(): Observable<projetModel[]> {
+    return this.http.get<projetModel[]>(this.apiUrl);
   }
 
-  // Récupération des projets par statut
-  getProjetBySatut(statutSelectionne: boolean): Observable<any> {
-    const url = `${apiUrl}/projets?statut=${statutSelectionne}`;
-    return this.http.get(url, { headers: this.getHeaders() }).pipe(
-      tap(response => console.log('Réponse getProjetBySatut:', response)),
-      catchError(this.handleError) // Add error handling
-    );
+  getProjet(id: number): Observable<projetModel> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<projetModel>(url);
   }
 
-  // Création de projet
-  createProjet(projet: any): Observable<any> {
-    return this.http.post(`${apiUrl}/add/projets`, projet, { headers: this.getHeaders() }).pipe(
-      tap(response => console.log('Réponse createProjet:', response)),
-      catchError(this.handleError) // Add error handling
-    );
+  createProjet(projet: projetModel): Observable<projetModel> {
+    return this.http.post<projetModel>(this.apiUrl, projet);
   }
 
-  // Récupération des projets soumis
-  getProjetSoumis(projet: any): Observable<any> {
-    return this.http.get(`${apiUrl}/projets/publies`, { headers: this.getHeaders(), params: projet }).pipe(
-      tap(response => console.log('Réponse getProjetSoumis:', response)),
-      catchError(this.handleError) // Add error handling
-    );
+  updateProjet(projet: projetModel): Observable<projetModel> {
+    const url = `${this.apiUrl}/${projet.id}`;
+    return this.http.put<projetModel>(url, projet);
   }
 
-  // Publication d'un projet
-  publierProjet(id: number, statut: boolean): Observable<any> {
-    return this.http.patch(`${apiUrl}/projets/${id}`, { statut: statut }, { headers: this.getHeaders() }).pipe(
-      tap(response => console.log('Réponse publierProjet:', response)),
-      catchError(this.handleError) // Add error handling
-    );
-  }
-
-  // Récupération de tous les projets
-  getAllProjets(): Observable<any> {
-    return this.http.get(`${apiUrl}/projets`, { headers: this.getHeaders() }).pipe(
-      tap(response => console.log('Réponse getAllProjets:', response)),
-      catchError(this.handleError) // Add error handling
-    );
-  }
-
-  // Error handling method
-  private handleError(error: HttpErrorResponse): Observable<never> {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      console.error(`Backend returned code ${error.status}, body was: ${JSON.stringify(error.error)}`);
-    }
-
-    // Return an observable with a user-facing error message
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+  deleteProjet(id: number): Observable<void> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<void>(url);
   }
 }

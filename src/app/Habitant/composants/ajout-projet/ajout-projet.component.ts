@@ -13,7 +13,7 @@
 // export class AjoutProjetComponent {
 
 
-//   // injection de dependance 
+//   // injection de dependance
 //   private CreationProjectService = inject(ProjetService);
 
 //   // declaration des varibles
@@ -24,7 +24,7 @@
 
 //   }
 
-//   // methode pour la creation d'un projet 
+//   // methode pour la creation d'un projet
 //   ajoutProject(){
 //     let formdata = new FormData();
 //     if(this.project.titre && this.project.attente && this.project.objectif && this.project.budget  && this.project.user_id && this.project.categorie && this.project.cible && this.project.description &&   this.project.image ){
@@ -34,8 +34,8 @@
 //       formdata.append("categorie",this.project.categorie);
 //       formdata.append("cible",this.project.cible);
 //       formdata.append("description",this.project.description);
-//       formdata.append("photo",this.project.image) ; 
-//       formdata.append("objectif",this.project.objectif) ; 
+//       formdata.append("photo",this.project.image) ;
+//       formdata.append("objectif",this.project.objectif) ;
 //       formdata.append("user_id", this.project.user_id.toString());
 
 //     }
@@ -66,7 +66,7 @@
 
 
 import { Component, inject } from '@angular/core';
-import { ProjetService } from '../../projet.service';
+import { ProjetService } from '../../../projet.service';
 import { projetModel } from '../../projet.model';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../../User/user.service';
@@ -103,7 +103,7 @@ export class AjoutProjetComponent {
         image: this.project.image || null,
         user_id: this.project.user_id || null
       };
-  
+
       this.projetService.createProjet(projectData).subscribe(
         (response: any) => {
           console.log('Réponse du serveur:', response);
@@ -121,7 +121,7 @@ export class AjoutProjetComponent {
       console.log('Tous les champs obligatoires ne sont pas remplis');
     }
   }
-  
+
 
   private isValidProject(): boolean {
     return !!(
@@ -132,8 +132,8 @@ export class AjoutProjetComponent {
       this.project.attente &&
       this.project.cible &&
       this.project.categorie &&
-      // this.project.statut !== undefined && 
-      // this.project.etat !== undefined && 
+      // this.project.statut !== undefined &&
+      // this.project.etat !== undefined &&
       this.project.budget
     );
   }

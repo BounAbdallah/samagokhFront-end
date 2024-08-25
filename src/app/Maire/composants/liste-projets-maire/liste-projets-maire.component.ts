@@ -13,56 +13,47 @@ import { projetModel } from '../../projet.model';
 })
 export class ListeProjetsMaireComponent implements OnInit {
   private projectService = inject(ProjetService);
-  private platformId = inject(PLATFORM_ID); // Inject PLATFORM_ID to detect the platform
+  private platformId = inject(PLATFORM_ID);
 
   tableProjet: projetModel[] = [];
-  statutSelectionne: boolean | null = null;
+
+  isBrowser: boolean;
+
+  constructor() {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      // Only fetch projects if running in a browser
-      this.fetchProjets();
-    }
+    this.fetchProjets();
   }
 
   fetchProjets(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      console.error('localStorage is not available outside of the browser.');
-      return;
-    }
+    if (this.isBrowser) {
+      const token = localStorage.getItem('token');
 
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      if (this.statutSelectionne !== null) {
-        this.projectService.getProjetBySatut(this.statutSelectionne).subscribe(
+      if (token) {
+        this.projectService.getAllProjets().subscribe(
           (response: any) => {
-            this.tableProjet = response.data;
+            console.log('Réponse de l\'API getAllProjets:', response);
+            this.tableProjet = response.data || []; // Assurez-vous que 'data' est toujours un tableau
+            console.log('tableProjet après assignation:', this.tableProjet);
           },
           (error: any) => {
-            console.error('Error fetching projects by status:', error);
+            console.error('Erreur lors de la récupération des projets:', error);
+            this.tableProjet = []; // Initialisez comme un tableau vide en cas d'erreur
           }
         );
       } else {
-        this.projectService.getAllProjets().subscribe(
-          (response: any) => {
-            this.tableProjet = response.data;
-          },
-          (error: any) => {
-            console.error('Error fetching all projects:', error);
-          }
-        );
+        console.error('Token non trouvé dans localStorage');
       }
-    } else {
-      console.warn('No token found in localStorage.');
     }
   }
 
   editProject(id: number | undefined): void {
-    // Implement project editing logic here
+    // Implémentez la logique d'édition du projet ici
   }
 
   viewProjectDetails(id: number | undefined): void {
-    // Implement view project details logic here
+    // Implémentez la logique de visualisation des détails du projet ici
   }
 }

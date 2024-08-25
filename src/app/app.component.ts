@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { authInterceptor } from './Habitant/auth.interceptor';
+import { authInterceptor } from './auth.interceptor';
 import { AuthInterceptor } from './Maire/auth.interceptor';
 
 @Component({

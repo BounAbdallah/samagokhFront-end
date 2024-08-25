@@ -41,7 +41,7 @@ export const routes: Routes = [
 //Route pour Mr le maire
 
 
-{path: "dashboard", component: DashboardMaireComponent},
+{path: "Dashboard", component: DashboardMaireComponent},
 {path: "liste-projet-maire", component: ListeProjetsMaireComponent},
 {path: "creer-projet", component: CreerProjetComponent},
 {path: "modifier-projet/maire", component: ModificationProjetComponent},

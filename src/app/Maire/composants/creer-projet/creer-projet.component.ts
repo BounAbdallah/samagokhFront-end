@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-creer-projet',
   standalone: true,
@@ -15,19 +14,15 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./creer-projet.component.css']
 })
 export class CreerProjetComponent {
-
-
-
   private projetService = inject(ProjetService);
   private userService = inject(UserService);
-
 
   project: projetModel = {};
   isCollapsed = false;
 
   ajoutProject() {
     if (this.isValidProject()) {
-      const projectData = {
+      const projectData: projetModel = {
         titre: this.project.titre,
         commune_id: this.project.commune_id,
         description: this.project.description,
@@ -35,11 +30,11 @@ export class CreerProjetComponent {
         attente: this.project.attente,
         cible: this.project.cible,
         categorie: this.project.categorie,
-        statut: this.project.statut ? 1 : 0,
-        etat: this.project.etat ? 1 : 0,
-        budget: parseFloat(this.project.budget || '0'),
-        image: this.project.image || null,
-        user_id: this.project.user_id || null
+        statut: this.project.statut,
+        etat: this.project.etat,
+        budget: this.project.budget,
+        image: this.project.image || undefined, // Change null to undefined
+        user_id: this.project.user_id ?? undefined // Ensuring user_id is number or undefined, not null
       };
 
       this.projetService.createProjet(projectData).subscribe(
@@ -60,7 +55,6 @@ export class CreerProjetComponent {
     }
   }
 
-
   private isValidProject(): boolean {
     return !!(
       this.project.titre &&
@@ -70,8 +64,6 @@ export class CreerProjetComponent {
       this.project.attente &&
       this.project.cible &&
       this.project.categorie &&
-      // this.project.statut !== undefined &&
-      // this.project.etat !== undefined &&
       this.project.budget
     );
   }

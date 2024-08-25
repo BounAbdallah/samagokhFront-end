@@ -49,7 +49,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { projetModel } from '../../projet.model';
-import { ProjetService } from '../../projet.service';
+import { ProjetService } from '../../../projet.service';
 
 @Component({
   selector: 'app-liste-projets-habitant',

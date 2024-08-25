@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { Component, inject } from '@angular/core';
-import { ProjetService } from '../../projet.service';
+import { ProjetService } from '../../../projet.service';
 import { projetModel } from '../../projet.model';
 @Component({
   selector: 'app-projet-publier',
@@ -54,7 +54,7 @@ export class ProjetPublierComponent {
         this.fetchProjets();
     }
 
-    
+
 
 }
 

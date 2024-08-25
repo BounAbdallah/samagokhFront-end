@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.dashboard-banner {
+  background-color: #618062; /* Couleur de fond */
+  background-image: url(../../../../assets/images/banniereImage.png); /* Image de fond */
+  background-size: cover; /* Ajuste l'image pour couvrir toute la zone */
+  background-position: center; /* Centre l'image */
+  background-blend-mode: overlay; /* Superpose la couleur et l'image */
+
+  border-radius: 10px;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 681px;
+  height: 200px;
+  font-family: "Montserrat", sans-serif;
+}
+
+
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.left-section h1 {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.left-section p {
+  margin: 5px 0 0;
+  font-size: 1.1em;
+}
+
+.left-section p strong {
+  font-weight: 700;
+}
+
+.left-section p span {
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.time {
+  font-size: 1.2em;
+  margin-right: 20px;
+  font-weight: 600;
+}
+
+.create-project-btn {
+  background: #f8b400;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.create-project-btn:hover {
+  background: #e89d00;
+}
+
+.validated-projects {
+  font-size: 1em;
+  font-weight: 600;
+}
