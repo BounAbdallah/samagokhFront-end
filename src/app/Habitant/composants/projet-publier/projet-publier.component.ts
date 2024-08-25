@@ -1,35 +1,4 @@
-// import { CommonModule } from '@angular/common';
-// import { Component, inject, OnInit } from '@angular/core';
-// import { projetModel } from '../../projet.model';
-// import { ProjetService } from '../../projet.service';
 
-// @Component({
-//   selector: 'app-projet-publier',
-//   standalone: true,
-//   imports: [CommonModule],
-//   templateUrl: './projet-publier.component.html',
-//   styleUrls: ['./projet-publier.component.css']
-// })
-// export class ProjetPublierComponent implements OnInit {
-
-//   private projetService = inject(ProjetService);
-//   tabprojet: projetModel[] = [];
-
-//   ngOnInit(): void {
-//     this.getProjetsPublies();
-//   }
-
-//   getProjetsPublies(): void {
-//     this.projetService.getProjetBySttut(true).subscribe(
-//       (response: any) => {
-//         this.tabprojet = response.data;
-//       },
-//       (error: any) => {
-//         console.error('Erreur lors de la récupération des projets publiés', error);
-//       }
-//     );
-//   }
-// }
 
 
 import { Component, OnInit, inject } from '@angular/core';
