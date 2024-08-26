@@ -16,6 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./liste-projets-habitant.component.css']
 })
 export class ListeProjetsHabitantComponent implements OnInit {
+  
 
   private projetService = inject(ProjetService);
   private userService = inject(UserService);
