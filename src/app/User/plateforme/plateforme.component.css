@@ -1,4 +1,10 @@
 /* Style pour le bouton de menu burger */
+body{
+  font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+
 .navbar-toggler {
   border: none; /* Retire la bordure du bouton */
   background-color: transparent; /* Rend le fond transparent */
