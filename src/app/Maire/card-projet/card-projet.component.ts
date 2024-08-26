@@ -1,86 +1,90 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ProjetService } from '../../projet.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { ProjetService } from '../projet.service';
+import { projetModel } from '../projet.model';
 import { RouterModule } from '@angular/router';
 
-interface VoteStatistics {
-  vote_total: number;
-  vote_approve: number;
-  vote_disapprove: number;
-}
-
 @Component({
-  selector: 'app-details-projet',
+  selector: 'app-card-projet',
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './card-projet.component.html',
   styleUrls: ['./card-projet.component.css']
 })
-export class DetailsProjetComponent implements OnInit {
-  private projetService = inject(ProjetService);
-  projetDetails: any;
-  projectId: number = 0;
-  hasVoted: boolean = false;
-  voteStatistics: VoteStatistics | null = null; // Modifier le type ici
+export class CardProjetComponent {
+  private projectService = inject(ProjetService);
+  private platformId = inject(PLATFORM_ID);
 
-  constructor(private route: ActivatedRoute) {}
+  tableProjet: projetModel[] = [];
+  displayedProjets: projetModel[] = [];
+  isBrowser: boolean;
+  pageSize: number = 4; // Nombre de projets par page
+  currentPage: number = 1; // Page actuelle
+
+  constructor() {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.projectId = +params['id'];
-      this.fetchProjetDetails();
-      this.fetchVoteStatistics(); // Ajoutez cet appel pour récupérer les statistiques de votes
-    });
+    this.fetchProjets();
   }
 
-  fetchProjetDetails(): void {
-    this.projetService.getProjetDetails(this.projectId).subscribe(
-      (data) => {
-        this.projetDetails = data;
-        console.log('Détails du projet:', this.projetDetails);
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des détails du projet:', error);
+  fetchProjets(): void {
+    if (this.isBrowser) {
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        this.projectService.getAllProjets().subscribe(
+          (response: projetModel[]) => {
+            console.log("Réponse complète de l'API getAllProjets:", response);
+            if (Array.isArray(response)) {
+              this.tableProjet = response;
+              this.updateDisplayedProjets();
+            } else {
+              console.error("La réponse des projets n'est pas un tableau:", response);
+              this.tableProjet = [];
+            }
+          },
+          (error: any) => {
+            console.error('Erreur lors de la récupération des projets:', error);
+            this.tableProjet = [];
+          }
+        );
+      } else {
+        console.error('Token non trouvé dans localStorage');
       }
-    );
+    }
   }
 
-  fetchVoteStatistics(): void {
-    this.projetService.getVoteStatistics(this.projectId).subscribe(
-      (data: VoteStatistics) => { // Spécifiez le type ici
-        this.voteStatistics = data;
-        console.log('Statistiques de votes:', this.voteStatistics);
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des statistiques de votes:', error);
-      }
-    );
+  getCategoryIcon(categorie: string): string {
+    const icons: { [key: string]: string } = {
+      'Sport': '../../../../assets/images/icons/sports_and_outdoors.svg',
+      'Education': '../../../../assets/images/icons/education.svg',
+      // Ajoutez d'autres catégories et leurs icônes ici
+    };
+
+    return icons[categorie] || '../../../../assets/images/icons/default.svg';
   }
 
-  approuverProjet(): void {
-    this.projetService.updateProjetStatut(this.projectId, true).subscribe(
-      (response) => {
-        console.log('Projet approuvé:', response);
-        this.hasVoted = true;
-        this.projetDetails.statut = true;
-      },
-      (error) => {
-        console.error('Erreur lors de l\'approbation du projet:', error);
-      }
-    );
+  updateDisplayedProjets(): void {
+    // Calculez l'index de début et de fin pour les projets affichés
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.displayedProjets = this.tableProjet.slice(startIndex, endIndex);
   }
 
-  desapprouverProjet(): void {
-    this.projetService.updateProjetStatut(this.projectId, false).subscribe(
-      (response) => {
-        console.log('Projet désapprouvé:', response);
-        this.hasVoted = true;
-        this.projetDetails.statut = false;
-      },
-      (error) => {
-        console.error('Erreur lors de la désapprobation du projet:', error);
-      }
-    );
+  // Méthodes pour naviguer entre les pages
+  nextPage(): void {
+    if (this.currentPage * this.pageSize < this.tableProjet.length) {
+      this.currentPage++;
+      this.updateDisplayedProjets();
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updateDisplayedProjets();
+    }
   }
 }
