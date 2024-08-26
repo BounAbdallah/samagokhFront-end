@@ -4,33 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="detail-projet.component.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+  
 </head>
 <body>
   <div class="container">
     <aside class="sidebar">
       <div class="logo">
-        <img src="../../../assets/images/logo-side-bare.png" alt="Logo">
+        <img src="../../../assets/img/SAMAGOKH__4_-removebg-preview.png" alt="Logo">
       </div>
       <nav class="menu">
         <a href="dashboard-habitant" class="menu-item active">
-          <i class="icon-dashboard"></i>
+          <i class="fas fa-tachometer-alt"></i>
           Dashboard
         </a>
         <a href="liste-projet-habitant" class="menu-item">
-          <i class="icon-projects"></i>
+          <i class="fas fa-project-diagram"></i>
           Projets
         </a>
         <a href="projet-publier" class="menu-item">
-          <i class="icon-submitted-projects"></i>
+          <i class="fas fa-folder-open"></i>
           Projets soumis
         </a>
         <a href="ajouter-projet" class="menu-item">
-          <i class="icon-new-project"></i>
+          <i class="fas fa-plus-circle"></i>
           Nouveau projet
         </a>
         <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
-          <i class="icon-logout"></i>
+          <i class="fas fa-sign-out-alt"></i>
           Déconnexion
         </a>
       </nav>
@@ -53,7 +58,7 @@
       <h2>Publie le :</h2>
       <p>{{ projet?.created_at | date:'dd/MM/yyyy' }}</p>
       <div class="project-detail-footer">
-        <button (click)="goBack()">Retour</button>
+        <button onclick="history.back()">Retour</button>
       </div>
     </div>
   </div>
