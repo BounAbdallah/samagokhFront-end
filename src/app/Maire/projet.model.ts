@@ -9,9 +9,8 @@ export interface projetModel{
   image?:string;
   cible?:string;
   categorie?:string;
-  statut?:string;
+  statut?:number;
   etat?:string;
   budget?:string;
-  timestamps?:Date;
-}
+  created_at?: Date; }
 

@@ -42,7 +42,7 @@
                         <img src="../../assets/images/woman.jpg" alt="Profile Image" class="img-fluid " >
                         <div class="ml-3">
                             <h5>Sofia Gueye</h5>
-                            <p>Mbobe</p>
+                            <p>{{ projet.created_at | date: 'short' }}</p>
                         </div>
                     </div>
                     <h4>{{ projet.titre }}</h4>
@@ -51,50 +51,24 @@
                     </p>
                     <img src="{{ projet.image}}" alt="Project Image" class="project-image img-fluid mb-3">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div>
-                            <i class="fas fa-comment"></i> 10
+                        <div >
+                            <div *ngFor="let commentaire of tabcommenatire">
+                                <i class="fas fa-comment"></i> <p>{{ commentaire.contenu }}</p>
+                              </div>
+                            <!-- <i class="fas fa-comment"></i> 10 -->
                             <i class="fas fa-thumbs-up ml-3"></i> 25
                         </div>
                     </div>
                     <div class="d-flex">
-                        <input type="text" class="form-control mr-2" placeholder="Commenter">
-                        <button class="btn btn-outline-primary">Envoyer</button>
+                   
+                        <input type="text" class="form-control mr-2" placeholder="Commenter" [(ngModel)]="commentaire.contenu">
+                        <input type="text" class="form-control mr-2" placeholder="Commenter" [(ngModel)]="commentaire.projet_id">
+                        <button class="btn btn-outline-primary" (click)="ajoutCommentaire()">Envoyer</button>
+                        
                     </div>
                 </div>
 
-                <div class="project-card mb-4 p-3">
-                    <div class="d-flex align-items-center">
-                        <img src="../../assets/images/blackman.jpg" alt="Profile Image" class="img-fluid " >
-                        <div class="ml-3">
-                            <h5>Amadou</h5>
-                            <p>30/08/2024</p>
-                        </div>
-                    </div>
-
-                    <h4>Refectionnement du terrain de foot</h4>
-                    <p class="description">
-                        Le terrain de foot de Médina, autrefois un lieu de rassemblement et de sport pour
-                         les jeunes et les habitants de la commune, est aujourd'hui en mauvais état. 
-                         Les buts sont endommagés, la surface du terrain est irrégulière, et il 
-                         manque des équipements de base comme des bancs et des filets de protection. 
-                         Ces dégradations limitent l'accès des jeunes à un espace sûr pour pratiquer 
-                         des activités sportives, ce qui a un impact négatif sur leur santé et leur 
-                         développement social.
-                    </p>
-                    <img src="https://img.freepik.com/photos-gratuite/vue-aerienne-du-terrain-gazon-pour-hockey_23-2149668570.jpg?uid=R154313631&ga=GA1.2.309790809.1709729690&semt=ais_hybrid" alt="Project Image" class="project-image img-fluid mb-3">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div>
-                            <i class="fas fa-comment"></i> 10
-                            <i class="fas fa-thumbs-up ml-3"></i> 25
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <input type="text" class="form-control mr-2" placeholder="Commenter">
-                        <button class="btn btn-outline-primary">Envoyer</button>
-                    </div>
-                </div>
-               
-            </div>
+                 </div>
 
             <div class="col-lg-3 col-md-12">
                 <div class="suggestions-card p-3">

@@ -26,6 +26,12 @@ export class UserService {
     return this.http.get(`${apiUrl}/logout`)
   }
 
+  // inscription
+  registerUser(user: any) {
+    return this.http.post(`${apiUrl}/register`, user);
+  }
+// recuperation de la liste des commune
+
   
 }
 

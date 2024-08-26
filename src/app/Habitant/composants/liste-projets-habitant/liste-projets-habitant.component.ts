@@ -1,90 +1,5 @@
 
 
-
-// import { CommonModule } from '@angular/common';
-// import { Component, Inject, inject, OnInit } from '@angular/core';
-// import { projetModel } from '../../projet.model';
-// import { ProjetService } from '../../projet.service';
-// import { UserService } from '../../../User/user.service';
-// import { Router } from '@angular/router';
-// import { HttpErrorResponse } from '@angular/common/http';
-
-
-
-// @Component({
-//   selector: 'app-liste-projets-habitant',
-//   standalone: true,
-//   imports: [CommonModule],
-//   templateUrl: './liste-projets-habitant.component.html',
-//   styleUrls: ['./liste-projets-habitant.component.css']
-// })
-// export class ListeProjetsHabitantComponent implements OnInit {
-
-//     private projetService = inject(ProjetService);
-//     private userService = inject(UserService);
-//     private router = inject(Router)
-//     private localStorage = window.localStorage;
-
-//     tabprojet: projetModel[] = [];
-//     statutSelectionne: boolean | null = null;
-
-//     ngOnInit(): void {
-//         this.fetchProjets();
-//     }
-
-//     fetchProjets(): void {
-//         const token = this.localStorage.getItem('token');
-
-//         if (token) {
-//             if (this.statutSelectionne !== null) {
-//                 this.projetService.getProjetBySttut(this.statutSelectionne).subscribe(
-//                     (response: any) => {
-//                         this.tabprojet = response.data;
-//                     },
-//                     (error: any) => {
-//                         console.log(error);
-//                     }
-//                 );
-//             } else {
-//                 this.projetService.getAllProjets().subscribe(
-//                     (response: any) => {
-//                         this.tabprojet = response.data;
-//                     },
-//                     (error: any) => {
-//                         console.log(error);
-//                     }
-//                 );
-//             }
-//         }
-//     }
-
-//     afficherProjetsPublies(): void {
-//         this.statutSelectionne = true;
-//         this.fetchProjets();
-//     }
-
-//     afficherProjetsNonPublies(): void {
-//         this.statutSelectionne = false;
-//         this.fetchProjets();
-//     }
-
-
-//      // deconnextion
-//      logout(): void {
-//         this.userService.logout().subscribe(
-//           () => {
-//             // Optionnel : Effacer les informations de l'utilisateur
-//             localStorage.removeItem('token');
-//             // Rediriger vers la page de connexion ou la page d'accueil
-//             this.router.navigate(['/login']);
-//           },
-//           (error: HttpErrorResponse) => { // Spécifiez le type pour 'error'
-//             console.error('Erreur de déconnexion', error);
-//           }
-//         );
-//       }
-// }
-
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { projetModel } from '../../projet.model';
@@ -152,7 +67,6 @@ export class ListeProjetsHabitantComponent implements OnInit {
     this.fetchProjets();
   }
 
-  // Méthode pour afficher les détails d'un projet non publié
   // Méthode pour afficher les détails d'un projet non publié
   openProjectDetail(projet: projetModel): void {
 
