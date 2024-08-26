@@ -4,10 +4,12 @@ import { isPlatformBrowser } from '@angular/common';
 import { ProjetService } from '../../projet.service';
 import { projetModel } from '../../projet.model';
 
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-liste-projets-maire',
   standalone: true,
-  imports: [CommonModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './liste-projets-maire.component.html',
   styleUrls: ['./liste-projets-maire.component.css']
 })

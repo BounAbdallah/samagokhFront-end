@@ -1,3 +1,5 @@
+
+
 <div class="projets-container">
   <div *ngIf="tableProjet.length === 0" class="no-projets-message">
     Aucun projet disponible.
@@ -5,14 +7,13 @@
 
   <div *ngFor="let projet of tableProjet" class="project-card">
     <!-- Image de projet -->
-    <img src="../../../../assets/images/icons/{{ projet.image }}" alt="{{ projet.categorie }}" class="card-img-top">
+
 
     <div class="card-body">
       <div class="d-flex justify-content-between">
         <!-- Catégorie et Date de création -->
         <div class="categories">
           <span>
-            <img src="../../../../assets/images/icons/sports_and_outdoors.svg" alt="{{ projet.categorie }}">
             {{ projet.categorie }}
           </span>
         </div>
@@ -37,8 +38,11 @@
         </div>
 
         <!-- Bouton pour voir les détails du projet -->
-        <a href="#" class="btn btn-primary-custom">Voir les détails</a>
+
+        <a [routerLink]="['/details-projet', projet.id]" class="btn btn-primary-custom">Voir les détails</a>
       </div>
     </div>
   </div>
 </div>
+
+

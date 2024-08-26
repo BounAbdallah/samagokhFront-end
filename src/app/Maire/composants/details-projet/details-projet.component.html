@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails Projet</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container my-5">
+    <div class="card shadow-sm p-4" style="background-color: #d3d3d3; border-radius: 15px;">
+        <div class="row">
+            <div class="col-12">
+                <!-- Image du projet -->
+                <img [src]="projetDetails?.image ? projetDetails.image : '../../../../assets/images/icons/jardin.png'" alt="Image du Projet" class="img-fluid rounded">
+            </div>
+            <div class="col-12 my-3">
+                <!-- Catégorie du projet -->
+                <span class="badge badge-success p-2">
+                    <i class="fas fa-seedling"></i> {{ projetDetails?.categorie }}
+                </span>
+                <!-- Titre du projet -->
+                <h3 class="font-weight-bold mt-2">{{ projetDetails?.titre }}</h3>
+            </div>
+            <div class="col-12">
+                <!-- Description du projet -->
+                <p><strong>Description :</strong> {{ projetDetails?.description }}</p>
+                <!-- Attentes du projet -->
+                <p><strong>Attente :</strong> {{ projetDetails?.attente }}</p>
+                <!-- Cible du projet -->
+                <p><strong>Cible :</strong> {{ projetDetails?.cible }}</p>
+                <!-- Statut du projet -->
+                <p><strong>Statut :</strong> <span [ngClass]="{
+                  'text-warning': projetDetails?.statut === 'En cours',
+                  'text-success': projetDetails?.statut === 'Terminé',
+                  'text-danger': projetDetails?.statut === 'Annulé'
+                }">{{ projetDetails?.statut }}</span></p>
+                <!-- Budget du projet -->
+                <p><strong>Budget :</strong> <span class="badge badge-light p-2">{{ projetDetails?.budget }}</span></p>
+            </div>
+            <div class="col-12">
+              <!-- Section des votes -->
+              <div class="vote_apprpouve d-flex">
+                  <div>
+                      <p class="mb-0">Vote total</p>
+                      <span class="badge badge-primary p-2">{{ voteStatistics?.vote_total }}</span>
+                  </div>
+                  <div>
+                      <p class="mb-0">Approuver</p>
+                      <span class="badge badge-success p-2">{{ voteStatistics?.vote_approve }}</span>
+                  </div>
+                  <div>
+                      <p class="mb-0">Désapprouver</p>
+                      <span class="badge badge-danger p-2">{{ voteStatistics?.vote_disapprove }}</span>
+                  </div>
+              </div>
+            </div>
+            <!-- Boutons d'approbation et désapprobation -->
+            <div class="btn_apprpouve col-12 d-flex">
+                <button class="btn btn-success btn-lg" (click)="approuverProjet()" [disabled]="hasVoted">Approuver</button>
+                <button class="btn btn-danger btn-lg" (click)="desapprouverProjet()" [disabled]="hasVoted">Désapprouver</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Inclusion des icônes FontAwesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

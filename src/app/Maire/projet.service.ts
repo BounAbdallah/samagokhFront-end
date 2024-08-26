@@ -9,6 +9,7 @@ import { apiUrl } from '../apiUrl'; // Assurez-vous que cette importation est co
 })
 export class ProjetService {
 
+
   private http = inject(HttpClient);
 
   // Récupération des projets par statut
@@ -44,6 +45,14 @@ export class ProjetService {
     );
   }
 
+  updateProjetStatut(id: number, statut: boolean): Observable<any> {
+    const url = `${apiUrl}/update/projet/${id}`;
+    const body = { statut };
+    return this.http.patch<any>(url, body).pipe(
+      tap(response => console.log('Réponse updateProjetStatut:', response)),
+      catchError(this.handleError<any>('updateProjetStatut'))
+    );
+  }
   // Récupération de tous les projets
   getAllProjets(): Observable<any[]> {
     return this.http.get<any[]>(`${apiUrl}/projets`).pipe(
@@ -52,10 +61,43 @@ export class ProjetService {
     );
   }
 
+  // Méthode pour obtenir les détails d'un projet par ID
+  getProjetDetails(projectId: number): Observable<any> {
+    return this.http.get<any>(`${apiUrl}/details/projet/${projectId}`).pipe(
+      tap(response => console.log('Réponse getProjetDetails:', response)),
+      catchError(this.handleError<any>('getProjetDetails'))
+    );
+  }
+
+  //vote du projet:
+
+  getVoteStatistics(projectId: number): Observable<any> {
+    return this.http.get<any>(`${apiUrl}/projets/${projectId}/votes/stats`).pipe(
+      tap(response => console.log('Réponse getVoteStatistics:', response)),
+      catchError(this.handleError<any>('getVoteStatistics'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: HttpErrorResponse): Observable<T> => {
-      console.error(`${operation} échoué : ${error.message}`);
-      return throwError(() => new Error(`${operation} échoué : ${error.message}`));
+      let errorMsg: string;
+
+      if (error.error instanceof ErrorEvent) {
+        errorMsg = `Erreur côté client : ${error.error.message}`;
+      } else {
+        errorMsg = `Erreur côté serveur : ${error.status}\nMessage: ${error.message}`;
+        console.error(`Contenu de la réponse :`, error.error);
+      }
+
+      console.error(`${operation} échoué : ${errorMsg}`);
+      return throwError(() => new Error(`${operation} échoué : ${errorMsg}`));
     };
   }
-}
+
+
+  }
+
+
+
+
+

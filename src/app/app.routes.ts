@@ -19,6 +19,7 @@ import { ListCommuneComponent } from './Admin/Services/adminServices/list-commun
 import { VilleComponent } from './Admin/Services/adminServices/ville copy/ville.component';
 import { RolesComponent } from './Admin/Services/adminServices/roles/roles.component';
 import { DashboardAdminComponent } from './Admin/Services/adminServices/dashboard-admin/dashboard-admin.component';
+import { DetailsProjetComponent } from './Maire/composants/details-projet/details-projet.component';
 
 export const routes: Routes = [
 
@@ -47,6 +48,10 @@ export const routes: Routes = [
 {path: "modifier-projet/maire", component: ModificationProjetComponent},
 {path: "liste-habitants-commune", component: ListeHabitantsCommuneComponent},
 {path: "liste-projets-habitant-commune", component: ProjetHabitantCommuneComponent},
+
+
+
+{ path: 'details-projet/:id', component: DetailsProjetComponent },
 
 
 

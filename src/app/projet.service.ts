@@ -35,7 +35,11 @@ export class ProjetService {
 
   }
 
+//Afficher details projet :
 
+getProjetDetails(id: number) {
+  return this.http.get(`${apiUrl}/projets/${id}`);
+}
 
 
   // methode pour la recuperatio des Projets
