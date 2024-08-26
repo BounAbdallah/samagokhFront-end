@@ -1,31 +1,33 @@
-/* css du sidebar */
+/* Importation des polices */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F4F4F4;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
 
 .sidebar {
-  background-color: #618062; /* Background color */
+  background-color: #6D9773;
   color: #fff;
   width: 250px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 0 12px 12px 0;
   height: 100vh;
-  border-radius: 0px 12px 12px 0px;
-  background: #6D9773;
-  overflow-y: hidden;
-  color: #FFF;
-font-family: Montserrat;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 }
 
 .logo img {
-  max-width: 100%;
-  margin-bottom: 20px;
-  border-radius: 50%; /* Making the logo circular if needed */
+  max-width: 80%;
+  margin-bottom: 30px;
 }
 
 .menu {
@@ -42,89 +44,98 @@ line-height: normal;
   font-weight: 500;
   margin-bottom: 10px;
   border-radius: 5px;
+  transition: background 0.3s, color 0.3s;
 }
 
 .menu-item.active, .menu-item:hover {
-  background-color: #ffffff; /* Highlight color for active/hovered menu items */
-  color: #000; /* Text color when active/hovered */
-}
-.menu-item svg:hover
-{
+  background-color: #ffffff;
   color: #000;
 }
 
 .menu-item i {
   margin-right: 10px;
-  font-size: 1.2em; /* Icon size */
+  font-size: 1.2em;
 }
 
-/* Placeholder for icons (use actual icons/fonts or images) */
-.icon-dashboard:before {
-  content: ''; /* Dashboard icon placeholder */
+.project-detail {
+  flex: 1;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  margin: 20px;
 }
 
-.icon-projects:before {
-  content: ''; /* Projects icon placeholder */
+.project-detail img {
+  width: 100%;
+  border-radius: 12px;
 }
 
-.icon-inhabitants:before {
-  content: ''; /* Inhabitants icon placeholder */
+h1, h2 {
+  color: #333;
 }
 
-.icon-new-project:before {
-  content: ""; /* New project icon placeholder */
-}
-
-.icon-submitted-projects:before {
-  content: ''; /* Submitted projects icon placeholder */
-}
-
-.icon-logout:before {
-  content: ''; /* Logout icon placeholder */
-}
-
-.svg-container {
+.categorie {
   display: inline-block;
+  background: #CADBB7;
+  padding: 8px 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 500;
+  margin-top: 20px;
 }
 
-.svg-container:hover .svg-path {
-  fill: #000000; /* Change to black on hover */
+.project-detail-footer {
+  margin-top: 20px;
 }
 
-.menu-item img {
-  transition: filter 0.3s ease;
+.project-detail-footer button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #6D9773;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.menu-item:hover img {
-  filter: grayscale(100%);
+.project-detail-footer button:hover {
+  background-color: #5a8063;
 }
 
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
 
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    text-align: center;
+  }
 
-/* fin sidebar */
+  .menu-item {
+    justify-content: center;
+  }
 
-
-img{
-    width: 750px;
-height: 294px;
-flex-shrink: 0;
-border-radius: 12px;
+  .project-detail {
+    margin: 0;
+    padding: 20px;
+  }
 }
 
-.container{
-    display: flex;
-}
+@media screen and (max-width: 480px) {
+  .project-detail img {
+    width: 100%;
+    height: auto;
+  }
 
-.categorie{
-    display: flex;
-width: 145px;
-height: 40px;
-padding: 10px;
-justify-content: center;
-align-items: flex-start;
-gap: 10px;
-flex-shrink: 0;
-border-radius: 12px;
-background: #CADBB7;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  .sidebar {
+    padding: 10px;
+  }
+
+  .menu-item {
+    font-size: 1em;
+    padding: 10px;
+  }
 }

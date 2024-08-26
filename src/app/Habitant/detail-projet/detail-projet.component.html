@@ -3,74 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Dashboard</title>
   <link rel="stylesheet" href="detail-projet.component.css">
 </head>
 <body>
   <div class="container">
-
     <aside class="sidebar">
-            
+      <div class="logo">
+        <img src="../../../assets/images/logo-side-bare.png" alt="Logo">
+      </div>
+      <nav class="menu">
+        <a href="dashboard-habitant" class="menu-item active">
+          <i class="icon-dashboard"></i>
+          Dashboard
+        </a>
+        <a href="liste-projet-habitant" class="menu-item">
+          <i class="icon-projects"></i>
+          Projets
+        </a>
+        <a href="projet-publier" class="menu-item">
+          <i class="icon-submitted-projects"></i>
+          Projets soumis
+        </a>
+        <a href="ajouter-projet" class="menu-item">
+          <i class="icon-new-project"></i>
+          Nouveau projet
+        </a>
+        <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
+          <i class="icon-logout"></i>
+          Déconnexion
+        </a>
+      </nav>
+    </aside>
 
-      <div class="sidebar">
-          <div class="logo">
-            <img src="../../../assets/images/logo-side-bare.png" alt="Logo">
-          </div>
-          <nav class="menu">
-              <a href="dashboard-habitant" class="menu-item active">
-                  <i class="icon-dashboard"></i>
-                  Dashboard
-              </a>
-              <a href="liste-projet-habitant" class="menu-item">
-                  <i class="icon-projects"></i>
-                  Projets
-              </a>
-  
-              <a href="projet-publier" class="menu-item">
-                  <i class="icon-submitted-projects"></i>
-                  Projets soumis
-              </a>
-             
-              <a href="ajouter-projet" class="menu-item">
-                  <i class="icon-new-project"></i>
-                  Nouveau projet
-              </a>
-             
-              <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
-                <i class="icon-logout"></i>
-                Déconnexion
-              </a>
-          </nav>
-        </div>
-        
-  </aside>
-
-    <!-- project-detail.component.html -->
-<div class="project-detail">
-  <img [src]="projet?.image" alt="{{ projet?.titre }}" class="project-detail-image">
-  <p class="categroie">{{ projet?.categorie }}</p>
-    <h1>{{ projet?.titre }}</h1>
-    <h2>Description:</h2>
-    <p>{{ projet?.description }}</p>
-    <h2>Attente</h2>
-    <p>{{ projet?.attente}}</p>
-    <h2>Cible</h2>
-    <p>{{ projet?.cible}}</p>
-    <h2>Objectif</h2>
-    <p>{{ projet?.objectif }}</p>
-    <h2>Budget</h2>
-    <p>{{ projet?.budget}}</p>
-<h2>Publie le :</h2>
-<p>{{ projet?.created_at | date:'dd/MM/yyyy' }}</p>
-    <div class="project-detail-footer">
-      <button (click)="goBack()">Retour</button>
+    <div class="project-detail">
+      <img [src]="projet?.image" alt="{{ projet?.titre }}" class="project-detail-image">
+      <p class="categorie">{{ projet?.categorie }}</p>
+      <h1>{{ projet?.titre }}</h1>
+      <h2>Description:</h2>
+      <p>{{ projet?.description }}</p>
+      <h2>Attente</h2>
+      <p>{{ projet?.attente}}</p>
+      <h2>Cible</h2>
+      <p>{{ projet?.cible}}</p>
+      <h2>Objectif</h2>
+      <p>{{ projet?.objectif }}</p>
+      <h2>Budget</h2>
+      <p>{{ projet?.budget}}</p>
+      <h2>Publie le :</h2>
+      <p>{{ projet?.created_at | date:'dd/MM/yyyy' }}</p>
+      <div class="project-detail-footer">
+        <button (click)="goBack()">Retour</button>
+      </div>
     </div>
   </div>
-  </div>
-
-
-
-
-  
 </body>
 </html>
