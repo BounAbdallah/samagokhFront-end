@@ -1,36 +1,61 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { projetModel } from './projet.model';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { Injectable, inject } from '@angular/core';
+import { apiUrl } from '../apiUrl'; // Assurez-vous que cette importation est correcte
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjetService {
-  private apiUrl = 'http://127.0.0.1:8000/api/projets';
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
-  getAllProjets(): Observable<projetModel[]> {
-    return this.http.get<projetModel[]>(this.apiUrl);
+  // Récupération des projets par statut
+  getProjetByStatut(statutSelectionne: boolean): Observable<any[]> {
+    const url = `${apiUrl}/projets?statut=${statutSelectionne}`;
+    return this.http.get<any[]>(url).pipe(
+      tap(response => console.log('Réponse getProjetByStatut:', response)),
+      catchError(this.handleError<any[]>('getProjetByStatut', []))
+    );
   }
 
-  getProjet(id: number): Observable<projetModel> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get<projetModel>(url);
+  // Création de projet
+  createProjet(projet: any): Observable<any> {
+    return this.http.post<any>(`${apiUrl}/add/projets`, projet).pipe(
+      tap(response => console.log('Réponse createProjet:', response)),
+      catchError(this.handleError<any>('createProjet'))
+    );
   }
 
-  createProjet(projet: projetModel): Observable<projetModel> {
-    return this.http.post<projetModel>(this.apiUrl, projet);
+  // Récupération des projets soumis
+  getProjetSoumis(params: any): Observable<any[]> {
+    return this.http.get<any[]>(`${apiUrl}/projets/publies`, { params }).pipe(
+      tap(response => console.log('Réponse getProjetSoumis:', response)),
+      catchError(this.handleError<any[]>('getProjetSoumis', []))
+    );
   }
 
-  updateProjet(projet: projetModel): Observable<projetModel> {
-    const url = `${this.apiUrl}/${projet.id}`;
-    return this.http.put<projetModel>(url, projet);
+  // Publication d'un projet
+  publierProjet(id: number, statut: boolean): Observable<any> {
+    return this.http.patch<any>(`${apiUrl}/projets/${id}`, { statut }).pipe(
+      tap(response => console.log('Réponse publierProjet:', response)),
+      catchError(this.handleError<any>('publierProjet'))
+    );
   }
 
-  deleteProjet(id: number): Observable<void> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.delete<void>(url);
+  // Récupération de tous les projets
+  getAllProjets(): Observable<any[]> {
+    return this.http.get<any[]>(`${apiUrl}/projets`).pipe(
+      tap(response => console.log('Réponse getAllProjets:', response)),
+      catchError(this.handleError<any[]>('getAllProjets', []))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: HttpErrorResponse): Observable<T> => {
+      console.error(`${operation} échoué : ${error.message}`);
+      return throwError(() => new Error(`${operation} échoué : ${error.message}`));
+    };
   }
 }

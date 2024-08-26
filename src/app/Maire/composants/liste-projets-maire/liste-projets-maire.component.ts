@@ -16,7 +16,6 @@ export class ListeProjetsMaireComponent implements OnInit {
   private platformId = inject(PLATFORM_ID);
 
   tableProjet: projetModel[] = [];
-
   isBrowser: boolean;
 
   constructor() {
@@ -33,27 +32,23 @@ export class ListeProjetsMaireComponent implements OnInit {
 
       if (token) {
         this.projectService.getAllProjets().subscribe(
-          (response: any) => {
-            console.log('Réponse de l\'API getAllProjets:', response);
-            this.tableProjet = response.data || []; // Assurez-vous que 'data' est toujours un tableau
-            console.log('tableProjet après assignation:', this.tableProjet);
+          (response: any[]) => {  // Modifiez le type ici
+            console.log("Réponse complète de l'API getAllProjets:", response);
+            if (Array.isArray(response)) {  // Pas besoin de vérifier response.data
+              this.tableProjet = response;
+            } else {
+              console.error("La réponse des projets n'est pas un tableau:", response);
+              this.tableProjet = [];
+            }
           },
           (error: any) => {
             console.error('Erreur lors de la récupération des projets:', error);
-            this.tableProjet = []; // Initialisez comme un tableau vide en cas d'erreur
+            this.tableProjet = [];
           }
         );
       } else {
         console.error('Token non trouvé dans localStorage');
       }
     }
-  }
-
-  editProject(id: number | undefined): void {
-    // Implémentez la logique d'édition du projet ici
-  }
-
-  viewProjectDetails(id: number | undefined): void {
-    // Implémentez la logique de visualisation des détails du projet ici
   }
 }

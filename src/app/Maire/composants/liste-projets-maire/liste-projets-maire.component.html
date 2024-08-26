@@ -1,35 +1,44 @@
-<div class="container">
-  <h2>Liste des Projets</h2>
-
-  <!-- Afficher un message si aucun projet n'est trouvé -->
-  <div *ngIf="tableProjet.length === 0">
-    <p>Aucun projet trouvé.</p>
+<div class="projets-container">
+  <div *ngIf="tableProjet.length === 0" class="no-projets-message">
+    Aucun projet disponible.
   </div>
 
-  <!-- Afficher le tableau des projets -->
-  <div *ngIf="tableProjet.length > 0">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nom</th>
-          <th>Description</th>
-          <th>Statut</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let projet of tableProjet">
-          <td>{{ projet.id }}</td>
-          <td>{{ projet.titre }}</td>
-          <td>{{ projet.description }}</td>
-          <td>{{ projet.statut ? 'Publié' : 'Non publié' }}</td>
-          <td>
-            <!-- <button (click)="editProject(projet.id)" class="btn btn-primary">Éditer</button> -->
-            <!-- <button (click)="viewProjectDetails(projet.id)" class="btn btn-info">Voir Détails</button> -->
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div *ngFor="let projet of tableProjet" class="project-card">
+    <!-- Image de projet -->
+    <img src="../../../../assets/images/icons/{{ projet.image }}" alt="{{ projet.categorie }}" class="card-img-top">
+
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <!-- Catégorie et Date de création -->
+        <div class="categories">
+          <span>
+            <img src="../../../../assets/images/icons/sports_and_outdoors.svg" alt="{{ projet.categorie }}">
+            {{ projet.categorie }}
+          </span>
+        </div>
+        <span class="text-muted-custom">
+          le {{ projet.timestamps | date: 'dd/MM/yyyy' }}
+        </span>
+      </div>
+
+      <!-- Titre du projet -->
+      <h5 class="card-title mt-2">{{ projet.titre }}</h5>
+
+      <!-- Description du projet -->
+      <p class="card-text text-muted-custom">{{ projet.description }}</p>
+
+      <div class="d-flex justify-content-between align-items-center mt-4">
+        <div class="d-flex align-items-center">
+          <!-- Exemple de votes positifs et négatifs -->
+          <span class="text-success fw-semibold">2435</span>
+          <span class="text-muted-custom ms-2">👍</span>
+          <span class="text-danger fw-semibold ms-4">127</span>
+          <span class="text-muted-custom ms-2">👎</span>
+        </div>
+
+        <!-- Bouton pour voir les détails du projet -->
+        <a href="#" class="btn btn-primary-custom">Voir les détails</a>
+      </div>
+    </div>
   </div>
 </div>
