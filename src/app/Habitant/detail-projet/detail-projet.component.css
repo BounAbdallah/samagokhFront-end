@@ -1,0 +1,137 @@
+/* Import des polices */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+    /* Style général */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      background-color: #0C3B2E;
+      color: #fff;
+      width: 250px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      max-width: 70%;
+      margin-bottom: 20px;
+    }
+
+    .menu {
+      width: 100%;
+      padding: 0;
+    }
+
+    .menu-item {
+      display: block;
+      padding: 10px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+      
+    }
+    .menu-item i {
+      margin-right: 8px;
+    }
+    .menu-item.active, .menu-item:hover {
+      background-color: #FA983A;
+    }
+
+    .project-detail {
+      margin-left: 250px; /* aligné avec la largeur du sidebar */
+      padding: 20px;
+      width: calc(100% - 250px); /* largeur ajustée */
+      margin-top: 30px;
+    }
+
+    .project-detail img.project-detail-image {
+      width: 30%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .project-detail p.categorie {
+      background-color: #e08a2b;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      width: 9rem;
+      text-align: center;
+    }
+
+    .project-detail h1 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .project-detail h2 {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .project-detail p {
+      font-size: 1rem;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    .project-detail-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .project-detail-footer button {
+      background-color: #FA983A;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .project-detail-footer button:hover {
+      background-color: #e08a2b;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+      }
+
+      .project-detail {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+      }
+
+      .project-detail-footer button {
+        width: 100%;
+      }
+    }
+  

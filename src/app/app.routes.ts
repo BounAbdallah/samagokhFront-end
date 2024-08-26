@@ -19,7 +19,11 @@ import { ListCommuneComponent } from './Admin/Services/adminServices/list-commun
 import { VilleComponent } from './Admin/Services/adminServices/ville copy/ville.component';
 import { RolesComponent } from './Admin/Services/adminServices/roles/roles.component';
 import { DashboardAdminComponent } from './Admin/Services/adminServices/dashboard-admin/dashboard-admin.component';
+<<<<<<< HEAD
 import { DetailsProjetComponent } from './Maire/composants/details-projet/details-projet.component';
+=======
+import { DetailProjetComponent } from './Habitant/detail-projet/detail-projet.component';
+>>>>>>> 66837fc81a6afdac4e026c017a04f612787ab67f
 
 export const routes: Routes = [
 
@@ -62,6 +66,7 @@ export const routes: Routes = [
 {path: "ajouter-projet", component: AjoutProjetComponent},
 {path: "modifier-projet/habitant", component: HabitantProjetModificationComponent},
 {path: "projet-publier", component: ProjetPublierComponent},
+{ path: 'project-detail/:id', component: DetailProjetComponent },
 
 
 

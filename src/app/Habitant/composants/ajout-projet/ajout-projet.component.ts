@@ -70,6 +70,8 @@ import { ProjetService } from '../../../projet.service';
 import { projetModel } from '../../projet.model';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../../User/user.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-ajout-projet',
@@ -82,6 +84,7 @@ export class AjoutProjetComponent {
 
   private projetService = inject(ProjetService);
   private userService = inject(UserService);
+  private router = inject(Router)
 
 
   project: projetModel = {};
@@ -138,9 +141,7 @@ export class AjoutProjetComponent {
     );
   }
 
-  logout(): void {
-    this.userService.logout();
-  }
+  
 
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
@@ -148,5 +149,21 @@ export class AjoutProjetComponent {
 
   onSubmit() {
     console.log(this.project);
+  }
+
+
+   // deconnextion
+   logout(): void {
+    this.userService.logout().subscribe(
+      () => {
+        // Optionnel : Effacer les informations de l'utilisateur
+        localStorage.removeItem('token');
+        // Rediriger vers la page de connexion ou la page d'accueil
+        this.router.navigate(['/login']);
+      },
+      (error: HttpErrorResponse) => { // Spécifiez le type pour 'error'
+        console.error('Erreur de déconnexion', error);
+      }
+    );
   }
 }

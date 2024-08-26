@@ -1,32 +1,75 @@
- <!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Liste de Projets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="projet-publier.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    @for (projet of projets; track $index){
-        <img src="projet.image" class="project-image">
-        <div class="project-info">
-          <h2>{{ projet.titre }}</h2>
-          <p>{{ projet.description }}</p>
-          <div class="stats">
-            <h3>Vote <span>3500</span></h3>
-            <h3>Commentaires <span>3500</span></h3>
-          </div>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="../../../../assets/img/SAMAGOKH__4_-removebg-preview.png" alt="Logo">
+            </div>
+            <nav class="menu">
+                <a href="dashboard-habitant" class="menu-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+                <a href="liste-projet-habitant" class="menu-item">
+                    <i class="fas fa-list"></i>
+                    Projets
+                </a>
+                <a href="projet-publier" class="menu-item">
+                    <i class="fas fa-paper-plane"></i>
+                    Projets soumis
+                </a>
+                <a href="ajouter-projet" class="menu-item">
+                    <i class="fas fa-plus-circle"></i>
+                    Nouveau projet
+                </a>
+                <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Déconnexion
+                </a>
+            </nav>
         </div>
-        <div class="project-status">
-            <button>publie le <span>{{ projet.created_at | date: 'short' }}</span></button>
+
+        <!-- Main content -->
+        <div class="content">
+            <!-- Top bar -->
+            <div class="top-bar">
+                <div class="welcome">
+                    <p>Bienvenue, Fatbintou</p>
+                </div>
+                <div class="top-bar-right">
+                    <input type="text" placeholder="Rechercher..." class="search-bar">
+                    <i class="fas fa-bell notification-icon"></i>
+                </div>
+            </div>
+
+            <div *ngFor="let projet of tabprojet" class="project-card">
+              <img src="{{projet.image}}" class="project-image">
+              <div class="project-info">
+                <h2>{{ projet.titre }}</h2>
+                <p>{{ projet.description }}</p>
+                <div class="stats">
+                  <h3>Vote <span>3500</span></h3>
+                  <h3>Commentaires <span>3500</span></h3>
+                </div>
+              </div>
+              <div class="project-status">
+                <button>Publié le <span>{{ projet.created_at | date: 'short' }}</span></button>
+              </div>
+            </div>
+      
         </div>
-
-
-    }
-
+    </div>
 </body>
-</html>  -->
-
-
-<h3>45687wrdwrwew</h3>
+</html>
