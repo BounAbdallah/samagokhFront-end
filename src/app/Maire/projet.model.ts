@@ -1,5 +1,5 @@
 export interface projetModel{
-vote_approve: any;
+
   id?:number;
   user_id?:number;
   titre?:string;
@@ -10,8 +10,8 @@ vote_approve: any;
   image?:string;
   cible?:string;
   categorie?:string;
-  statut?:string;
-  etat?:string;
+  statut?: boolean;  // Doit être de type boolean
+  etat?: boolean;
   budget?:string;
   timestamps?:Date;
 }

@@ -20,6 +20,8 @@ import { VilleComponent } from './Admin/Services/adminServices/ville copy/ville.
 import { RolesComponent } from './Admin/Services/adminServices/roles/roles.component';
 import { DashboardAdminComponent } from './Admin/Services/adminServices/dashboard-admin/dashboard-admin.component';
 import { DetailsProjetComponent } from './Maire/composants/details-projet/details-projet.component';
+import { NotificationComponent } from './Maire/composants/notification/notification.component';
+import { ListeHabitantsComponent } from './Maire/composants/liste-habitants/liste-habitants.component';
 
 export const routes: Routes = [
 
@@ -49,7 +51,7 @@ export const routes: Routes = [
 {path: "liste-habitants-commune", component: ListeHabitantsCommuneComponent},
 {path: "liste-projets-habitant-commune", component: ProjetHabitantCommuneComponent},
 
-
+{path: "liste-habitants", component: ListeHabitantsComponent},
 
 { path: 'details-projet/:id', component: DetailsProjetComponent },
 
@@ -62,6 +64,7 @@ export const routes: Routes = [
 {path: "ajouter-projet", component: AjoutProjetComponent},
 {path: "modifier-projet/habitant", component: HabitantProjetModificationComponent},
 {path: "projet-publier", component: ProjetPublierComponent},
+{path: "notification", component: NotificationComponent},
 
 
 

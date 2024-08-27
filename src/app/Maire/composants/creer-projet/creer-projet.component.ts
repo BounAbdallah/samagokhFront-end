@@ -1,57 +1,84 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProjetService } from '../../projet.service';
 import { UserService } from '../../../User/user.service';
 import { projetModel } from '../../projet.model';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-creer-projet',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './creer-projet.component.html',
   styleUrls: ['./creer-projet.component.css']
 })
-export class CreerProjetComponent {
+export class CreerProjetComponent implements OnInit {
   private projetService = inject(ProjetService);
   private userService = inject(UserService);
+  private route = inject(ActivatedRoute);
 
-  project: projetModel = {};
-  isCollapsed = false;
+  project: projetModel = {
+    statut: false, // Initialisé à false pour éviter undefined
+    etat: false    // Initialisé à false pour éviter undefined
+  };
+  isEditMode = false; // Indique si nous sommes en mode édition
+  projectId: number | null = null;
+  isCollapsed = false; // Ajouté pour résoudre le problème de 'isCollapsed'
 
-  ajoutProject() {
+  ngOnInit() {
+    this.projectId = this.route.snapshot.params['id'];
+    if (this.projectId) {
+      this.isEditMode = true;
+      this.loadProject(this.projectId);
+    }
+  }
+
+  loadProject(id: number) {
+    this.projetService.getProjetDetails(id).subscribe(
+      (project) => {
+        this.project = project;
+      },
+      (error) => {
+        console.error('Erreur lors du chargement du projet', error);
+      }
+    );
+  }
+
+  saveProject() {
     if (this.isValidProject()) {
-      const projectData: projetModel = {
-        titre: this.project.titre,
-        commune_id: this.project.commune_id,
-        description: this.project.description,
-        objectif: this.project.objectif,
-        attente: this.project.attente,
-        cible: this.project.cible,
-        categorie: this.project.categorie,
-        statut: this.project.statut,
-        etat: this.project.etat,
-        budget: this.project.budget,
-        image: this.project.image || undefined, // Change null to undefined
-        user_id: this.project.user_id ?? undefined // Ensuring user_id is number or undefined, not null
-      };
-
-      this.projetService.createProjet(projectData).subscribe(
-        (response: any) => {
-          console.log('Réponse du serveur:', response);
-          if (response && response.id) {
-            this.project = {}; // Réinitialiser les champs après la soumission
-          } else {
-            console.error('Réponse du serveur ne contient pas `id`');
-          }
-        },
-        (error: any) => {
-          console.error('Erreur lors de la création du projet', error);
-        }
-      );
+      if (this.isEditMode) {
+        this.updateProject();
+      } else {
+        this.createProject();
+      }
     } else {
       console.log('Tous les champs obligatoires ne sont pas remplis');
+    }
+  }
+
+  createProject() {
+    this.projetService.createProjet(this.project).subscribe(
+      (response: any) => {
+        console.log('Projet créé avec succès', response);
+        this.project = { statut: false, etat: false }; // Réinitialiser les champs après la soumission
+      },
+      (error: any) => {
+        console.error('Erreur lors de la création du projet', error);
+      }
+    );
+  }
+
+  updateProject() {
+    if (this.projectId !== null) {
+      this.projetService.updateProjetStatut(this.projectId, this.project.statut!).subscribe(
+        (response: any) => {
+          console.log('Projet mis à jour avec succès', response);
+        },
+        (error: any) => {
+          console.error('Erreur lors de la mise à jour du projet', error);
+        }
+      );
     }
   }
 
@@ -77,6 +104,6 @@ export class CreerProjetComponent {
   }
 
   onSubmit() {
-    console.log(this.project);
+    this.saveProject();
   }
 }

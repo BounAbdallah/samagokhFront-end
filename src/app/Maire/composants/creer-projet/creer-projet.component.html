@@ -1,156 +1,140 @@
-<div class="container my-5">
-  <h2>Soumettre un projet</h2>
-
-  <form (ngSubmit)="ajoutProject()" #projectForm="ngForm">
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <label for="titre">Titre</label>
-        <input
-          type="text"
-          class="form-control"
-          id="titre"
-          [(ngModel)]="project.titre"
-          name="titre"
-          placeholder="Titre"
-          required
-        />
-      </div>
-
-      <div class="col-md-6 mb-3">
-        <label for="image">Image URL (optionnel)</label>
-        <input
-          type="text"
-          class="form-control"
-          id="image"
-          [(ngModel)]="project.image"
-          name="image"
-          placeholder="Image du projet"
-        />
-      </div>
-
-      <div class="col-md-6 mb-3">
-        <label for="objectif">Objectif</label>
-        <input
-          type="text"
-          class="form-control"
-          id="objectif"
-          [(ngModel)]="project.objectif"
-          name="objectif"
-          placeholder="Objectif"
-          required
-        />
-      </div>
-
-      <div class="col-md-6 mb-3">
-        <label for="description">Description</label>
-        <textarea
-          class="form-control"
-          id="description"
-          rows="3"
-          [(ngModel)]="project.description"
-          name="description"
-          placeholder="Description"
-          required
-        ></textarea>
-      </div>
-
-      <div class="col-md-6 mb-3">
-        <label for="attente">Attente</label>
-        <input
-          type="text"
-          class="form-control"
-          id="attente"
-          [(ngModel)]="project.attente"
-          name="attente"
-          placeholder="Attente"
-          required
-        />
-      </div>
-
-      <div class="col-md-6 mb-3">
-        <label for="categorie">Catégorie</label>
-        <select
-          class="form-control"
-          id="categorie"
-          [(ngModel)]="project.categorie"
-          name="categorie"
-          required
-        >
-          <option value="education">Education</option>
-          <option value="assainissement">Assainissement</option>
-          <option value="jeunesse">Jeunesse</option>
-          <option value="sport">Sport</option>
-          <option value="divertissement">Divertissement</option>
-        </select>
-      </div>
-
-      <div class="col-md-6 mb-3">
-        <label for="cible">Cible</label>
-        <input
-          type="text"
-          class="form-control"
-          id="cible"
-          [(ngModel)]="project.cible"
-          name="cible"
-          placeholder="Cible"
-          required
-        />
-      </div>
-
-      <div class="col-md-6 mb-3">
-        <label for="budget">Budget</label>
-        <input
-          type="number"
-          class="form-control"
-          id="budget"
-          [(ngModel)]="project.budget"
-          name="budget"
-          placeholder="Budget"
-          required
-        />
-      </div>
-
-      <div class="col-md-6 mb-3">
-        <label for="commune_id">Commune ID</label>
-        <input
-          type="number"
-          class="form-control"
-          id="commune_id"
-          [(ngModel)]="project.commune_id"
-          name="commune_id"
-          placeholder="Commune ID"
-          required
-        />
-      </div>
-
-      <div class="col-md-6 mb-3">
-        <label>
-          <input
-            type="checkbox"
-            id="statut"
-            [(ngModel)]="project.statut"
-            name="statut"
-          />
-          Statut
-        </label>
-      </div>
-
-      <div class="col-md-6 mb-3">
-        <label>
-          <input
-            type="checkbox"
-            id="etat"
-            [(ngModel)]="project.etat"
-            name="etat"
-          />
-          État
-        </label>
-      </div>
+<div class="form-container">
+  <form (ngSubmit)="onSubmit()" #projectForm="ngForm" class="project-form">
+    <div class="form-group">
+      <label for="titre">Titre</label>
+      <input
+        type="text"
+        id="titre"
+        [(ngModel)]="project.titre"
+        name="titre"
+        placeholder="Titre"
+        required
+      />
     </div>
 
-    <div class="d-flex justify-content-end mt-4">
-      <button type="button" class="btn btn-outline-warning mr-3" >Annuler</button>
-      <button type="submit" class="btn btn-outline-success">Ajouter le Projet</button>
+    <div class="form-group">
+      <label for="commune_id">Commune ID</label>
+      <input
+        type="number"
+        id="commune_id"
+        [(ngModel)]="project.commune_id"
+        name="commune_id"
+        placeholder="Commune ID"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        [(ngModel)]="project.description"
+        name="description"
+        placeholder="Description"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="objectif">Objectif</label>
+      <input
+        type="text"
+        id="objectif"
+        [(ngModel)]="project.objectif"
+        name="objectif"
+        placeholder="Objectif"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="attente">Attente</label>
+      <input
+        type="text"
+        id="attente"
+        [(ngModel)]="project.attente"
+        name="attente"
+        placeholder="Attente"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="cible">Cible</label>
+      <input
+        type="text"
+        id="cible"
+        [(ngModel)]="project.cible"
+        name="cible"
+        placeholder="Cible"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="categorie">Catégorie</label>
+      <select
+        id="categorie"
+        [(ngModel)]="project.categorie"
+        name="categorie"
+        required
+      >
+        <option value="education">Education</option>
+        <option value="assainissement">Assainissement</option>
+        <option value="jeunesse">Jeunesse</option>
+        <option value="sport">Sport</option>
+        <option value="divertissement">Divertissement</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="statut">Statut</label>
+      <input
+        type="checkbox"
+        id="statut"
+        [(ngModel)]="project.statut"
+        name="statut"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="etat">État</label>
+      <input
+        type="checkbox"
+        id="etat"
+        [(ngModel)]="project.etat"
+        name="etat"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="budget">Budget</label>
+      <input
+        type="number"
+        id="budget"
+        [(ngModel)]="project.budget"
+        name="budget"
+        placeholder="Budget"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image URL (optionnel)</label>
+      <input
+        type="text"
+        id="image"
+        [(ngModel)]="project.image"
+        name="image"
+        placeholder="Image du projet"
+      />
+    </div>
+
+    <div class="form-buttons">
+      <a [routerLink]="['/Dashboard']" class="menu-item cancel-btn">Annuler</a>
+      <button type="submit" class="submit-btn">
+        {{ isEditMode ? 'Mettre à jour' : 'Créer' }}
+      </button>
     </div>
   </form>
 </div>

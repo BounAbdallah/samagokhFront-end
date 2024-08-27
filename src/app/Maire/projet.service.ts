@@ -1,81 +1,125 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { Observable, throwError, of } from 'rxjs';
+import { catchError, tap, map } from 'rxjs/operators';
 import { apiUrl } from '../apiUrl'; // Assurez-vous que cette importation est correcte
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjetService {
-
-
   private http = inject(HttpClient);
+
+  // Méthode pour vérifier la présence du token dans localStorage
+  private getToken(): string | null {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('token');
+    } else {
+      console.error('localStorage n\'est pas défini');
+      return null;
+    }
+  }
+
+  // Méthode pour faire des appels API avec vérification du token
+  private getRequest<T>(url: string): Observable<T> {
+    const token = this.getToken();
+    if (token) {
+      const headers = { Authorization: `Bearer ${token}` };
+      return this.http.get<T>(url, { headers }).pipe(
+        tap(response => console.log(`Réponse de ${url}:`, response)),
+        catchError(this.handleError<T>(`getRequest`))
+      );
+    } else {
+      console.error('Token non trouvé dans localStorage');
+      return of({} as T); // Retourne un objet vide si le token n'est pas trouvé
+    }
+  }
 
   // Récupération des projets par statut
   getProjetByStatut(statutSelectionne: boolean): Observable<any[]> {
     const url = `${apiUrl}/projets?statut=${statutSelectionne}`;
-    return this.http.get<any[]>(url).pipe(
-      tap(response => console.log('Réponse getProjetByStatut:', response)),
-      catchError(this.handleError<any[]>('getProjetByStatut', []))
+    return this.getRequest<any[]>(url).pipe(
+      map(response => Array.isArray(response) ? response : []),
+      catchError(() => of([]))
     );
   }
 
   // Création de projet
   createProjet(projet: any): Observable<any> {
-    return this.http.post<any>(`${apiUrl}/add/projets`, projet).pipe(
-      tap(response => console.log('Réponse createProjet:', response)),
-      catchError(this.handleError<any>('createProjet'))
-    );
+    const url = `${apiUrl}/add/projets`;
+    const token = this.getToken();
+    if (token) {
+      const headers = { Authorization: `Bearer ${token}` };
+      return this.http.post<any>(url, projet, { headers }).pipe(
+        tap(response => console.log('Réponse createProjet:', response)),
+        catchError(this.handleError<any>('createProjet'))
+      );
+    } else {
+      console.error('Token non trouvé dans localStorage');
+      return of(null); // Retourne null si le token n'est pas trouvé
+    }
   }
 
   // Récupération des projets soumis
   getProjetSoumis(params: any): Observable<any[]> {
-    return this.http.get<any[]>(`${apiUrl}/projets/publies`, { params }).pipe(
+    const url = `${apiUrl}/projets/publies`;
+    return this.getRequest<any[]>(url).pipe(
       tap(response => console.log('Réponse getProjetSoumis:', response)),
-      catchError(this.handleError<any[]>('getProjetSoumis', []))
+      catchError(() => of([]))
     );
   }
 
   // Publication d'un projet
   publierProjet(id: number, statut: boolean): Observable<any> {
-    return this.http.patch<any>(`${apiUrl}/projets/${id}`, { statut }).pipe(
-      tap(response => console.log('Réponse publierProjet:', response)),
-      catchError(this.handleError<any>('publierProjet'))
-    );
+    const url = `${apiUrl}/projets/${id}`;
+    const token = this.getToken();
+    if (token) {
+      const headers = { Authorization: `Bearer ${token}` };
+      return this.http.patch<any>(url, { statut }, { headers }).pipe(
+        tap(response => console.log('Réponse publierProjet:', response)),
+        catchError(this.handleError<any>('publierProjet'))
+      );
+    } else {
+      console.error('Token non trouvé dans localStorage');
+      return of(null); // Retourne null si le token n'est pas trouvé
+    }
   }
 
+  // Mettre à jour le statut d'un projet
   updateProjetStatut(id: number, statut: boolean): Observable<any> {
     const url = `${apiUrl}/update/projet/${id}`;
-    const body = { statut };
-    return this.http.patch<any>(url, body).pipe(
-      tap(response => console.log('Réponse updateProjetStatut:', response)),
-      catchError(this.handleError<any>('updateProjetStatut'))
-    );
+    const token = this.getToken();
+    if (token) {
+      const headers = { Authorization: `Bearer ${token}` };
+      return this.http.patch<any>(url, { statut }, { headers }).pipe(
+        tap(response => console.log('Réponse updateProjetStatut:', response)),
+        catchError(this.handleError<any>('updateProjetStatut'))
+      );
+    } else {
+      console.error('Token non trouvé dans localStorage');
+      return of(null); // Retourne null si le token n'est pas trouvé
+    }
   }
+
   // Récupération de tous les projets
   getAllProjets(): Observable<any[]> {
-    return this.http.get<any[]>(`${apiUrl}/projets`).pipe(
-      tap(response => console.log('Réponse getAllProjets:', response)),
-      catchError(this.handleError<any[]>('getAllProjets', []))
+    const url = `${apiUrl}/projets`;
+    return this.getRequest<any[]>(url).pipe(
+      map(response => Array.isArray(response) ? response : []),
+      catchError(() => of([]))
     );
   }
 
   // Méthode pour obtenir les détails d'un projet par ID
   getProjetDetails(projectId: number): Observable<any> {
-    return this.http.get<any>(`${apiUrl}/details/projet/${projectId}`).pipe(
-      tap(response => console.log('Réponse getProjetDetails:', response)),
-      catchError(this.handleError<any>('getProjetDetails'))
-    );
+    const url = `${apiUrl}/details/projet/${projectId}`;
+    return this.getRequest<any>(url);
   }
 
-  //vote du projet:
-
+  // Récupération des statistiques de votes d'un projet
   getVoteStatistics(projectId: number): Observable<any> {
-    return this.http.get<any>(`${apiUrl}/projets/${projectId}/votes/stats`).pipe(
-      tap(response => console.log('Réponse getVoteStatistics:', response)),
-      catchError(this.handleError<any>('getVoteStatistics'))
-    );
+    const url = `${apiUrl}/projets/${projectId}/votes/stats`;
+    return this.getRequest<any>(url);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -93,11 +137,4 @@ export class ProjetService {
       return throwError(() => new Error(`${operation} échoué : ${errorMsg}`));
     };
   }
-
-
-  }
-
-
-
-
-
+}
