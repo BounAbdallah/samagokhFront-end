@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { apiUrl } from '../apiUrl';
 import { Observable } from 'rxjs';
+import { apiUrl } from './apiUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 export class ProjetService {
 
   private http = inject(HttpClient);
-  
-  
+
+
 
   // methode pour creer un projet
   createProjet(projet:any){
@@ -43,7 +43,7 @@ export class ProjetService {
   getProjetBySttut(statut:any){
     return this.http.get(`${apiUrl}/projets`, statut);
 
-    
+
   }
 
   // methode pour la recuperatio des Projets

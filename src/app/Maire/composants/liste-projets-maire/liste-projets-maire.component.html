@@ -1,34 +1,48 @@
-<div class="container">
-  <h2>Liste des Projets</h2>
 
-  <!-- Table des projets -->
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Titre</th>
-        <th>Description</th>
-        <th>Catégorie</th>
-        <th>Statut</th>
-        <th>Budget</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Use safe navigation operator for checking the length -->
-      <tr *ngFor="let projet of tableProjet || []">
-        <td>{{ projet.titre }}</td>
-        <td>{{ projet.description }}</td>
-        <td>{{ projet.categorie }}</td>
-        <td>{{ projet.statut ? 'Publié' : 'Non Publié' }}</td>
-        <td>{{ projet.budget | currency:'EUR':'symbol':'1.2-2' }}</td>
-        <td>
-          <button class="btn btn-primary" (click)="viewProjectDetails(projet.id)">Voir Détails</button>
-        </td>
-      </tr>
-      <!-- Use safe navigation operator for checking the length -->
-      <tr *ngIf="(tableProjet?.length || 0) === 0">
-        <td colspan="6" class="text-center">Aucun projet disponible</td>
-      </tr>
-    </tbody>
-  </table>
+
+<div class="projets-container">
+  <div *ngIf="tableProjet.length === 0" class="no-projets-message">
+    Aucun projet disponible.
+  </div>
+
+  <div *ngFor="let projet of tableProjet" class="project-card">
+    <!-- Image de projet -->
+
+
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <!-- Catégorie et Date de création -->
+        <div class="categories">
+          <span>
+            {{ projet.categorie }}
+          </span>
+        </div>
+        <span class="text-muted-custom">
+          le {{ projet.timestamps | date: 'dd/MM/yyyy' }}
+        </span>
+      </div>
+
+      <!-- Titre du projet -->
+      <h5 class="card-title mt-2">{{ projet.titre }}</h5>
+
+      <!-- Description du projet -->
+      <p class="card-text text-muted-custom">{{ projet.description }}</p>
+
+      <div class="d-flex justify-content-between align-items-center mt-4">
+        <div class="d-flex align-items-center">
+          <!-- Exemple de votes positifs et négatifs -->
+          <span class="text-success fw-semibold">2435</span>
+          <span class="text-muted-custom ms-2">👍</span>
+          <span class="text-danger fw-semibold ms-4">127</span>
+          <span class="text-muted-custom ms-2">👎</span>
+        </div>
+
+        <!-- Bouton pour voir les détails du projet -->
+
+        <a [routerLink]="['/details-projet', projet.id]" class="btn btn-primary-custom">Voir les détails</a>
+      </div>
+    </div>
+  </div>
 </div>
+
+

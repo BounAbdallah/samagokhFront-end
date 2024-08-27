@@ -1,0 +1,45 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #f8f9fa;
+}
+
+.card {
+  display: flex;
+  background-color: #e0e0e0;
+  width: 50rem;
+height:55rem;
+flex-shrink: 0;
+}
+.card .row img{
+  width: 750px;
+height: 294px;
+flex-shrink: 0;
+border-radius: 12px;
+
+}
+.row{
+  display: flex;
+  justify-content: center;
+}
+
+.badge-light {
+  background-color: #ffffff;
+  color: #000;
+}
+
+.text-warning {
+  color: #f0ad4e;
+}
+
+.btn_apprpouve{
+  margin-top: 30px;
+  gap: 45px;
+}
+
+.vote_apprpouve{
+  gap: 30px;
+}
+
+.container{
+  padding-left: 20px;
+}

@@ -1,76 +1,103 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, tap, catchError, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { Injectable, inject } from '@angular/core';
-import { apiUrl } from '../apiUrl';
+import { apiUrl } from '../apiUrl'; // Assurez-vous que cette importation est correcte
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjetService {
 
+
   private http = inject(HttpClient);
 
-  // Function to get headers
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('authToken'); // Replace with your actual token retrieval method
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}` // Include the token in the headers
-    });
-  }
-
   // Récupération des projets par statut
-  getProjetBySatut(statutSelectionne: boolean): Observable<any> {
+  getProjetByStatut(statutSelectionne: boolean): Observable<any[]> {
     const url = `${apiUrl}/projets?statut=${statutSelectionne}`;
-    return this.http.get(url, { headers: this.getHeaders() }).pipe(
-      tap(response => console.log('Réponse getProjetBySatut:', response)),
-      catchError(this.handleError) // Add error handling
+    return this.http.get<any[]>(url).pipe(
+      tap(response => console.log('Réponse getProjetByStatut:', response)),
+      catchError(this.handleError<any[]>('getProjetByStatut', []))
     );
   }
 
   // Création de projet
   createProjet(projet: any): Observable<any> {
-    return this.http.post(`${apiUrl}/add/projets`, projet, { headers: this.getHeaders() }).pipe(
+    return this.http.post<any>(`${apiUrl}/add/projets`, projet).pipe(
       tap(response => console.log('Réponse createProjet:', response)),
-      catchError(this.handleError) // Add error handling
+      catchError(this.handleError<any>('createProjet'))
     );
   }
 
   // Récupération des projets soumis
-  getProjetSoumis(projet: any): Observable<any> {
-    return this.http.get(`${apiUrl}/projets/publies`, { headers: this.getHeaders(), params: projet }).pipe(
+  getProjetSoumis(params: any): Observable<any[]> {
+    return this.http.get<any[]>(`${apiUrl}/projets/publies`, { params }).pipe(
       tap(response => console.log('Réponse getProjetSoumis:', response)),
-      catchError(this.handleError) // Add error handling
+      catchError(this.handleError<any[]>('getProjetSoumis', []))
     );
   }
 
   // Publication d'un projet
   publierProjet(id: number, statut: boolean): Observable<any> {
-    return this.http.patch(`${apiUrl}/projets/${id}`, { statut: statut }, { headers: this.getHeaders() }).pipe(
+    return this.http.patch<any>(`${apiUrl}/projets/${id}`, { statut }).pipe(
       tap(response => console.log('Réponse publierProjet:', response)),
-      catchError(this.handleError) // Add error handling
+      catchError(this.handleError<any>('publierProjet'))
     );
   }
 
+  updateProjetStatut(id: number, statut: boolean): Observable<any> {
+    const url = `${apiUrl}/update/projet/${id}`;
+    const body = { statut };
+    return this.http.patch<any>(url, body).pipe(
+      tap(response => console.log('Réponse updateProjetStatut:', response)),
+      catchError(this.handleError<any>('updateProjetStatut'))
+    );
+  }
   // Récupération de tous les projets
-  getAllProjets(): Observable<any> {
-    return this.http.get(`${apiUrl}/projets`, { headers: this.getHeaders() }).pipe(
+  getAllProjets(): Observable<any[]> {
+    return this.http.get<any[]>(`${apiUrl}/projets`).pipe(
       tap(response => console.log('Réponse getAllProjets:', response)),
-      catchError(this.handleError) // Add error handling
+      catchError(this.handleError<any[]>('getAllProjets', []))
     );
   }
 
-  // Error handling method
-  private handleError(error: HttpErrorResponse): Observable<never> {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      console.error(`Backend returned code ${error.status}, body was: ${JSON.stringify(error.error)}`);
-    }
-
-    // Return an observable with a user-facing error message
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+  // Méthode pour obtenir les détails d'un projet par ID
+  getProjetDetails(projectId: number): Observable<any> {
+    return this.http.get<any>(`${apiUrl}/details/projet/${projectId}`).pipe(
+      tap(response => console.log('Réponse getProjetDetails:', response)),
+      catchError(this.handleError<any>('getProjetDetails'))
+    );
   }
-}
+
+  //vote du projet:
+
+  getVoteStatistics(projectId: number): Observable<any> {
+    return this.http.get<any>(`${apiUrl}/projets/${projectId}/votes/stats`).pipe(
+      tap(response => console.log('Réponse getVoteStatistics:', response)),
+      catchError(this.handleError<any>('getVoteStatistics'))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: HttpErrorResponse): Observable<T> => {
+      let errorMsg: string;
+
+      if (error.error instanceof ErrorEvent) {
+        errorMsg = `Erreur côté client : ${error.error.message}`;
+      } else {
+        errorMsg = `Erreur côté serveur : ${error.status}\nMessage: ${error.message}`;
+        console.error(`Contenu de la réponse :`, error.error);
+      }
+
+      console.error(`${operation} échoué : ${errorMsg}`);
+      return throwError(() => new Error(`${operation} échoué : ${errorMsg}`));
+    };
+  }
+
+
+  }
+
+
+
+
+

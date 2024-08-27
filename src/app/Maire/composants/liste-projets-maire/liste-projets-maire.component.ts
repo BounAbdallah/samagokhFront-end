@@ -4,65 +4,53 @@ import { isPlatformBrowser } from '@angular/common';
 import { ProjetService } from '../../projet.service';
 import { projetModel } from '../../projet.model';
 
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-liste-projets-maire',
   standalone: true,
-  imports: [CommonModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './liste-projets-maire.component.html',
   styleUrls: ['./liste-projets-maire.component.css']
 })
 export class ListeProjetsMaireComponent implements OnInit {
   private projectService = inject(ProjetService);
-  private platformId = inject(PLATFORM_ID); // Inject PLATFORM_ID to detect the platform
+  private platformId = inject(PLATFORM_ID);
 
   tableProjet: projetModel[] = [];
-  statutSelectionne: boolean | null = null;
+  isBrowser: boolean;
+
+  constructor() {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      // Only fetch projects if running in a browser
-      this.fetchProjets();
-    }
+    this.fetchProjets();
   }
 
   fetchProjets(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      console.error('localStorage is not available outside of the browser.');
-      return;
-    }
+    if (this.isBrowser) {
+      const token = localStorage.getItem('token');
 
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      if (this.statutSelectionne !== null) {
-        this.projectService.getProjetBySatut(this.statutSelectionne).subscribe(
-          (response: any) => {
-            this.tableProjet = response.data;
+      if (token) {
+        this.projectService.getAllProjets().subscribe(
+          (response: any[]) => {  // Modifiez le type ici
+            console.log("Réponse complète de l'API getAllProjets:", response);
+            if (Array.isArray(response)) {  // Pas besoin de vérifier response.data
+              this.tableProjet = response;
+            } else {
+              console.error("La réponse des projets n'est pas un tableau:", response);
+              this.tableProjet = [];
+            }
           },
           (error: any) => {
-            console.error('Error fetching projects by status:', error);
+            console.error('Erreur lors de la récupération des projets:', error);
+            this.tableProjet = [];
           }
         );
       } else {
-        this.projectService.getAllProjets().subscribe(
-          (response: any) => {
-            this.tableProjet = response.data;
-          },
-          (error: any) => {
-            console.error('Error fetching all projects:', error);
-          }
-        );
+        console.error('Token non trouvé dans localStorage');
       }
-    } else {
-      console.warn('No token found in localStorage.');
     }
-  }
-
-  editProject(id: number | undefined): void {
-    // Implement project editing logic here
-  }
-
-  viewProjectDetails(id: number | undefined): void {
-    // Implement view project details logic here
   }
 }

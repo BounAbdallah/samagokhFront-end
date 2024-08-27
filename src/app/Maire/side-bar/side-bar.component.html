@@ -1,0 +1,41 @@
+<div class="sidebar">
+  <div class="logo">
+    <img src="assets/images/logo-side-bare.png" alt="Logo">
+  </div>
+  <nav class="menu">
+      <!-- Lien vers le Dashboard -->
+      <a [routerLink]="['/Dashboard']" class="menu-item active">
+          <img src="../../../../assets/images/icons/dashboard.svg" alt="">
+          Dashboard
+      </a>
+
+      <!-- Lien vers la liste des projets (Projets mairie) -->
+      <a [routerLink]="['/liste-projet-maire']" class="menu-item">
+        <img src="../../../../assets/images/tactic.png" alt="">
+        Projets
+      </a>
+
+      <!-- Lien vers la liste des habitants -->
+      <a [routerLink]="['/Nos-habitants']" class="menu-item">
+        <img src="../../../../assets/images/icons/group.svg" alt="">
+        Nos Habitants
+      </a>
+
+      <!-- Lien vide pour Nouveau projet -->
+      <a [routerLink]="['/creer-projet']" class="menu-item">
+        <img src="../../../../assets/images/icons/add_chart.svg" alt="">
+        Nouveau projet
+      </a>
+      <!-- Lien vers les projets soumis -->
+      <a [routerLink]="['/Projet-soumis']" class="menu-item">
+        <img src="../../../../assets/images/icons/event_list.svg" alt="">
+        Projets soumis
+      </a>
+
+      <!-- Lien vide pour Déconnexion -->
+      <a href="#" class="menu-item">
+        <img src="../../../../assets/images/icons/logout.svg" alt="">
+        Déconnexion
+      </a>
+  </nav>
+</div>

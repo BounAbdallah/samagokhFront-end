@@ -3,10 +3,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { projetModel } from '../../projet.model';
-import { ProjetService } from '../../projet.service';
 import { UserService } from '../../../User/user.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ProjetService } from '../../../projet.service';
 
 @Component({
   selector: 'app-liste-projets-habitant',

@@ -20,6 +20,7 @@ import { VilleComponent } from './Admin/Services/adminServices/ville copy/ville.
 import { RolesComponent } from './Admin/Services/adminServices/roles/roles.component';
 import { DashboardAdminComponent } from './Admin/Services/adminServices/dashboard-admin/dashboard-admin.component';
 import { DetailProjetComponent } from './Habitant/detail-projet/detail-projet.component';
+import { DetailsProjetComponent } from './Maire/composants/details-projet/details-projet.component';
 
 export const routes: Routes = [
 
@@ -27,7 +28,7 @@ export const routes: Routes = [
 
 
 //Route pour Uesr simple
-{path: "", pathMatch: "full", redirectTo: "home"},
+{path: "", pathMatch: "full", redirectTo: "liste-projet-maire"},
 
 {path: "home", component : PlateformeComponent},
 
@@ -42,12 +43,16 @@ export const routes: Routes = [
 //Route pour Mr le maire
 
 
-{path: "dashboard", component: DashboardMaireComponent},
+{path: "Dashboard", component: DashboardMaireComponent},
 {path: "liste-projet-maire", component: ListeProjetsMaireComponent},
 {path: "creer-projet", component: CreerProjetComponent},
 {path: "modifier-projet/maire", component: ModificationProjetComponent},
 {path: "liste-habitants-commune", component: ListeHabitantsCommuneComponent},
 {path: "liste-projets-habitant-commune", component: ProjetHabitantCommuneComponent},
+
+
+
+{ path: 'details-projet/:id', component: DetailsProjetComponent },
 
 
 

@@ -1,4 +1,5 @@
 export interface projetModel{
+vote_approve: any;
   id?:number;
   user_id?:number;
   titre?:string;

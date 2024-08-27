@@ -2,11 +2,11 @@
 
 
 import { Component, OnInit, inject } from '@angular/core';
-import { ProjetService } from '../../projet.service';
 import { projetModel } from '../../projet.model';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../../User/user.service';
 import {  Router } from '@angular/router'; 
+import { ProjetService } from '../../../projet.service';
 @Component({
       selector: 'app-projet-publier',
       standalone: true,

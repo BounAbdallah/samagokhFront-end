@@ -1,50 +1,156 @@
-<div class="form-container">
+<div class="container my-5">
   <h2>Soumettre un projet</h2>
 
   <form (ngSubmit)="ajoutProject()" #projectForm="ngForm">
-    <label for="titre">Titre:</label>
-    <input type="text" id="titre" [(ngModel)]="project.titre" name="titre" class="form-control" required />
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="titre">Titre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="titre"
+          [(ngModel)]="project.titre"
+          name="titre"
+          placeholder="Titre"
+          required
+        />
+      </div>
 
-    <label for="commune_id">Commune ID:</label>
-    <input type="number" id="commune_id" [(ngModel)]="project.commune_id" name="commune_id" class="form-control" required />
+      <div class="col-md-6 mb-3">
+        <label for="image">Image URL (optionnel)</label>
+        <input
+          type="text"
+          class="form-control"
+          id="image"
+          [(ngModel)]="project.image"
+          name="image"
+          placeholder="Image du projet"
+        />
+      </div>
 
-    <label for="description">Description:</label>
-    <textarea id="description" [(ngModel)]="project.description" name="description" class="form-control" required></textarea>
+      <div class="col-md-6 mb-3">
+        <label for="objectif">Objectif</label>
+        <input
+          type="text"
+          class="form-control"
+          id="objectif"
+          [(ngModel)]="project.objectif"
+          name="objectif"
+          placeholder="Objectif"
+          required
+        />
+      </div>
 
-    <label for="objectif">Objectif:</label>
-    <input type="text" id="objectif" [(ngModel)]="project.objectif" name="objectif" class="form-control" required />
+      <div class="col-md-6 mb-3">
+        <label for="description">Description</label>
+        <textarea
+          class="form-control"
+          id="description"
+          rows="3"
+          [(ngModel)]="project.description"
+          name="description"
+          placeholder="Description"
+          required
+        ></textarea>
+      </div>
 
-    <label for="attente">Attente:</label>
-    <input type="text" id="attente" [(ngModel)]="project.attente" name="attente" class="form-control" required />
+      <div class="col-md-6 mb-3">
+        <label for="attente">Attente</label>
+        <input
+          type="text"
+          class="form-control"
+          id="attente"
+          [(ngModel)]="project.attente"
+          name="attente"
+          placeholder="Attente"
+          required
+        />
+      </div>
 
-    <label for="cible">Cible:</label>
-    <input type="text" id="cible" [(ngModel)]="project.cible" name="cible" class="form-control" required />
+      <div class="col-md-6 mb-3">
+        <label for="categorie">Catégorie</label>
+        <select
+          class="form-control"
+          id="categorie"
+          [(ngModel)]="project.categorie"
+          name="categorie"
+          required
+        >
+          <option value="education">Education</option>
+          <option value="assainissement">Assainissement</option>
+          <option value="jeunesse">Jeunesse</option>
+          <option value="sport">Sport</option>
+          <option value="divertissement">Divertissement</option>
+        </select>
+      </div>
 
-    <label for="categorie">Catégorie:</label>
-    <select id="categorie" [(ngModel)]="project.categorie" name="categorie" class="form-control" required>
-      <option value="education">Education</option>
-      <option value="assainissement">Assainissement</option>
-      <option value="jeunesse">Jeunesse</option>
-      <option value="sport">Sport</option>
-      <option value="divertissement">Divertissement</option>
-    </select>
+      <div class="col-md-6 mb-3">
+        <label for="cible">Cible</label>
+        <input
+          type="text"
+          class="form-control"
+          id="cible"
+          [(ngModel)]="project.cible"
+          name="cible"
+          placeholder="Cible"
+          required
+        />
+      </div>
 
-    <label for="statut">
-      <input type="checkbox" id="statut" [(ngModel)]="project.statut" name="statut" />
-      Statut
-    </label>
+      <div class="col-md-6 mb-3">
+        <label for="budget">Budget</label>
+        <input
+          type="number"
+          class="form-control"
+          id="budget"
+          [(ngModel)]="project.budget"
+          name="budget"
+          placeholder="Budget"
+          required
+        />
+      </div>
 
-    <label for="etat">
-      <input type="checkbox" id="etat" [(ngModel)]="project.etat" name="etat" />
-      État
-    </label>
+      <div class="col-md-6 mb-3">
+        <label for="commune_id">Commune ID</label>
+        <input
+          type="number"
+          class="form-control"
+          id="commune_id"
+          [(ngModel)]="project.commune_id"
+          name="commune_id"
+          placeholder="Commune ID"
+          required
+        />
+      </div>
 
-    <label for="budget">Budget:</label>
-    <input type="number" id="budget" [(ngModel)]="project.budget" name="budget" class="form-control" required />
+      <div class="col-md-6 mb-3">
+        <label>
+          <input
+            type="checkbox"
+            id="statut"
+            [(ngModel)]="project.statut"
+            name="statut"
+          />
+          Statut
+        </label>
+      </div>
 
-    <label for="image">Image URL (optionnel):</label>
-    <input type="text" id="image" [(ngModel)]="project.image" name="image" class="form-control" />
+      <div class="col-md-6 mb-3">
+        <label>
+          <input
+            type="checkbox"
+            id="etat"
+            [(ngModel)]="project.etat"
+            name="etat"
+          />
+          État
+        </label>
+      </div>
+    </div>
 
-    <button type="submit" class="btn btn-outline-warning">Ajouter le Projet</button>
+    <div class="d-flex justify-content-end mt-4">
+      <button type="button" class="btn btn-outline-warning mr-3" >Annuler</button>
+      <button type="submit" class="btn btn-outline-success">Ajouter le Projet</button>
+    </div>
   </form>
 </div>

@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { projetModel } from '../projet.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjetService } from '../projet.service';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../User/user.service';
+import { ProjetService } from '../../projet.service';
 
 @Component({
   selector: 'app-detail-projet',
