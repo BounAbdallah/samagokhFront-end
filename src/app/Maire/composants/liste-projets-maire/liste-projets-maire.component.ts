@@ -1,29 +1,37 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Inject, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { projetModel } from '../../projet.model';
 import { RouterModule } from '@angular/router';
 import { ProjetService } from '../../projet.service';
+import { FormsModule } from '@angular/forms';
+import { projetModel } from '../../../Habitant/projet.model';
 
 @Component({
   selector: 'app-liste-projets-maire',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule,FormsModule],
   templateUrl: './liste-projets-maire.component.html',
   styleUrls: ['./liste-projets-maire.component.css']
 })
 export class ListeProjetsMaireComponent implements OnInit {
   private projectService = inject(ProjetService);
   private platformId = inject(PLATFORM_ID);
+  private localStorage = window.localStorage;
 
-  tableProjet: projetModel[] = [];
+tableProjet:projetModel[] =[];
+
+
   isBrowser: boolean;
 
   constructor() {
     this.isBrowser = isPlatformBrowser(this.platformId);
+
+
   }
 
+
   ngOnInit(): void {
+    console.log('Tableau initial:', this.tableProjet);
     this.fetchProjets();
   }
 
@@ -54,4 +62,8 @@ export class ListeProjetsMaireComponent implements OnInit {
       }
     }
   }
-}
+  }
+
+
+
+
