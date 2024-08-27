@@ -15,14 +15,17 @@ import { ListeProjetsHabitantComponent } from './Habitant/composants/liste-proje
 import { AjoutProjetComponent } from './Habitant/composants/ajout-projet/ajout-projet.component';
 import { HabitantProjetModificationComponent } from './Habitant/composants/habitant-projet-modification/habitant-projet-modification.component';
 import { ProjetPublierComponent } from './Habitant/composants/projet-publier/projet-publier.component';
-import { ListCommuneComponent } from './Admin/Services/adminServices/list-commune/list-commune.component';
-import { VilleComponent } from './Admin/Services/adminServices/ville copy/ville.component';
-import { RolesComponent } from './Admin/Services/adminServices/roles/roles.component';
-import { DashboardAdminComponent } from './Admin/Services/adminServices/dashboard-admin/dashboard-admin.component';
 import { DetailProjetComponent } from './Habitant/detail-projet/detail-projet.component';
 import { DetailsProjetComponent } from './Maire/composants/details-projet/details-projet.component';
 import { NotificationComponent } from './Maire/composants/notification/notification.component';
 import { ListeHabitantsComponent } from './Maire/composants/liste-habitants/liste-habitants.component';
+import { BaseDashboardComponent } from './base-dashboard/base-dashboard.component';
+import { DashbordComponent } from './Composants/admin/dashbord/dashbord.component';
+import { CommunesCrudComponent } from './Composants/admin/communes-crud/communes-crud.component';
+import { ListCommuneComponent } from './Composants/admin/list-commune/list-commune.component';
+import { PopulationComponent } from './Composants/admin/population/population.component';
+import { VilleComponent } from './Composants/admin/ville/ville.component';
+import { RolesComponent } from './Composants/admin/roles/roles.component';
 
 export const routes: Routes = [
 
@@ -72,10 +75,25 @@ export const routes: Routes = [
 
 /// Route admin
 
-    { path: 'communes', component: ListCommuneComponent},
-    {path: "dashboard-admin", component: DashboardAdminComponent},
-    { path: 'communes/:id', component: ListCommuneComponent },
-    { path: 'villes', component: VilleComponent },
-    { path: 'roles', component: RolesComponent },
+    // { path: 'communes', component: ListCommuneComponent},
+    // {path: "dashboard-admin", component: DashboardAdminComponent},
+    // { path: 'communes/:id', component: ListCommuneComponent },
+    // { path: 'villes', component: VilleComponent },
+    // { path: 'roles', component: RolesComponent },
+
+    {
+        path: '',
+        component: BaseDashboardComponent,
+        children: [
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+          { path: 'dashboard', component: DashbordComponent },
+          { path: 'communes', component: CommunesCrudComponent },
+          { path: 'communes/:id', component: ListCommuneComponent }, 
+          { path: 'populations/:id', component: PopulationComponent }, 
+          { path: 'villes', component: VilleComponent },
+          { path: 'roles', component: RolesComponent },
+          // Ajoutez d'autres routes enfaliste-projet-mairents ici
+        ]
+      }
 
 ];

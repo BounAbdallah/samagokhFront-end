@@ -211,8 +211,16 @@ color: #FEB906;
             text-align: left;
         }
         th {
-            background-color: #4a7c59;
+            /* border-radius: 10px 10px 0px 0px; */
+            background: #6D9773;    
             color: white;
+            width: 1060px;
+            height: 67px;
+            flex-shrink: 0;
+        }
+    tr{
+            border-radius: 10px 10px 0px 0px; 
+            background-color: #FFF;
         }
         .toggle-switch {
             position: relative;
@@ -271,14 +279,46 @@ color: #FEB906;
             gap: 20px; /* Espace entre le bouton et l'interrupteur */
             }
             .table-container {
-    display: flex;
-    justify-content: center; /* Centre horizontalement */
-    width: 100%; /* Assure que le conteneur occupe toute la largeur disponible */
-}
+                display: flex;
+                justify-content: center; /* Centre horizontalement */
+                width: 100%; /* Assure que le conteneur occupe toute la largeur disponible */
+            }
+            i:hover {
+                cursor: pointer;
+            }
+
+            thead tr th:first-child {
+                border-top-left-radius: 15px;
+            }
+
+            thead tr th:last-child {
+                border-top-right-radius: 15px;
+            }
+            thead{
+                color: #FFF;
+                font-family: Inter;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+            }
+            td{
+                color: #000;
+                font-family: Inter;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
   </style>
 
+<div class="icone" style="background-color: #FFF;">
+    <span class="mingcute--user-add-fill">
+        <i class="fa-solid fa-arrow-left-long fa-2xl" style="color: #000;" [routerLink]="['/dashboard']"></i>
+    </span>
+  </div>
         <!-- <div class="table-container"> -->
-        <table class="">
+        <table class="mt-2">
             <thead>
                 <tr>
                     <th>Commune</th>
@@ -286,49 +326,29 @@ color: #FEB906;
                     <th>Ville</th>
                     <th>
                         <span style="margin-right: 180px;">Action</span>
-                        <i class="fa-solid fa-ellipsis" style="color: #FFF;"></i>
                     </th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Dakar dddddddddd</td>
-                    <td>Barthélémy Dias ddddd</td>
-                    <td>Dakar ggggg</td>
+            <tbody *ngIf="ville?.communes">
+                <tr *ngFor="let commune of ville.communes">
+                    <td>{{commune.libelle }}</td>
+                    <td>
+                        {{ getMaireForCommune(commune.id)?.prenom }} {{ getMaireForCommune(commune.id)?.nom }}
+                    </td>
+                    <td>{{ ville.ville.libelle }}</td>
                     <td class="action-cell">
                             <button  class="btn_detail_commune">Détail</button>
                         <label class="toggle-switch">
                             <input type="checkbox" checked>
                             <span class="slider"></span>
                         </label>
-                        <i class="fa-solid fa-ellipsis" style="color: #000;"></i>
+                        <i class="fa-solid fa-users-line fa-xl" style="color: #000;" [routerLink]="['/populations/', commune.id]"></i>
                     </td>
                 </tr>
 
-                <tr>
-                    <td>Dakar dddddddddd</td>
-                    <td>Barthélémy Dias ddddd</td>
-                    <td>Dakar ggggg</td>
-                    <td class="action-cell">
-                            <button  class="btn_detail_commune">Détail</button>
-                        <label class="toggle-switch">
-                            <input type="checkbox" checked>
-                            <span class="slider"></span>
-                        </label>
-                        <i class="fa-solid fa-ellipsis" style="color: #000;"></i>
-                    </td>
-                </tr>
-                <!-- Ajoutez d'autres lignes similaires pour les autres communes -->
             </tbody>
         </table>
-
-        <div *ngIf="ville">
-            <h2>Détails de la ville: {{ ville.titre }}</h2>
-            <p><strong>Population:</strong> {{ ville.population }}</p>
-            <p><strong>Description:</strong> {{ ville.description }}</p>
-            <button routerLink="/communes">Retour à la liste des communes</button>
-          </div>
-    <!-- </div> -->
+      
 
 
    
