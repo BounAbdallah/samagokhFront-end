@@ -1,0 +1,93 @@
+body {
+  background-color: #CADBB7;
+}
+.card-container {
+  border-radius: 10px;
+background: #D9D9D9;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  width: 70rem;
+height: 1051px;
+flex-shrink: 0;
+}
+.card {
+  margin-top: 20px;
+  width: 20rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.card img {
+  width: 19rem;
+height: 239px;
+margin-left: 0.5rem;
+margin-top: -1rem;
+
+border-radius: 10px;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.card-body {
+  padding: 15px;
+}
+.card-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.card-text {
+  color: #555;
+  margin-bottom: 1rem;
+}
+.btn-detail {
+  background-color: #FFC107;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+.btn-detail:hover {
+  background-color: #e6a800;
+}
+.badge-approved {
+  background-color: #618062;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 50rem;
+}
+
+
+.btnApprouver{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.pagination .page-item .page-link {
+  border-radius: 4px;
+border: 1px solid #DFE3E8;
+background: #FFF;
+color: #212B36;
+}
+
+.pagination .page-item.active .page-link {
+  color: #000; /* Texte en noir pour la page active */
+  background-color: #FEB906; /* Couleur de fond pour la page active */
+  border-color: #FEB906; /* Optionnel : bordure de la couleur active */
+}

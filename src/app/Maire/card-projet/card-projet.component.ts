@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ProjetService } from '../projet.service';
 import { Router } from '@angular/router';
-import { ProjetService2 } from '../projet2.service';
 
 @Component({
   selector: 'app-card-projet',
@@ -12,7 +12,7 @@ export class CardProjetComponent implements OnInit {
   @Input() projet: any | null = null; // Utilisez 'any' pour une flexibilité maximale
   voteStatistics: { vote_approve: number; vote_disapprove: number } = { vote_approve: 0, vote_disapprove: 0 };
 
-  constructor(private projetService: ProjetService2, private router: Router) {}
+  constructor(private projetService: ProjetService, private router: Router) {}
 
   ngOnInit(): void {
     if (this.projet && this.projet.id !== undefined) {

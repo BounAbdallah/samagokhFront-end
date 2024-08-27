@@ -1,20 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { projetModel } from '../../projet.model';
-
 import { RouterModule } from '@angular/router';
-import { ProjetService2 } from '../../projet2.service';
+import { ProjetService } from '../../projet.service';
 
 @Component({
   selector: 'app-liste-projets-maire',
   standalone: true,
-  imports: [RouterModule,CommonModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './liste-projets-maire.component.html',
   styleUrls: ['./liste-projets-maire.component.css']
 })
 export class ListeProjetsMaireComponent implements OnInit {
-  private projectService = inject(ProjetService2);
+  private projectService = inject(ProjetService);
   private platformId = inject(PLATFORM_ID);
 
   tableProjet: projetModel[] = [];
@@ -29,17 +28,19 @@ export class ListeProjetsMaireComponent implements OnInit {
   }
 
   fetchProjets(): void {
+    // Vérification de l'environnement pour s'assurer que le code est exécuté dans un navigateur
     if (this.isBrowser) {
       const token = localStorage.getItem('token');
 
       if (token) {
+        // Appel du service pour récupérer tous les projets
         this.projectService.getAllProjets().subscribe(
-          (response: any[]) => {  // Modifiez le type ici
-            console.log("Réponse complète de l'API getAllProjets:", response);
-            if (Array.isArray(response)) {  // Pas besoin de vérifier response.data
+          (response: any) => {
+            console.log('Réponse complète de l\'API getAllProjets:', response);
+            if (response && Array.isArray(response)) {
               this.tableProjet = response;
             } else {
-              console.error("La réponse des projets n'est pas un tableau:", response);
+              console.error('La réponse des projets n\'est pas un tableau:', response);
               this.tableProjet = [];
             }
           },

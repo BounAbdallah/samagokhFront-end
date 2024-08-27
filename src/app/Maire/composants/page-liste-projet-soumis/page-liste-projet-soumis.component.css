@@ -1,0 +1,28 @@
+.body{
+  margin: 0px;
+}
+.container{
+  width: 80rem;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+  background: #CADBB7;
+}
+.side-bar-section{
+  margin:0px;
+  margin-left: -12px;
+}
+.liste-content{
+  margin-left:15rem;
+padding: 30px;
+width: 1085px;
+}
+.side-bar-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #f8f9fa;
+  z-index: 1000;
+}

@@ -10,8 +10,8 @@ vote_approve?: any;
   image?:string;
   cible?:string;
   categorie?:string;
-  statut?:number;
-  etat?:string;
+  statut?: boolean;  // Doit être de type boolean
+  etat?: boolean;
   budget?:string;
   created_at?: Date; }
 

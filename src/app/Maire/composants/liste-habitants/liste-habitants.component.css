@@ -1,0 +1,33 @@
+body {
+  background-color: #EDF2EE;
+}
+.table-container {
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+tr {
+  background-color: #618062;
+  color: white;
+}
+.table td {
+  vertical-align: middle;
+}
+.btn-detail {
+  background-color: #FFC107;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+.btn-detail:hover {
+  background-color: #e6a800;
+}
+.ttt {
+  background-color: #618062;
+  color: white;
+}
+

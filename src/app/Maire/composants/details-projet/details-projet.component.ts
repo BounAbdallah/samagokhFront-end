@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ProjetService2 } from '../../projet2.service';
+import { ProjetService} from '../../projet.service';
 
 interface VoteStatistics {
   vote_total: number;
@@ -18,7 +18,7 @@ interface VoteStatistics {
   styleUrls: ['./details-projet.component.css']
 })
 export class DetailsProjetComponent implements OnInit {
-  private projetService = inject(ProjetService2);
+  private projetService = inject(ProjetService);
   projetDetails: any;
   projectId: number = 0;
   hasVoted: boolean = false;
