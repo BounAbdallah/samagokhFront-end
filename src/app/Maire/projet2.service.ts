@@ -7,7 +7,7 @@ import { apiUrl } from '../apiUrl'; // Assurez-vous que cette importation est co
 @Injectable({
   providedIn: 'root'
 })
-export class ProjetService {
+export class ProjetService2 {
 
 
   private http = inject(HttpClient);

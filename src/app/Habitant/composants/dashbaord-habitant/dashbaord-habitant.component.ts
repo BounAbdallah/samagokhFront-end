@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ProjetService } from '../../projet.service';
+import { ProjetService } from '../../../projet.service';
 
 @Component({
   selector: 'app-dashbaord-habitant',

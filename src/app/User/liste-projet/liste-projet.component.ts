@@ -49,12 +49,13 @@
 
 
 import { Component, inject, OnInit } from '@angular/core';
-import { ProjetService } from '../../Maire/projet.service';
 import { projetModel } from '../../Maire/projet.model';
 import { CommonModule } from '@angular/common';
 import { CommentaireService } from '../commentaire.service';
 import { commentaireModel } from '../commentaire.modul';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { ProjetService } from '../../projet.service';
+import { ProjetService } from '../../projet.service'
 
 @Component({
   selector: 'app-liste-projet',
@@ -65,7 +66,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 })
 export class ListeProjetComponent implements OnInit {
 
-  private projetService = inject(ProjetService);
+  private projetService = inject(ProjetService)
   private commentaireService = inject(CommentaireService);
   private localStorage = window.localStorage;
 
@@ -84,7 +85,7 @@ export class ListeProjetComponent implements OnInit {
     const token = this.localStorage.getItem('token');
 
     if (token) {
-      this.projetService.getProjetBySatut(true).subscribe(
+      this.projetService.getProjetBySttut(true).subscribe(
         (response: any) => {
           this.tabprojet = response.data;
         },

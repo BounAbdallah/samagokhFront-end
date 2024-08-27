@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ProjetService } from '../../projet.service';
 import { projetModel } from '../../projet.model';
 
 import { RouterModule } from '@angular/router';
+import { ProjetService2 } from '../../projet2.service';
 
 @Component({
   selector: 'app-liste-projets-maire',
@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./liste-projets-maire.component.css']
 })
 export class ListeProjetsMaireComponent implements OnInit {
-  private projectService = inject(ProjetService);
+  private projectService = inject(ProjetService2);
   private platformId = inject(PLATFORM_ID);
 
   tableProjet: projetModel[] = [];

@@ -1,54 +1,28 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ProjetService } from '../../projet.service';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-
-interface VoteStatistics {
-  vote_total: number;
-  vote_approve: number;
-  vote_disapprove: number;
-}
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProjetService2 } from '../projet2.service';
 
 @Component({
-  selector: 'app-details-projet',
+  selector: 'app-card-projet',
   standalone: true,
-  imports: [CommonModule, RouterModule],
   templateUrl: './card-projet.component.html',
   styleUrls: ['./card-projet.component.css']
 })
-export class DetailsProjetComponent implements OnInit {
-  private projetService = inject(ProjetService);
-  projetDetails: any;
-  projectId: number = 0;
-  hasVoted: boolean = false;
-  voteStatistics: VoteStatistics | null = null; // Modifier le type ici
+export class CardProjetComponent implements OnInit {
+  @Input() projet: any | null = null; // Utilisez 'any' pour une flexibilité maximale
+  voteStatistics: { vote_approve: number; vote_disapprove: number } = { vote_approve: 0, vote_disapprove: 0 };
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private projetService: ProjetService2, private router: Router) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.projectId = +params['id'];
-      this.fetchProjetDetails();
-      this.fetchVoteStatistics(); // Ajoutez cet appel pour récupérer les statistiques de votes
-    });
+    if (this.projet && this.projet.id !== undefined) {
+      this.fetchVoteStatistics(this.projet.id);
+    }
   }
 
-  fetchProjetDetails(): void {
-    this.projetService.getProjetDetails(this.projectId).subscribe(
+  fetchVoteStatistics(projectId: number): void {
+    this.projetService.getVoteStatistics(projectId).subscribe(
       (data) => {
-        this.projetDetails = data;
-        console.log('Détails du projet:', this.projetDetails);
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des détails du projet:', error);
-      }
-    );
-  }
-
-  fetchVoteStatistics(): void {
-    this.projetService.getVoteStatistics(this.projectId).subscribe(
-      (data: VoteStatistics) => { // Spécifiez le type ici
         this.voteStatistics = data;
         console.log('Statistiques de votes:', this.voteStatistics);
       },
@@ -58,29 +32,9 @@ export class DetailsProjetComponent implements OnInit {
     );
   }
 
-  approuverProjet(): void {
-    this.projetService.updateProjetStatut(this.projectId, true).subscribe(
-      (response) => {
-        console.log('Projet approuvé:', response);
-        this.hasVoted = true;
-        this.projetDetails.statut = true;
-      },
-      (error) => {
-        console.error('Erreur lors de l\'approbation du projet:', error);
-      }
-    );
-  }
-
-  desapprouverProjet(): void {
-    this.projetService.updateProjetStatut(this.projectId, false).subscribe(
-      (response) => {
-        console.log('Projet désapprouvé:', response);
-        this.hasVoted = true;
-        this.projetDetails.statut = false;
-      },
-      (error) => {
-        console.error('Erreur lors de la désapprobation du projet:', error);
-      }
-    );
+  viewDetails(): void {
+    if (this.projet && this.projet.id !== undefined) {
+      this.router.navigate(['/detail-projet', this.projet.id]);
+    }
   }
 }

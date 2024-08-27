@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { ProjetService } from '../../projet.service';
 import { UserService } from '../../../User/user.service';
 import { projetModel } from '../../projet.model';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { ProjetService2 } from '../../projet2.service';
 
 @Component({
   selector: 'app-creer-projet',
@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./creer-projet.component.css']
 })
 export class CreerProjetComponent {
-  private projetService = inject(ProjetService);
+  private projetService = inject(ProjetService2);
   private userService = inject(UserService);
 
   project: projetModel = {};
