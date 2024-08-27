@@ -10,7 +10,34 @@
 <body>
     <!-- creation-project.component.html -->
 <div class="container">
- 
+    <div class="sidebar">
+        <div class="logo">
+            <img src="../../../../assets/img/SAMAGOKH__4_-removebg-preview.png" alt="Logo">
+        </div>
+        <nav class="menu">
+            <a href="dashboard-habitant" class="menu-item active">
+                <i class="fas fa-tachometer-alt"></i>
+                Dashboard
+            </a>
+            <a href="liste-projet-habitant" class="menu-item">
+                <i class="fas fa-list"></i>
+                Projets
+            </a>
+            <a href="projet-publier" class="menu-item">
+                <i class="fas fa-paper-plane"></i>
+                Projets soumis
+            </a>
+            <a href="ajouter-projet" class="menu-item">
+                <i class="fas fa-plus-circle"></i>
+                Nouveau projet
+            </a>
+            <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
+                <i class="fas fa-sign-out-alt"></i>
+                Déconnexion
+            </a>
+        </nav>
+    </div>
+
 
         <!-- Form Section -->
         <div class="form-container">
