@@ -30,7 +30,7 @@ export const routes: Routes = [
 
 
 //Route pour Uesr simple
-{path: "", pathMatch: "full", redirectTo: "liste-projet-maire"},
+{path: "", pathMatch: "full", redirectTo: "home"},
 
 {path: "home", component : PlateformeComponent},
 
