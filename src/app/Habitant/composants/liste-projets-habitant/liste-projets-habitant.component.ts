@@ -8,15 +8,18 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProjetService } from '../../../projet.service';
 
+import { BarDeRecherheComponent } from "../bar-de-recherhe/bar-de-recherhe.component";
+import { SideBarComponent } from '../side-bar/side-bar.component';
+
 @Component({
   selector: 'app-liste-projets-habitant',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SideBarComponent, BarDeRecherheComponent],
   templateUrl: './liste-projets-habitant.component.html',
   styleUrls: ['./liste-projets-habitant.component.css']
 })
 export class ListeProjetsHabitantComponent implements OnInit {
-  
+
 
   private projetService = inject(ProjetService);
   private userService = inject(UserService);
@@ -93,7 +96,7 @@ export class ListeProjetsHabitantComponent implements OnInit {
       console.error('Projet ID est indéfini ou le statut n\'est pas 0.');
     }
   }
-  
+
 
 closeModal(event?: Event): void {
     if (event) {

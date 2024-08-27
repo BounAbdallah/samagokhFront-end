@@ -4,33 +4,30 @@
   </div>
   <nav class="menu">
       <!-- Lien vers le Dashboard -->
-      <a [routerLink]="['/Dashboard']" class="menu-item active">
+      <a href="dashboard-habitant" class="menu-item active">
           <img src="../../../../assets/images/icons/dashboard.svg" alt="">
           Dashboard
       </a>
 
       <!-- Lien vers la liste des projets (Projets mairie) -->
-      <a [routerLink]="['/liste-projet-maire']" class="menu-item">
+      <a href="liste-projet-habitant" class="menu-item">
         <img src="../../../../assets/images/tactic.png" alt="">
         Projets
       </a>
 
       <!-- Lien vers la liste des habitants -->
-      <a [routerLink]="['/Nos-habitants']" class="menu-item">
+      <a href="projet-publier"class="menu-item">
         <img src="../../../../assets/images/icons/group.svg" alt="">
-        Nos Habitants
+        Projets soumis
       </a>
 
       <!-- Lien vide pour Nouveau projet -->
-      <a [routerLink]="['/creer-projet']" class="menu-item">
+      <a href="ajouter-projet" class="menu-item">
         <img src="../../../../assets/images/icons/add_chart.svg" alt="">
         Nouveau projet
       </a>
       <!-- Lien vers les projets soumis -->
-      <a [routerLink]="['/Projet-soumis']" class="menu-item">
-        <img src="../../../../assets/images/icons/event_list.svg" alt="">
-        Projets soumis
-      </a>
+
 
       <!-- Lien vide pour Déconnexion -->
       <a href="#" class="menu-item">
