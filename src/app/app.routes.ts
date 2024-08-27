@@ -85,8 +85,8 @@ export const routes: Routes = [
         path: '',
         component: BaseDashboardComponent,
         children: [
-          { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-          { path: 'dashboard', component: DashbordComponent },
+          { path: '', redirectTo: 'dashboard-admin', pathMatch: 'full' },
+          { path: 'dashboard-admin', component: DashbordComponent },
           { path: 'communes', component: CommunesCrudComponent },
           { path: 'communes/:id', component: ListCommuneComponent }, 
           { path: 'populations/:id', component: PopulationComponent }, 

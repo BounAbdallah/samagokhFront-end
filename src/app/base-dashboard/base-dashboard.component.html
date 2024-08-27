@@ -299,7 +299,7 @@ color: #FEB906;
       </div>
       <nav class="menu">
           <!-- Lien vers le Dashboard -->
-          <a [routerLink]="['/dashboard']" class="menu-item active" [routerLinkActive]="'active'">
+          <a [routerLink]="['/dashboard-admin']" class="menu-item active" [routerLinkActive]="'active'">
               <!-- <img src="../../../../assets/images/icons/dashboard.svg" alt=""> -->
               <i class="fa-solid fa-table"></i>
               Dashboard
@@ -307,7 +307,7 @@ color: #FEB906;
     
           <!-- Lien vers la liste des projets (Projets mairie) -->
           <a [routerLink]="['/villes']" class="menu-item" [routerLinkActive]="'active'">
-            <img src="../../../../assets/images/tactic.png" alt="">
+            <!-- <img src="../../../../assets/images/tactic.png" alt=""> -->
             <i class="fa-solid fa-city"></i>
             Villes
           </a>
@@ -321,7 +321,7 @@ color: #FEB906;
     
     
           <!-- Lien vide pour Déconnexion -->
-          <a href="#" class="menu-item">
+          <a href="#" class="menu-item" [routerLink]="['/login']">
             <!-- <img src="../../../../assets/images/icons/logout.svg" alt=""> -->
             <i class="fa-solid fa-right-from-bracket"></i>
             Déconnexion

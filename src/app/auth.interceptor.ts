@@ -1,28 +1,32 @@
-import { HttpEvent, HttpHandlerFn, HttpHeaders, HttpRequest } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
-export function authInterceptor(req:HttpRequest<unknown>,next:HttpHandlerFn):Observable<HttpEvent<unknown>>{
-    let token;
-   
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+  constructor(private router: Router) {}
 
-    if(localStorage.getItem("token")){
-        token = JSON.parse(localStorage.getItem("token") || "");
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = localStorage.getItem('token');
 
+    if (token) {
+      const clonedReq = req.clone({
+        headers: req.headers.set('Authorization', `Bearer ${token}`)
+      });
+
+      return next.handle(clonedReq).pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.status === 401) {
+            // Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
+            this.router.navigate(['/login']);
+          }
+          return throwError(error);
+        })
+      );
+    } else {
+      return next.handle(req);
     }
-    if(!token){
-        return next(req);
-    } 
-
-    const headers = new HttpHeaders(
-
-       { Authorization:`Bearer ${token}`}
-    );
-
-
-    const newRequete = req.clone({
-        headers
-    });
-
-    return next (newRequete);
-
+  }
 }
