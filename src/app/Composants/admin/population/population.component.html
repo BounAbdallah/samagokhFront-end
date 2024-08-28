@@ -1,0 +1,101 @@
+<style>
+    .container{
+        background-color: #fff;
+        padding: 30px;
+    }
+    .bande{
+        background: #6D9773;    
+            color: white;
+            height: 67px;
+            flex-shrink: 0;
+            width: 100%;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            color: #FFF;
+            font-family: Inter;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            text-align: center;
+            margin: auto;
+            align-content: center;
+    }
+    th{
+        color: #000;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .icone{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: -30px;
+    padding: 5px;
+    background-color: #3C95EE;
+  }
+  i.fa-trash {
+    color: #e21515;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Ombre autour de l'icône */
+    border-radius: 5px; /* Ajoute un effet plus arrondi à l'ombre */
+    padding: 20px;
+    background-color: #fff; /* Optionnel : ajout d'un fond blanc pour mieux visualiser l'icône */
+    transition: transform 0.3s ease-in-out; /* Ajoute une transition lors du survol */
+    align-content: center;
+}
+
+i.fa-trash:hover {
+    transform: scale(1.1); /* Agrandissement de l'icône lors du survol */
+    cursor: pointer;
+}
+i:hover {
+            cursor: pointer;
+        }
+
+td{
+        color: #000;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+</style>
+<div class="icone" style="background-color: #FFF;">
+    <span class="mingcute--user-add-fill">
+        <i class="fa-solid fa-arrow-left-long fa-2xl" style="color: #000; "  [routerLink]="['/communes', communeId]"></i>
+    </span>
+  </div>
+<div class="bande mt-2">Commune de {{ communeNom }}: {{ habitants }} habitants</div>
+<div class="container">
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Prénom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Rôle</th>
+        <th scope="col">Email</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of population.population">
+        <td>{{ person.prenom }}</td>
+        <td>{{ person.nom }}</td>
+        <td>{{ person.role }}</td>
+        <td>{{ person.email }}</td>
+        <td><i class="fa-solid fa-trash fa-xl" style="color: #e21515;"></i></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

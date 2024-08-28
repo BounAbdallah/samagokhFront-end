@@ -39,26 +39,7 @@ export class VilleComponent  implements OnInit{
     this.fetchVilles();
   }
 
-  // onVillesChange(villes: any[]): void {
-  //   this.villes = villes;
-  // }
-
-
-
-  // fetchVilles(){
-  //   this.villeService.getVilles().subscribe(
-  //     (response:any)=>{
-  //       console.log(response.data);
-  //       this.villes = response;
-  //       if(response.data)
-  //         this.villes = response.data;
-  //         },
-  //         (error:any)=>{
-  //           console.log(error);
-  //     }
-  //   )
-  // }
-
+ 
   fetchVilles() {
     this.villeService.getVilles().subscribe(
       (response: any) => {
@@ -67,7 +48,6 @@ export class VilleComponent  implements OnInit{
         if (response.data) {
           this.villes = response.data;
         }
-        this.sharedService.updateVilles(this.villes); // Mettre à jour les villes dans le service partagé
       },
       (error: any) => {
         console.log(error);
@@ -84,15 +64,7 @@ export class VilleComponent  implements OnInit{
     }
   }
 
-  getShowVilles(id: number) {
-      this.villeService.getShowVilles(id).subscribe(
-        () => this.fetchVilles(),  // Recharger les rôles après la suppression
-        error => console.error('Erreur lors de la récupération de laville', error)
-      );
-  }
 
-
-  
   onSubmit(): void {
     if (this.myForm.valid) {
       const newVille = this.myForm.value;
