@@ -5,12 +5,15 @@ import { Component, OnInit, inject } from '@angular/core';
 import { projetModel } from '../../projet.model';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../../User/user.service';
-import {  Router } from '@angular/router'; 
+import {  Router } from '@angular/router';
 import { ProjetService } from '../../../projet.service';
+import { SideBarComponent } from '../side-bar/side-bar.component';
+import { BarDeRecherheComponent } from "../bar-de-recherhe/bar-de-recherhe.component";
+
 @Component({
       selector: 'app-projet-publier',
       standalone: true,
-      imports: [CommonModule],
+      imports: [CommonModule, SideBarComponent, BarDeRecherheComponent],
       templateUrl: './projet-publier.component.html',
       styleUrls: ['./projet-publier.component.css']
     })
@@ -20,16 +23,16 @@ export class ProjetPublierComponent implements OnInit {
     private userService = inject (UserService);
     private router = inject(Router)
     private localStorage = window.localStorage;
-  
+
     tabprojet: projetModel[] = [];
-  
+
     ngOnInit(): void {
       this.fetchProjetsPublies();
     }
-  
+
     fetchProjetsPublies(): void {
       const token = this.localStorage.getItem('token');
-  
+
       if (token) {
         this.projetService.getProjetBySttut(true).subscribe(
           (response: any) => {
