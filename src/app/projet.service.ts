@@ -73,6 +73,12 @@ export class ProjetService {
     return this.http.delete(`${apiUrl}/delete/projets/${id}`);
   }
 
+  // get projects by user
+  getUserProjects() {
+    return this.http.get(`${apiUrl}/user/projects`);
+  }
+  
+
 
 }
 

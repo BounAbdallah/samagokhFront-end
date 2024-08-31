@@ -1,8 +1,36 @@
-<div class="container">
-  <div class="side-bar-section">
-<app-side-bar></app-side-bar>
+
+
+<div class="projets-container">
+  <div *ngIf="tabprojet.length === 0" class="no-projets-message">
+    Aucun projet disponible.
   </div>
-  <div class="liste-content">
-    <app-liste-projet-soumis></app-liste-projet-soumis>
+
+  <div *ngFor="let projet of tabprojet" class="project-card">
+    <!-- Image de projet -->
+<img src="{{projet.image}}" alt="">
+
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <!-- Catégorie et Date de création -->
+        <div class="categories">
+          <span>
+            {{ projet.categorie }}
+          </span>
+        </div>
+        <span class="text-muted-custom">
+          le {{ projet.created_at | date: 'dd/MM/yyyy' }}
+        </span>
+      </div>
+
+      <!-- Titre du projet -->
+      <h5 class="card-title mt-2">{{ projet.titre }}</h5>
+
+      <!-- Description du projet -->
+      <p class="card-text text-muted-custom">{{ projet.description }}</p>
+
+     
+    </div>
   </div>
 </div>
+
+

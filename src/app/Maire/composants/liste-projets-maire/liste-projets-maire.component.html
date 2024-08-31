@@ -1,13 +1,13 @@
 
 
 <div class="projets-container">
-  <div *ngIf="tableProjet.length === 0" class="no-projets-message">
+  <div *ngIf="tabprojet.length === 0" class="no-projets-message">
     Aucun projet disponible.
   </div>
 
-  <div *ngFor="let projet of tableProjet" class="project-card">
+  <div *ngFor="let projet of tabprojet" class="project-card">
     <!-- Image de projet -->
-
+<img src="{{projet.image}}" alt="">
 
     <div class="card-body">
       <div class="d-flex justify-content-between">

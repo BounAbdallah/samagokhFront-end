@@ -102,13 +102,11 @@ export class ProjetService {
   }
 
   // Récupération de tous les projets
-  getAllProjets(): Observable<any[]> {
-    const url = `${apiUrl}/projets`;
-    return this.getRequest<any[]>(url).pipe(
-      map(response => Array.isArray(response) ? response : []),
-      catchError(() => of([]))
-    );
-  }
+  getAllProjets(){
+    return this.http.get(`${apiUrl}/projets`);
+}
+
+
 
   // Méthode pour obtenir les détails d'un projet par ID
   getProjetDetails(projectId: number): Observable<any> {

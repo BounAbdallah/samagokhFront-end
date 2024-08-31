@@ -8,10 +8,14 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProjetService } from '../../../projet.service';
 
+import { BarDeRecherheComponent } from "../bar-de-recherhe/bar-de-recherhe.component";
+import { SideBarComponent } from '../side-bar/side-bar.component';
+
+
 @Component({
   selector: 'app-liste-projets-habitant',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SideBarComponent, BarDeRecherheComponent],
   templateUrl: './liste-projets-habitant.component.html',
   styleUrls: ['./liste-projets-habitant.component.css']
 })
@@ -57,6 +61,39 @@ export class ListeProjetsHabitantComponent implements OnInit {
       }
     }
   }
+
+  // fetchProjets(): void {
+  //   const token = this.localStorage.getItem('token');
+  //   const userId = this.localStorage.getItem('userId'); 
+  
+  //   if (token) {
+  //     if (this.statutSelectionne !== null) {
+  //       this.projetService.getProjetBySttut(this.statutSelectionne).subscribe(
+  //         (response: any) => {
+  //           console.log('API Response:', response.data); // Vérifie le contenu des données
+  //           this.tabprojet = response.data.filter((projet: any) => projet.user_id === userId);
+  //         },
+  //         (error: any) => {
+  //           console.log(error);
+  //         }
+  //       );
+  //     } else {
+  //       this.projetService.getAllProjets().subscribe(
+  //         (response: any) => {
+  //           console.log('API Response:', response.data); // Vérifie le contenu des données
+  //           this.tabprojet = response.data.filter((projet: any) => projet.user_id === userId);
+  //         },
+  //         (error: any) => {
+  //           console.log(error);
+  //         }
+  //       );
+  //     }
+  //   }
+  // }
+  
+
+
+
 
   afficherProjetsPublies(): void {
     this.statutSelectionne = true;
