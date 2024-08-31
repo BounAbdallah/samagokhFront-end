@@ -46,8 +46,17 @@
                 <label for="titre">Titre:</label>
                 <input type="text" id="titre" [(ngModel)]="project.titre" name="titre" required />
 
-                <label for="commune_id">Commune ID:</label>
-                <input type="number" id="commune_id" [(ngModel)]="project.commune_id" name="commune_id" required />
+                <!-- <label for="commune_id">Commune ID:</label> -->
+                <!-- <input type="number" id="commune_id" [(ngModel)]="project.commune_id" name="commune_id" required /> -->
+                <div class="col-md-6 mb-3">
+                    <label for="commune_id">Commune</label>
+                    <select class="form-control" id="commune_id" name="commune_id" [(ngModel)]="project.commune_id" required>
+                      <option value="" disabled selected>Choisissez votre commune</option>
+                      <option *ngFor="let commune of communes" [value]="commune.id">
+                        {{ commune.libelle }}
+                      </option>
+                    </select>
+                  </div>
 
                 <label for="description">Description:</label>
                 <textarea id="description" [(ngModel)]="project.description" name="description" required></textarea>

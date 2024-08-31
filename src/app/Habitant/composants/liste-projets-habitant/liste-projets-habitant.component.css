@@ -4,6 +4,7 @@
 /* Style général */
 body {
     font-family: 'Montserrat', sans-serif;
+<<<<<<< HEAD
 /* Import des polices */
 
 }
@@ -12,6 +13,8 @@ body {
 /* Style général */
 body {
     font-family: 'Montserrat', sans-serif;
+=======
+>>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6
     background-color: #f5f5f5;
     display: flex;
     margin: 0;
@@ -64,11 +67,19 @@ body {
     background-color: #FA983A;
 }
 
+<<<<<<< HEAD
 /* .content {
     margin-left: 250px; /* aligné avec la largeur du sidebar */
     /* padding: 20px;
     width: calc(100% - 250px); largeur ajustée en fonction du sidebar */
 /* } */
+=======
+.content {
+    margin-left: 250px; /* aligné avec la largeur du sidebar */
+    padding: 20px;
+    width: calc(100% - 250px); /* largeur ajustée en fonction du sidebar */
+}
+>>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6
 
 /* Top bar */
 .top-bar {
@@ -120,7 +131,11 @@ body {
 }
 
 /* Projet */
+<<<<<<< HEAD
 /* .project-card {
+=======
+.project-card {
+>>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6
     background-color: white;
     border-radius: 8px;
     padding: 20px;
@@ -129,8 +144,13 @@ body {
     display: flex;
     align-items: center;
     /* justify-content: space-evenly; */
+<<<<<<< HEAD
     /* width:130% */
 /* } */
+=======
+    width:130%
+}
+>>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6
 
 .project-image {
     width: 4rem;
@@ -159,7 +179,10 @@ body {
 }
 
 .project-actions {
+<<<<<<< HEAD
   margin-top: 10px;
+=======
+>>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6
     display: flex;
     align-items: center;
     gap: 10px;
@@ -183,6 +206,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
 }
 
 .project-status button {
@@ -597,16 +621,43 @@ border: 0px;
     background-color: #E31B23;
     color: white;
     border: none;
+=======
+}
+
+.project-status button {
+    background-color:#0C3B2E;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
+}
+
+.project-status button span {
+    font-weight: bold;
+}
+.stats{
+    display:flex;
+    gap:4rem
+}
+.danger{
+    background-color: #E31B23;
+    color: white;
+    border: none;
+>>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6
     padding: 6px 12px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
+<<<<<<< HEAD
 .danger:hover {
     background-color: #c71a1d;
 }
 
+=======
+>>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6
 /* Modal */
 .modal {
     position: fixed;
@@ -641,8 +692,13 @@ border: 0px;
     color: #555;
     margin-bottom: 10px;
 }
+<<<<<<< HEAD
 .modal-content h2 {
     font-size: 1rem;
+=======
+.modal-content h2{
+    font-size:1rem
+>>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6
 }
 .project-detail-image {
     width: 100%;
@@ -650,8 +706,13 @@ border: 0px;
     border-radius: 8px;
     margin-bottom: 15px;
 }
+<<<<<<< HEAD
 #categorie {
     background-color: #e08a2b;
+=======
+#categorie{
+    background-color:#e08a2b;
+>>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6
     color: white;
     border: none;
     padding: 6px 12px;
@@ -687,7 +748,11 @@ border: 0px;
 }
 
 /* Responsive design */
+<<<<<<< HEAD
 /* @media (max-width: 768px) {
+=======
+@media (max-width: 768px) {
+>>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6
     .sidebar {
         width: 200px;
     }
@@ -722,6 +787,7 @@ border: 0px;
         margin-left: 0;
         width: 100%;
     }
+<<<<<<< HEAD
 } */
 
 
@@ -878,4 +944,6 @@ app-bar-de-recherhe{
   margin-left:100px;
   margin-top: -40px;
   width: 560px;
+=======
+>>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6
 }

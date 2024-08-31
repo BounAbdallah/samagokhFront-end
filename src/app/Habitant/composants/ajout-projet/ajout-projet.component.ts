@@ -65,28 +65,55 @@
 
 
 
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ProjetService } from '../../../projet.service';
 import { projetModel } from '../../projet.model';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../../User/user.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CommuneService } from '../../../commune.service';
+import { communeModel } from '../../../User/commune.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ajout-projet',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './ajout-projet.component.html',
   styleUrls: ['./ajout-projet.component.css']
 })
-export class AjoutProjetComponent {
+export class AjoutProjetComponent implements OnInit {
 
   private projetService = inject(ProjetService);
   private userService = inject(UserService);
-  private router = inject(Router)
+  private router = inject(Router);
+  private communeService = inject(CommuneService); // Service pour obtenir les communes
+
+  communes: communeModel[] = []; // Liste des communes
+
+  private localStorage = window.localStorage;
 
 
+  ngOnInit() {
+    this.loadCommunes();
+  }
+  
+
+  loadCommunes():void {
+
+    const token = this.localStorage.getItem('token');
+
+    if (token){
+    this.communeService.getCommunes().subscribe(
+      (data: any) => {
+        this.communes = data;
+      },
+      (error: any) => {
+        console.error('Erreur lors du chargement des communes', error);
+      }
+    );
+  }}
   project: projetModel = {};
   isCollapsed = false;
 

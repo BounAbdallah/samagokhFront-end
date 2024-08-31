@@ -23,6 +23,7 @@ import { DetailProjetComponent } from './Habitant/detail-projet/detail-projet.co
 import { DetailsProjetComponent } from './Maire/composants/details-projet/details-projet.component';
 import { NotificationComponent } from './Maire/composants/notification/notification.component';
 import { ListeHabitantsComponent } from './Maire/composants/liste-habitants/liste-habitants.component';
+import { CardProjetComponent } from './Maire/card-projet/card-projet.component';
 
 export const routes: Routes = [
 
@@ -30,7 +31,7 @@ export const routes: Routes = [
 
 
 //Route pour Uesr simple
-{path: "", pathMatch: "full", redirectTo: "liste-projet-maire"},
+{path: "", pathMatch: "full", redirectTo: "home"},
 
 {path: "home", component : PlateformeComponent},
 
@@ -55,6 +56,9 @@ export const routes: Routes = [
 {path: "liste-habitants", component: ListeHabitantsComponent},
 
 { path: 'details-projet/:id', component: DetailsProjetComponent },
+
+// test maire
+{path:"card-projet", component:CardProjetComponent},
 
 
 

@@ -5,11 +5,12 @@ import { Component, OnInit, Inject, PLATFORM_ID, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ProjetService } from '../../projet.service';
 import { projetModel } from '../../../Habitant/projet.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-liste-projets-maire',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule,FormsModule],
   templateUrl: './liste-projets-maire.component.html',
   styleUrls: ['./liste-projets-maire.component.css']
 })
@@ -19,6 +20,7 @@ export class ListeProjetsMaireComponent implements OnInit {
   tabprojet: projetModel[] = [];
 
   private localStorage = window.localStorage;
+
 
   ngOnInit(): void {
     this.loadproject()
