@@ -1,1 +1,13 @@
-<p>liste-habitants-commune works!</p>
+<div *ngFor="let user of tabhabitant" class="project-card">
+    <!-- Image de projet -->
+
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <!-- Catégorie et Date de création -->
+         <h1>Prenom:{{user.nom}}</h1>
+       <h1>{{ user.telephone }} </h1>
+       <h1>{{ user.adresse}} </h1>
+
+   
+        
+      </div>

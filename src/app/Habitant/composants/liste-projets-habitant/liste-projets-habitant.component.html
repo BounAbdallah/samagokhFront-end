@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="contenaire">
     <div class="side-bar-content">
   <app-side-bar></app-side-bar>
@@ -7,7 +6,7 @@
       <div class="donnee-content">
    <div class="top-bar">
   
-    <div class="top-bar-right">
+              <div class="top-bar-right">
   <app-bar-de-recherhe></app-bar-de-recherhe>
   <img src="../../../../assets/images/icons/Icon-profil.svg" alt="">
   <img src="../../../../assets/images/icons/Icon-notification.svg" alt="">
@@ -94,129 +93,3 @@
       </div>
         </div>
       </div>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste de Projets</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="liste-projets-habitant.component.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="logo">
-                <img src="../../../../assets/img/SAMAGOKH__4_-removebg-preview.png" alt="Logo">
-            </div>
-            <nav class="menu">
-                <a href="dashboard-habitant" class="menu-item active">
-                    <i class="fas fa-tachometer-alt"></i>
-                    Dashboard
-                </a>
-                <a href="liste-projet-habitant" class="menu-item">
-                    <i class="fas fa-list"></i>
-                    Projets
-                </a>
-                <a href="projet-publier" class="menu-item">
-                    <i class="fas fa-paper-plane"></i>
-                    Projets soumis
-                </a>
-                <a href="ajouter-projet" class="menu-item">
-                    <i class="fas fa-plus-circle"></i>
-                    Nouveau projet
-                </a>
-                <a href="#" class="menu-item" (click)="logout(); $event.preventDefault();">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Déconnexion
-                </a>
-            </nav>
-        </div>
-
-        <!-- Contenu principal -->
-        <main class="content">
-            <div class="top-bar">
-                <div class="welcome">
-                    <p>Bienvenue, Fatbintou</p>
-                </div>
-                <div class="top-bar-right">
-                    <input type="text" placeholder="Rechercher..." class="search-bar">
-                    <i class="fas fa-bell notification-icon"></i>
-                </div>
-            </div>
-
-            <!-- Liste des projets -->
-            <h1>Liste de mes projets</h1>
-            <section class="project-list">
-                <!-- Liste des projets -->
-                <div *ngFor="let projet of tabprojet; trackBy: trackByFn">
-                    <!-- Projet non publié -->
-                    <a class="btn btn-details" (click)="openProjectDetail(projet)">
-                        <div *ngIf="!projet.statut" class="project-card">
-                            <img src="{{projet.image}}" class="project-image">
-                            <div class="project-info">
-                                <h2>{{ projet.titre }}</h2>
-                                <p>{{ projet.description }}</p>
-                                <div class="project-actions">
-                                    <button class="btn btn-publish" (click)="publishProject(projet)">Publier</button>
-                                    <button *ngIf="projet.id !== undefined" (click)="deleteProject(projet.id)" class="danger">Supprimer</button>
-                                </div>
-                            </div>
-                            <div class="project-status">
-                                <button><span>En attente</span></button>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- Projet publié -->
-                    <a class="btn btn-details" (click)="openProjectDetail(projet)">
-                        <div *ngIf="projet.statut" class="project-card">
-                            <img src="{{projet.image}}" class="project-image">
-                            <div class="project-info">
-                                <h2>{{ projet.titre }}</h2>
-                                <p>{{ projet.description }}</p>
-                                <div class="stats">
-                                  <div><h3><i class="fas fa-thumbs-up"></i> Votes <span>3500</span></h3></div>  
-                                  <div><h3><i class="fas fa-comments"></i> Commentaires <span>3500</span></h3></div>  
-                                </div>
-                            </div>
-                            <div class="project-status">
-                                <button>publié le <span>{{ projet.created_at | date: 'short' }}</span></button>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </section>
-            
-            <!-- Modal pour les détails du projet -->
-            <div class="modal" *ngIf="showModal" (click)="closeModal($event)">
-                <div class="modal-content" (click)="$event.stopPropagation()">
-                    <span class="close-button" (click)="closeModal($event)">&times;</span>
-                    <img [src]="selectedProjet?.image" alt="{{ selectedProjet?.titre }}" class="project-detail-image">
-                    <p id="categorie">{{ selectedProjet?.categorie }}</p>
-                    <h1>{{ selectedProjet?.titre }}</h1>
-                    <h2>Description:</h2>
-                    <p>{{ selectedProjet?.description }}</p>
-                    <h2>Attente:</h2>
-                    <p>{{ selectedProjet?.attente }}</p>
-                    <h2>Cible:</h2>
-                    <p>{{ selectedProjet?.cible }}</p>
-                    <h2>Objectif:</h2>
-                    <p>{{ selectedProjet?.objectif }}</p>
-                    <h2>Budget:</h2>
-                    <p>{{ selectedProjet?.budget }}</p>
-                    <div class="modal-footer">
-                        <button (click)="closeModal($event)">Fermer</button>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-    <script src="path-to-your-angular-bundle.js"></script>
-</body>
-</html>
->>>>>>> 905d57b9db384e490ecc24ee1b5d2fba377b09e6

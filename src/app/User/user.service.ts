@@ -32,6 +32,12 @@ export class UserService {
   }
 // recuperation de la liste des commune
 
+
+  // liste des habitants
+  getAllhabitant(){
+    return this.http.get(`${apiUrl}/habitants`);
+}
+
   
 }
 
