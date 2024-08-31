@@ -1,8 +1,12 @@
 /* Import des polices */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 
+/* Style général */
+body {
+    font-family: 'Montserrat', sans-serif;
+/* Import des polices */
 
-
+}
 
 /* Style général */
 body {
@@ -328,6 +332,7 @@ body {
 
 
 
+/* Import des polices */
 
 /* Style général */
 body {
